@@ -22,23 +22,10 @@
       line-height: 1.6;
       padding: 2rem 1rem;
     }
-    .container {
-      max-width: 720px;
-      margin: 0 auto;
-    }
-    header {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-    header h1 {
-      font-size: 1.85rem;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.4rem;
-    }
-    header p {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
+    .container { max-width: 720px; margin: 0 auto; }
+    header { text-align: center; margin-bottom: 2rem; }
+    header h1 { font-size: 1.85rem; letter-spacing: -0.02em; margin-bottom: 0.4rem; }
+    header p { color: var(--muted); font-size: 0.95rem; }
     .search-box {
       width: 100%;
       padding: 0.75rem 1rem;
@@ -48,14 +35,8 @@
       margin-bottom: 1.5rem;
       outline: none;
     }
-    .search-box:focus {
-      border-color: var(--accent);
-    }
-    .grid {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
+    .search-box:focus { border-color: var(--accent); }
+    .grid { display: flex; flex-direction: column; gap: 1rem; }
     .card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -66,10 +47,7 @@
       transition: transform 0.15s ease, border-color 0.15s ease;
       display: block;
     }
-    .card:hover {
-      transform: translateY(-2px);
-      border-color: var(--accent);
-    }
+    .card:hover { transform: translateY(-2px); border-color: var(--accent); }
     .meta {
       display: flex;
       gap: 0.5rem;
@@ -84,23 +62,10 @@
       border-radius: 999px;
       font-weight: 600;
     }
-    .date {
-      color: var(--muted);
-    }
-    .card h2 {
-      font-size: 1.15rem;
-      margin-bottom: 0.35rem;
-    }
-    .card p {
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-    footer {
-      text-align: center;
-      margin-top: 2.5rem;
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
+    .card h2 { font-size: 1.15rem; margin-bottom: 0.35rem; }
+    .card p { font-size: 0.9rem; color: var(--muted); }
+    .status { text-align: center; color: var(--muted); padding: 2rem 0; font-size: 0.95rem; }
+    footer { text-align: center; margin-top: 2.5rem; font-size: 0.8rem; color: var(--muted); }
   </style>
 </head>
 <body>
@@ -113,18 +78,7 @@
     <input type="text" id="search" class="search-box" placeholder="Cari topik atau judul jurnal..." />
 
     <div class="grid" id="journal-list">
-      <!-- TAMBAHKAN JURNAL BARU DI BAWAH BARIS INI (COPY-PASTE BLOK <a ...> ... </a>) -->
-
-      <a class="card" href="tirzepatide-2024">
-        <div class="meta">
-          <span class="tag">Biologi Kesehatan</span>
-          <span class="date">2024</span>
-        </div>
-        <h2>Tirzepatide untuk Apnea Tidur Obstruktif & Obesitas</h2>
-        <p>Eksplorasi data klinis, mekanisme kerja agonis GIP/GLP-1, simulasi visual, dan kuis singkat.</p>
-      </a>
-
-      <!-- BATAS AKHIR DAFTAR JURNAL -->
+      <div class="status">Memuat daftar jurnal...</div>
     </div>
 
     <footer>
@@ -133,15 +87,76 @@
   </div>
 
   <script>
-    const searchInput = document.getElementById('search');
-    const cards = document.querySelectorAll('.card');
-    searchInput.addEventListener('input', (e) => {
+    const USERNAME = "AldiansyahKarisma";
+    const REPO = "biosci-brief";
+    const listEl = document.getElementById("journal-list");
+    const searchInput = document.getElementById("search");
+
+    function formatFilename(filename) {
+      return filename
+        .replace(/\.html$/i, "")
+        .replace(/[-_]+/g, " ")
+        .replace(/\b\w/g, c => c.toUpperCase());
+    }
+
+    async function extractMeta(fileUrl, fallbackTitle) {
+      try {
+        const res = await fetch(fileUrl);
+        if (!res.ok) return { title: fallbackTitle, desc: "Buka halaman interaktif untuk eksplorasi data, mekanisme, dan kuis singkat." };
+        const html = await res.text();
+        const doc = new DOMParser().parseFromString(html, "text/html");
+        const title = doc.querySelector("title")?.textContent?.trim() || fallbackTitle;
+        const desc = doc.querySelector('meta[name="description"]')?.getAttribute("content")?.trim()
+          || "Buka halaman interaktif untuk eksplorasi data, mekanisme, dan kuis singkat.";
+        return { title, desc };
+      } catch {
+        return { title: fallbackTitle, desc: "Buka halaman interaktif untuk eksplorasi data, mekanisme, dan kuis singkat." };
+      }
+    }
+
+    async function loadJournals() {
+      try {
+        const res = await fetch(`https://api.github.com/repos/${USERNAME}/${REPO}/contents/`);
+        if (!res.ok) throw new Error("Gagal mengambil daftar file.");
+        const files = await res.json();
+
+        const htmlFiles = files
+          .filter(f => f.type === "file" && f.name.endsWith(".html") && f.name.toLowerCase() !== "index.html")
+          .reverse();
+
+        if (htmlFiles.length === 0) {
+          listEl.innerHTML = '<div class="status">Belum ada jurnal yang diunggah.</div>';
+          return;
+        }
+
+        const items = await Promise.all(htmlFiles.map(async file => {
+          const slug = file.name.replace(/\.html$/i, "");
+          const meta = await extractMeta(file.name, formatFilename(file.name));
+          return { slug, ...meta };
+        }));
+
+        listEl.innerHTML = items.map(item => `
+          <a class="card" href="${item.slug}">
+            <div class="meta">
+              <span class="tag">Jurnal Interaktif</span>
+            </div>
+            <h2>${item.title}</h2>
+            <p>${item.desc}</p>
+          </a>
+        `).join("");
+      } catch (err) {
+        listEl.innerHTML = '<div class="status">Gagal memuat daftar jurnal. Coba muat ulang halaman.</div>';
+      }
+    }
+
+    searchInput.addEventListener("input", (e) => {
       const q = e.target.value.toLowerCase();
-      cards.forEach(card => {
-        const text = card.innerText.toLowerCase();
-        card.style.display = text.includes(q) ? 'block' : 'none';
+      document.querySelectorAll(".card").forEach(card => {
+        card.style.display = card.innerText.toLowerCase().includes(q) ? "block" : "none";
       });
     });
+
+    loadJournals();
   </script>
 </body>
 </html>
