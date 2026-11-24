@@ -6,80 +6,388 @@
   <title>BioSci Brief — Katalog Jurnal Interaktif</title>
   <style>
     :root {
-      --bg: #f8fafc;
-      --card: #ffffff;
+      --bg: #f0fdf9;
+      --card: rgba(255, 255, 255, 0.92);
       --text: #0f172a;
       --muted: #475569;
+      --primary: #0d9488;
+      --primary-dark: #0f766e;
       --accent: #0284c7;
-      --accent-hover: #0369a1;
-      --border: #e2e8f0;
+      --pink: #ec4899;
+      --amber: #f59e0b;
+      --border: #cbd5e1;
+      --radius: 16px;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: var(--bg);
+      background: linear-gradient(135deg, #ecfeff 0%, #f0fdf4 50%, #fdf4ff 100%);
       color: var(--text);
       line-height: 1.6;
-      padding: 2rem 1rem;
+      min-height: 100vh;
+      padding: 2rem 1rem 3.5rem;
+      position: relative;
+      overflow-x: hidden;
     }
-    .container { max-width: 720px; margin: 0 auto; }
-    header { text-align: center; margin-bottom: 2rem; }
-    header h1 { font-size: 1.85rem; letter-spacing: -0.02em; margin-bottom: 0.4rem; }
-    header p { color: var(--muted); font-size: 0.95rem; }
+
+    /* Latar Animasi Biologi */
+    .bio-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .bio-float {
+      position: absolute;
+      opacity: 0.22;
+      animation: floatBio 14s ease-in-out infinite;
+    }
+
+    .bio-float.f1 { top: 8%; left: 5%; width: 64px; color: #0d9488; animation-delay: 0s; }
+    .bio-float.f2 { top: 22%; right: 6%; width: 58px; color: #16a34a; animation-delay: -3s; animation-duration: 16s; }
+    .bio-float.f3 { top: 55%; left: 3%; width: 54px; color: #ec4899; animation-delay: -6s; animation-duration: 18s; }
+    .bio-float.f4 { bottom: 18%; right: 7%; width: 60px; color: #0284c7; animation-delay: -2s; animation-duration: 15s; }
+    .bio-float.f5 { bottom: 8%; left: 12%; width: 52px; color: #f59e0b; animation-delay: -8s; animation-duration: 17s; }
+    .bio-float.f6 { top: 42%; right: 12%; width: 46px; color: #8b5cf6; animation-delay: -5s; animation-duration: 19s; }
+
+    @keyframes floatBio {
+      0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+      50% { transform: translateY(-22px) rotate(12deg) scale(1.06); }
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 1.75rem;
+    }
+
+    .brand-pill {
+      display: inline-block;
+      background: linear-gradient(90deg, #0d9488, #0284c7);
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.28rem 0.85rem;
+      border-radius: 999px;
+      margin-bottom: 0.6rem;
+    }
+
+    header h1 {
+      font-size: clamp(1.9rem, 4vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      background: linear-gradient(90deg, #0f766e, #0369a1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.4rem;
+    }
+
+    header p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .search-wrap {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+
     .search-box {
       width: 100%;
-      padding: 0.75rem 1rem;
-      border: 1px solid var(--border);
-      border-radius: 10px;
+      padding: 0.85rem 1.15rem;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 14px;
       font-size: 0.95rem;
-      margin-bottom: 1.5rem;
+      background: rgba(255, 255, 255, 0.95);
       outline: none;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
-    .search-box:focus { border-color: var(--accent); }
-    .grid { display: flex; flex-direction: column; gap: 1rem; }
+
+    .search-box:focus {
+      border-color: var(--primary);
+      box-shadow: 0 4px 18px rgba(13, 148, 136, 0.14);
+    }
+
+    .grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
     .card {
       background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.25rem;
+      backdrop-filter: blur(8px);
+      border: 1.5px solid rgba(203, 213, 225, 0.8);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.35rem;
       text-decoration: none;
       color: inherit;
-      transition: transform 0.15s ease, border-color 0.15s ease;
+      transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
       display: block;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
     }
-    .card:hover { transform: translateY(-2px); border-color: var(--accent); }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: var(--primary);
+      box-shadow: 0 10px 24px rgba(13, 148, 136, 0.12);
+    }
+
     .meta {
       display: flex;
+      flex-wrap: wrap;
       gap: 0.5rem;
       align-items: center;
-      margin-bottom: 0.5rem;
-      font-size: 0.8rem;
+      margin-bottom: 0.55rem;
+      font-size: 0.78rem;
     }
+
     .tag {
+      background: #ccfbf1;
+      color: #0f766e;
+      padding: 0.18rem 0.65rem;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+
+    .date-badge {
       background: #e0f2fe;
-      color: var(--accent-hover);
-      padding: 0.15rem 0.6rem;
+      color: #0369a1;
+      padding: 0.18rem 0.65rem;
       border-radius: 999px;
       font-weight: 600;
     }
-    .card h2 { font-size: 1.15rem; margin-bottom: 0.35rem; }
-    .card p { font-size: 0.9rem; color: var(--muted); }
-    .status { text-align: center; color: var(--muted); padding: 2rem 0; font-size: 0.95rem; }
-    footer { text-align: center; margin-top: 2.5rem; font-size: 0.8rem; color: var(--muted); }
+
+    .today-badge {
+      background: #fce7f3;
+      color: #be185d;
+      padding: 0.18rem 0.65rem;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+
+    .card h2 {
+      font-size: 1.15rem;
+      line-height: 1.35;
+      margin-bottom: 0.35rem;
+      color: #0f172a;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .status {
+      text-align: center;
+      color: var(--muted);
+      padding: 2.5rem 1rem;
+      font-size: 0.95rem;
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1px dashed var(--border);
+    }
+
+    /* Pagination */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.45rem;
+      margin-top: 1.75rem;
+      flex-wrap: wrap;
+    }
+
+    .page-btn {
+      min-width: 38px;
+      height: 38px;
+      padding: 0 0.75rem;
+      border-radius: 10px;
+      border: 1.5px solid #cbd5e1;
+      background: #ffffff;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .page-btn:hover:not(:disabled) {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .page-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #ffffff;
+    }
+
+    .page-btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    /* Support / Traktir Box */
+    .support-card {
+      margin-top: 2.25rem;
+      background: linear-gradient(135deg, #fff7ed 0%, #fdf2f8 100%);
+      border: 1.5px solid #fbcfe8;
+      border-radius: var(--radius);
+      padding: 1.35rem 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      box-shadow: 0 6px 18px rgba(236, 72, 153, 0.08);
+    }
+
+    .support-info h3 {
+      font-size: 1.05rem;
+      color: #9d174d;
+      margin-bottom: 0.25rem;
+    }
+
+    .support-info p {
+      font-size: 0.88rem;
+      color: #64748b;
+    }
+
+    .bank-box {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+      background: #ffffff;
+      border: 1px solid #f9a8d4;
+      padding: 0.55rem 0.85rem;
+      border-radius: 12px;
+    }
+
+    .bank-details {
+      font-size: 0.85rem;
+      line-height: 1.35;
+    }
+
+    .bank-details strong {
+      color: #0f172a;
+      display: block;
+    }
+
+    .copy-rek-btn {
+      background: linear-gradient(90deg, #ec4899, #f59e0b);
+      color: #ffffff;
+      border: none;
+      padding: 0.5rem 0.9rem;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+    }
+
+    .copy-rek-btn:hover {
+      opacity: 0.92;
+      transform: scale(1.02);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
   </style>
 </head>
 <body>
+  <!-- Animasi Latar Biologi -->
+  <div class="bio-bg" aria-hidden="true">
+    <!-- DNA -->
+    <svg class="bio-float f1" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round">
+      <path d="M18 6c0 14 28 14 28 26S18 44 18 58"/>
+      <path d="M46 6c0 14-28 14-28 26s28 12 28 26"/>
+      <line x1="22" y1="14" x2="42" y2="14"/>
+      <line x1="26" y1="24" x2="38" y2="24"/>
+      <line x1="26" y1="40" x2="38" y2="40"/>
+      <line x1="22" y1="50" x2="42" y2="50"/>
+    </svg>
+    <!-- Daun / Botani -->
+    <svg class="bio-float f2" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 52C12 24 32 10 54 10c0 22-14 42-42 42z"/>
+      <path d="M12 52L40 24"/>
+    </svg>
+    <!-- Bakteri / Mikrob -->
+    <svg class="bio-float f3" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round">
+      <rect x="16" y="22" width="32" height="20" rx="10" transform="rotate(-20 32 32)"/>
+      <circle cx="26" cy="32" r="2.5" fill="currentColor"/>
+      <circle cx="38" cy="30" r="2" fill="currentColor"/>
+      <path d="M48 26c6-2 8-6 12-4"/>
+      <path d="M16 38c-5 2-8 6-12 4"/>
+    </svg>
+    <!-- Kapsul Obat / Medis -->
+    <svg class="bio-float f4" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round">
+      <rect x="20" y="10" width="24" height="44" rx="12" transform="rotate(35 32 32)"/>
+      <line x1="22" y1="25" x2="42" y2="39"/>
+    </svg>
+    <!-- Burung / Zoologi -->
+    <svg class="bio-float f5" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 38c10-2 16-12 24-20 2 10 10 14 20 14-8 6-14 14-26 14-8 0-14-3-18-8z"/>
+      <circle cx="42" cy="28" r="1.5" fill="currentColor"/>
+    </svg>
+    <!-- Sel / Molekul -->
+    <svg class="bio-float f6" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5">
+      <circle cx="32" cy="32" r="20"/>
+      <circle cx="32" cy="32" r="7"/>
+      <circle cx="44" cy="22" r="2.5" fill="currentColor"/>
+      <circle cx="20" cy="40" r="2.5" fill="currentColor"/>
+    </svg>
+  </div>
+
   <div class="container">
     <header>
+      <span class="brand-pill">Jurnal Sains Interaktif</span>
       <h1>BioSci Brief</h1>
-      <p>Ringkasan interaktif harian jurnal biologi, genetika, dan medis.</p>
+      <p>Ringkasan harian jurnal biologi, genetika, mikrobiologi, zoologi, botani, dan medis.</p>
     </header>
 
-    <input type="text" id="search" class="search-box" placeholder="Cari topik atau judul jurnal..." />
+    <div class="search-wrap">
+      <input type="text" id="search" class="search-box" placeholder="Cari judul, topik, atau tanggal upload..." />
+    </div>
 
     <div class="grid" id="journal-list">
-      <div class="status">Memuat daftar jurnal...</div>
+      <div class="status">Memuat daftar jurnal terbaru...</div>
     </div>
+
+    <div class="pagination" id="pagination"></div>
+
+    <!-- Bagian Support / Traktir -->
+    <section class="support-card">
+      <div class="support-info">
+        <h3>🍦 Traktir Es Krim Creator</h3>
+        <p>Suka dengan ringkasan interaktif BioSci Brief? Dukung kreator agar terus update setiap hari.</p>
+      </div>
+      <div class="bank-box">
+        <div class="bank-details">
+          <strong>SeaBank • 901107904431</strong>
+          <span>a.n. Muhammad Aldiansyah Karisma</span>
+        </div>
+        <button class="copy-rek-btn" id="copy-rek-btn">Salin Rekening</button>
+      </div>
+    </section>
 
     <footer>
       &copy; 2026 BioSci Brief • Dihosting di GitHub Pages
@@ -89,14 +397,51 @@
   <script>
     const USERNAME = "AldiansyahKarisma";
     const REPO = "biosci-brief";
+    const ITEMS_PER_PAGE = 10;
+    const CACHE_KEY = "biosci_brief_cache_v2";
+    const CACHE_TTL = 5 * 60 * 1000; // 5 menit
+
     const listEl = document.getElementById("journal-list");
+    const paginationEl = document.getElementById("pagination");
     const searchInput = document.getElementById("search");
+
+    let allItems = [];
+    let filteredItems = [];
+    let currentPage = 1;
+
+    // Tombol salin rekening
+    const copyRekBtn = document.getElementById("copy-rek-btn");
+    copyRekBtn.addEventListener("click", () => {
+      navigator.clipboard.writeText("901107904431").then(() => {
+        copyRekBtn.textContent = "Tersalin!";
+        setTimeout(() => copyRekBtn.textContent = "Salin Rekening", 2000);
+      });
+    });
 
     function formatFilename(filename) {
       return filename
         .replace(/\.html$/i, "")
         .replace(/[-_]+/g, " ")
         .replace(/\b\w/g, c => c.toUpperCase());
+    }
+
+    function formatDateIndo(isoString) {
+      if (!isoString) return "";
+      const date = new Date(isoString);
+      return date.toLocaleDateString("id-ID", {
+        day: "numeric",
+        month: "short",
+        year: "numeric"
+      });
+    }
+
+    function isToday(isoString) {
+      if (!isoString) return false;
+      const d = new Date(isoString);
+      const now = new Date();
+      return d.getFullYear() === now.getFullYear() &&
+             d.getMonth() === now.getMonth() &&
+             d.getDate() === now.getDate();
     }
 
     async function extractMeta(fileUrl, fallbackTitle) {
@@ -114,15 +459,83 @@
       }
     }
 
+    async function fetchCommitDate(filename) {
+      try {
+        const res = await fetch(`https://api.github.com/repos/${USERNAME}/${REPO}/commits?path=${encodeURIComponent(filename)}&per_page=1`);
+        if (!res.ok) return null;
+        const commits = await res.json();
+        return commits[0]?.commit?.committer?.date || commits[0]?.commit?.author?.date || null;
+      } catch {
+        return null;
+      }
+    }
+
+    function renderPage() {
+      if (filteredItems.length === 0) {
+        listEl.innerHTML = '<div class="status">Tidak ada jurnal yang cocok dengan pencarian Anda.</div>';
+        paginationEl.innerHTML = "";
+        return;
+      }
+
+      const totalPages = Math.ceil(filteredItems.length / ITEMS_PER_PAGE);
+      if (currentPage > totalPages) currentPage = 1;
+
+      const start = (currentPage - 1) * ITEMS_PER_PAGE;
+      const pageItems = filteredItems.slice(start, start + ITEMS_PER_PAGE);
+
+      listEl.innerHTML = pageItems.map(item => `
+        <a class="card" href="${item.slug}">
+          <div class="meta">
+            <span class="tag">Jurnal Interaktif</span>
+            ${item.dateText ? `<span class="date-badge">📅 ${item.dateText}</span>` : ""}
+            ${item.today ? `<span class="today-badge">✨ Hari Ini</span>` : ""}
+          </div>
+          <h2>${item.title}</h2>
+          <p>${item.desc}</p>
+        </a>
+      `).join("");
+
+      if (totalPages <= 1) {
+        paginationEl.innerHTML = "";
+        return;
+      }
+
+      let navHtml = `<button class="page-btn" ${currentPage === 1 ? "disabled" : ""} data-page="${currentPage - 1}">&larr;</button>`;
+      for (let i = 1; i <= totalPages; i++) {
+        navHtml += `<button class="page-btn ${i === currentPage ? "active" : ""}" data-page="${i}">${i}</button>`;
+      }
+      navHtml += `<button class="page-btn" ${currentPage === totalPages ? "disabled" : ""} data-page="${currentPage + 1}">&rarr;</button>`;
+      paginationEl.innerHTML = navHtml;
+
+      paginationEl.querySelectorAll(".page-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          currentPage = Number(btn.dataset.page);
+          renderPage();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      });
+    }
+
     async function loadJournals() {
       try {
+        const cached = localStorage.getItem(CACHE_KEY);
+        if (cached) {
+          const parsed = JSON.parse(cached);
+          if (Date.now() - parsed.time < CACHE_TTL && Array.isArray(parsed.items)) {
+            allItems = parsed.items;
+            filteredItems = allItems;
+            renderPage();
+            return;
+          }
+        }
+
         const res = await fetch(`https://api.github.com/repos/${USERNAME}/${REPO}/contents/`);
         if (!res.ok) throw new Error("Gagal mengambil daftar file.");
         const files = await res.json();
 
-        const htmlFiles = files
-          .filter(f => f.type === "file" && f.name.endsWith(".html") && f.name.toLowerCase() !== "index.html")
-          .reverse();
+        const htmlFiles = files.filter(
+          f => f.type === "file" && f.name.endsWith(".html") && f.name.toLowerCase() !== "index.html"
+        );
 
         if (htmlFiles.length === 0) {
           listEl.innerHTML = '<div class="status">Belum ada jurnal yang diunggah.</div>';
@@ -131,29 +544,40 @@
 
         const items = await Promise.all(htmlFiles.map(async file => {
           const slug = file.name.replace(/\.html$/i, "");
-          const meta = await extractMeta(file.name, formatFilename(file.name));
-          return { slug, ...meta };
+          const [meta, isoDate] = await Promise.all([
+            extractMeta(file.name, formatFilename(file.name)),
+            fetchCommitDate(file.name)
+          ]);
+          return {
+            slug,
+            ...meta,
+            timestamp: isoDate ? new Date(isoDate).getTime() : 0,
+            dateText: formatDateIndo(isoDate),
+            today: isToday(isoDate)
+          };
         }));
 
-        listEl.innerHTML = items.map(item => `
-          <a class="card" href="${item.slug}">
-            <div class="meta">
-              <span class="tag">Jurnal Interaktif</span>
-            </div>
-            <h2>${item.title}</h2>
-            <p>${item.desc}</p>
-          </a>
-        `).join("");
+        // Urutkan dari yang paling baru diupload
+        items.sort((a, b) => b.timestamp - a.timestamp);
+
+        allItems = items;
+        filteredItems = items;
+        localStorage.setItem(CACHE_KEY, JSON.stringify({ time: Date.now(), items }));
+        renderPage();
       } catch (err) {
-        listEl.innerHTML = '<div class="status">Gagal memuat daftar jurnal. Coba muat ulang halaman.</div>';
+        listEl.innerHTML = '<div class="status">Gagal memuat daftar jurnal. Coba muat ulang halaman beberapa saat lagi.</div>';
       }
     }
 
     searchInput.addEventListener("input", (e) => {
-      const q = e.target.value.toLowerCase();
-      document.querySelectorAll(".card").forEach(card => {
-        card.style.display = card.innerText.toLowerCase().includes(q) ? "block" : "none";
-      });
+      const q = e.target.value.toLowerCase().trim();
+      filteredItems = allItems.filter(item =>
+        item.title.toLowerCase().includes(q) ||
+        item.desc.toLowerCase().includes(q) ||
+        item.dateText.toLowerCase().includes(q)
+      );
+      currentPage = 1;
+      renderPage();
     });
 
     loadJournals();
