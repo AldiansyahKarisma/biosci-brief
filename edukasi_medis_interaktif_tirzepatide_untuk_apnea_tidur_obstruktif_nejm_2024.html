@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tirzepatide untuk Apnea Tidur Obstruktif & Obesitas | Ringkasan Interaktif NEJM 2024</title>
+  
+  <!-- Font Inter untuk tipografi medis yang bersih dan mudah dibaca -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            navy: {
+              950: '#071426',
+              900: '#0B1F3A',
+              800: '#133159',
+              700: '#1C4478',
+            },
+            medteal: {
+              50: '#EFFCF9',
+              100: '#CCF7EE',
+              200: '#99EFE0',
+              500: '#0D9488',
+              600: '#0F766E',
+              700: '#115E59',
+            }
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-medteal-200 selection:text-navy-900">
+
+  <!-- ==================== NAVIGASI ATAS ==================== -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Logo / Judul Singkat -->
+        <a href="#beranda" class="flex items-center gap-2.5 group">
+          <div class="w-9 h-9 rounded-xl bg-navy-900 flex items-center justify-center text-medteal-200 shadow-sm group-hover:bg-medteal-600 transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 12h3l2.5-6 4 12 2.5-6H21" />
+            </svg>
+          </div>
+          <div>
+            <span class="block text-sm font-bold text-navy-900 leading-tight">Ringkasan Jurnal NEJM</span>
+            <span class="block text-xs text-slate-500">Tirzepatide &amp; OSA (2024)</span>
+          </div>
+        </a>
+
+        <!-- Menu Desktop -->
+        <nav class="hidden md:flex items-center gap-1 text-sm font-medium text-slate-600" aria-label="Navigasi utama">
+          <a href="#data-klinis" class="px-3 py-2 rounded-lg hover:bg-slate-100 hover:text-navy-900 transition-colors">Data Klinis</a>
+          <a href="#mekanisme" class="px-3 py-2 rounded-lg hover:bg-slate-100 hover:text-navy-900 transition-colors">Mekanisme</a>
+          <a href="#simulasi-ahi" class="px-3 py-2 rounded-lg hover:bg-slate-100 hover:text-navy-900 transition-colors">Visual AHI</a>
+          <a href="#kuis" class="px-3 py-2 rounded-lg hover:bg-slate-100 hover:text-navy-900 transition-colors">Kuis</a>
+          <a href="#kesimpulan" class="px-3 py-2 rounded-lg hover:bg-slate-100 hover:text-navy-900 transition-colors">Kesimpulan</a>
+        </nav>
+
+        <!-- Tombol Menu Mobile -->
+        <button id="mobileMenuBtn" type="button" class="md:hidden p-2.5 rounded-xl text-slate-600 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-medteal-500" aria-label="Buka menu navigasi">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Dropdown Menu Mobile -->
+      <nav id="mobileMenu" class="hidden md:hidden pb-4 pt-2 border-t border-slate-100 space-y-1 text-sm font-medium">
+        <a href="#data-klinis" class="mobile-nav-link block px-3 py-2.5 rounded-xl text-slate-700 hover:bg-slate-100">Data Uji Klinis</a>
+        <a href="#mekanisme" class="mobile-nav-link block px-3 py-2.5 rounded-xl text-slate-700 hover:bg-slate-100">Mekanisme Kerja</a>
+        <a href="#simulasi-ahi" class="mobile-nav-link block px-3 py-2.5 rounded-xl text-slate-700 hover:bg-slate-100">Perbandingan Visual AHI</a>
+        <a href="#kuis" class="mobile-nav-link block px-3 py-2.5 rounded-xl text-slate-700 hover:bg-slate-100">Kuis Pemahaman</a>
+        <a href="#kesimpulan" class="mobile-nav-link block px-3 py-2.5 rounded-xl text-slate-700 hover:bg-slate-100">Kesimpulan &amp; Manfaat</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="beranda">
+    <!-- ==================== 1. HERO & RINGKASAN REFERENSI ==================== -->
+    <section class="relative overflow-hidden bg-gradient-to-br from-navy-950 via-navy-900 to-navy-800 text-white">
+      <!-- Pola latar belakang medis halus -->
+      <div class="absolute inset-0 opacity-10 pointer-events-none" aria-hidden="true">
+        <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="medGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="0.6" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#medGrid)" />
+        </svg>
+      </div>
+
+      <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+        <!-- Badge Jurnal -->
+        <div class="flex flex-wrap items-center gap-2 mb-5">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-medteal-500/20 text-medteal-200 border border-medteal-500/30">
+            <span class="w-2 h-2 rounded-full bg-medteal-200"></span>
+            The New England Journal of Medicine (NEJM)
+          </span>
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-white/10 text-slate-200 border border-white/10">
+            Volume 391 (13) &bull; 2024
+          </span>
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-white/10 text-slate-200 border border-white/10">
+            Biologi Kesehatan &amp; Metabolik
+          </span>
+        </div>
+
+        <!-- Judul Utama -->
+        <h1 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight max-w-4xl">
+          Tirzepatide untuk Terapi Apnea Tidur Obstruktif dan Obesitas
+        </h1>
+        <p class="mt-3 text-base sm:text-lg text-medteal-200 font-medium italic">
+          "Tirzepatide for the Treatment of Obstructive Sleep Apnea and Obesity"
+        </p>
+
+        <!-- Detail Penulis & DOI -->
+        <div class="mt-6 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 text-sm text-slate-300">
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-medteal-200 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <span>Penulis: <strong class="text-white font-semibold">Atul Malhotra, dkk. (2024)</strong></span>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2.5">
+            <a href="https://doi.org/10.1056/NEJMoa2404881" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-medteal-500 hover:bg-medteal-600 text-white font-semibold text-xs sm:text-sm transition-colors shadow-sm">
+              <span>DOI: 10.1056/NEJMoa2404881</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+            <button id="copyCitationBtn" type="button"
+                    class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-medium text-xs sm:text-sm border border-white/15 transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              </svg>
+              <span id="copyCitationText">Salin Sitasi</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 4 Kartu Statistik Utama -->
+        <div class="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="bg-white/10 backdrop-blur-sm border border-white/15 rounded-2xl p-4 sm:p-5">
+            <p class="text-xs font-medium uppercase tracking-wider text-medteal-200">Total Subjek</p>
+            <p class="mt-1.5 text-2xl sm:text-3xl font-extrabold text-white">469 Pasien</p>
+            <p class="mt-1 text-xs text-slate-300 leading-relaxed">Dewasa dengan obesitas &amp; OSA sedang hingga berat</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm border border-white/15 rounded-2xl p-4 sm:p-5">
+            <p class="text-xs font-medium uppercase tracking-wider text-medteal-200">Durasi Studi</p>
+            <p class="mt-1.5 text-2xl sm:text-3xl font-extrabold text-white">52 Minggu</p>
+            <p class="mt-1 text-xs text-slate-300 leading-relaxed">Suntikan mingguan tirzepatide (10 mg / 15 mg) vs plasebo</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm border border-white/15 rounded-2xl p-4 sm:p-5">
+            <p class="text-xs font-medium uppercase tracking-wider text-medteal-200">Desain Studi</p>
+            <p class="mt-1.5 text-2xl sm:text-3xl font-extrabold text-white">2 Uji Klinis</p>
+            <p class="mt-1 text-xs text-slate-300 leading-relaxed">Uji 1 tanpa alat PAP (234) &amp; Uji 2 dengan alat PAP (235)</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm border border-white/15 rounded-2xl p-4 sm:p-5">
+            <p class="text-xs font-medium uppercase tracking-wider text-medteal-200">Signifikansi AHI</p>
+            <p class="mt-1.5 text-2xl sm:text-3xl font-extrabold text-white">P &lt; 0,001</p>
+            <p class="mt-1 text-xs text-slate-300 leading-relaxed">Penurunan henti napas signifikan di kedua uji klinis</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 2. EKSPLORASI DATA UJI KLINIS INTERAKTIF ==================== -->
+    <section id="data-klinis" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
+      <div class="max-w-3xl">
+        <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-medteal-100 text-medteal-700 mb-3">
+          Eksplorasi Data Klinis
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-navy-900">
+          Hasil Uji Klinis 52 Minggu: Tirzepatide vs Plasebo
+        </h2>
+        <p class="mt-2 text-slate-600 text-sm sm:text-base leading-relaxed">
+          Pilih salah satu tab uji klinis di bawah ini untuk membandingkan penurunan <strong>Indeks Apnea-Hipopnea (AHI)</strong> dan <strong>penurunan berat badan rata-rata</strong> antara kelompok pasien tanpa alat bantu napas (PAP) dan dengan alat PAP.
+        </p>
+      </div>
+
+      <!-- Tombol Toggle Uji 1 & Uji 2 -->
+      <div class="mt-7 inline-flex flex-col sm:flex-row w-full sm:w-auto p-1.5 bg-slate-200/80 rounded-2xl gap-1.5" role="tablist" aria-label="Pilih Uji Klinis">
+        <button id="tabTrial1" type="button" role="tab" aria-selected="true"
+                class="trial-tab flex-1 sm:flex-none px-5 py-3 rounded-xl text-sm font-semibold transition-all bg-navy-900 text-white shadow-sm">
+          Uji 1: Tanpa Alat PAP (234 Pasien)
+        </button>
+        <button id="tabTrial2" type="button" role="tab" aria-selected="false"
+                class="trial-tab flex-1 sm:flex-none px-5 py-3 rounded-xl text-sm font-semibold transition-all text-slate-700 hover:text-navy-900">
+          Uji 2: Dengan Alat PAP (235 Pasien)
+        </button>
+      </div>
+
+      <!-- Panel Data Utama -->
+      <div class="mt-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Kartu Grafik Penurunan AHI -->
+        <div class="lg:col-span-7 bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-7 flex flex-col justify-between">
+          <div>
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <div>
+                <h3 id="trialTitle" class="text-lg font-bold text-navy-900">Uji 1 — Tanpa Alat Bantu Napas (PAP)</h3>
+                <p id="trialSubtitle" class="text-xs sm:text-sm text-slate-500 mt-0.5">234 pasien dewasa dengan obesitas &amp; OSA sedang–berat</p>
+              </div>
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-medteal-50 text-medteal-700 border border-medteal-200">
+                P &lt; 0,001
+              </span>
+            </div>
+
+            <p class="mt-5 text-xs font-semibold uppercase tracking-wider text-slate-500">
+              Rata-rata Penurunan AHI (Kejadian Henti Napas / Jam)
+            </p>
+
+            <!-- Bar Chart Interaktif dengan Animasi Halus -->
+            <div class="mt-4 space-y-5">
+              <!-- Bar Tirzepatide -->
+              <div>
+                <div class="flex items-end justify-between mb-1.5">
+                  <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-medteal-500"></span>
+                    <span class="text-sm font-semibold text-navy-900">Tirzepatide (10 mg atau 15 mg / minggu)</span>
+                  </div>
+                  <span class="text-xl sm:text-2xl font-extrabold text-medteal-600">
+                    -<span id="tirzAhiVal">25,3</span> <span class="text-xs font-semibold text-slate-500">kejadian/jam</span>
+                  </span>
+                </div>
+                <div class="w-full h-10 bg-slate-100 rounded-xl overflow-hidden p-1">
+                  <div id="tirzAhiBar" class="h-full bg-gradient-to-r from-medteal-600 to-medteal-500 rounded-lg transition-all duration-700 ease-out flex items-center justify-end pr-3" style="width: 79%;">
+                    <span class="text-xs font-bold text-white hidden sm:inline">Penurunan Signifikan</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bar Plasebo -->
+              <div>
+                <div class="flex items-end justify-between mb-1.5">
+                  <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-slate-400"></span>
+                    <span class="text-sm font-semibold text-slate-700">Plasebo</span>
+                  </div>
+                  <span class="text-xl sm:text-2xl font-extrabold text-slate-600">
+                    -<span id="placAhiVal">5,3</span> <span class="text-xs font-semibold text-slate-500">kejadian/jam</span>
+                  </span>
+                </div>
+                <div class="w-full h-10 bg-slate-100 rounded-xl overflow-hidden p-1">
+                  <div id="placAhiBar" class="h-full bg-slate-400 rounded-lg transition-all duration-700 ease-out" style="width: 16.5%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ringkasan Selisih -->
+          <div class="mt-6 pt-5 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-50 -mx-6 -mb-6 sm:-mx-7 sm:-mb-7 px-6 sm:px-7 py-4 rounded-b-2xl">
+            <div class="text-sm text-slate-600">
+              Selisih keunggulan Tirzepatide dibanding Plasebo:
+            </div>
+            <div class="text-base sm:text-lg font-extrabold text-navy-900">
+              <span id="ahiDiffVal">20,0</span> kejadian/jam lebih sedikit
+            </div>
+          </div>
+        </div>
+
+        <!-- Kartu Indikator Berat Badan & Hasil Sekunder -->
+        <div class="lg:col-span-5 flex flex-col gap-6">
+          <!-- Gauge Penurunan Berat Badan -->
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 flex items-center gap-5">
+            <div class="relative w-28 h-28 shrink-0">
+              <svg class="w-full h-full -rotate-90" viewBox="0 0 120 120" aria-hidden="true">
+                <circle cx="60" cy="60" r="50" fill="none" stroke="#E2E8F0" stroke-width="11" />
+                <circle id="weightGaugeCircle" cx="60" cy="60" r="50" fill="none" stroke="#0D9488" stroke-width="11"
+                        stroke-linecap="round" stroke-dasharray="314.16" stroke-dashoffset="258.55"
+                        class="transition-all duration-700 ease-out" />
+              </svg>
+              <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+                <span class="text-xl font-extrabold text-navy-900">-<span id="weightLossVal">17,7</span>%</span>
+                <span class="text-[10px] font-semibold uppercase tracking-wide text-slate-500">Berat Badan</span>
+              </div>
+            </div>
+            <div>
+              <h4 class="text-base font-bold text-navy-900">Penurunan Berat Badan</h4>
+              <p id="weightLossDesc" class="mt-1 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Pada Uji 1 (tanpa PAP), kelompok tirzepatide mencatat penurunan berat badan rata-rata sebesar <strong>17,7%</strong> dalam 52 minggu.
+              </p>
+            </div>
+          </div>
+
+          <!-- Kartu Hasil Sekunder -->
+          <div class="bg-navy-900 text-white rounded-2xl p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-semibold uppercase tracking-wider text-medteal-200">Hasil Sekunder Penting</span>
+              <h4 class="mt-1 text-lg font-bold">Perbaikan Penanda Kardiovaskular</h4>
+              <p class="mt-2 text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Selain memperbaiki pernapasan saat tidur dan menurunkan berat badan, pemberian tirzepatide juga diikuti oleh perbaikan indikator kesehatan pembuluh darah:
+              </p>
+            </div>
+            <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="bg-white/10 border border-white/10 rounded-xl p-3.5">
+                <div class="flex items-center gap-2 text-medteal-200 font-semibold text-xs">
+                  <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                  </svg>
+                  Tekanan Darah Sistolik
+                </div>
+                <p class="mt-1 text-xs text-slate-200">Menurun secara klinis pada penerima tirzepatide.</p>
+              </div>
+              <div class="bg-white/10 border border-white/10 rounded-xl p-3.5">
+                <div class="flex items-center gap-2 text-medteal-200 font-semibold text-xs">
+                  <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                  </svg>
+                  Kadar hsCRP
+                </div>
+                <p class="mt-1 text-xs text-slate-200">Penurunan protein penanda peradangan sistemik.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. DIAGRAM INTERAKTIF MEKANISME KERJA ==================== -->
+    <section id="mekanisme" class="bg-white border-y border-slate-200 py-14 sm:py-16">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-medteal-100 text-medteal-700 mb-3">
+            Alur Biologis Interaktif
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-navy-900">
+            Mekanisme Kerja Tirzepatide pada OSA &amp; Obesitas
+          </h2>
+          <p class="mt-2 text-slate-600 text-sm sm:text-base">
+            Klik setiap tahapan di bawah ini untuk menelusuri bagaimana agonis ganda GIP dan GLP-1 bekerja dari tingkat reseptor hingga perbaikan tidur dan jantung.
+          </p>
+        </div>
+
+        <!-- Stepper Navigasi 4 Tahap -->
+        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3" id="mechStepsContainer">
+          <button type="button" data-step="0" class="mech-step-btn text-left p-4 rounded-2xl border-2 border-medteal-500 bg-medteal-50/70 transition-all">
+            <div class="flex items-center justify-between">
+              <span class="w-7 h-7 rounded-lg bg-medteal-600 text-white text-xs font-bold flex items-center justify-center">1</span>
+              <span class="text-[11px] font-semibold text-medteal-700 uppercase">Tahap 1</span>
+            </div>
+            <h3 class="mt-3 text-sm font-bold text-navy-900">Injeksi Mingguan Agonis Ganda</h3>
+            <p class="mt-1 text-xs text-slate-600">Aktivasi reseptor GIP &amp; GLP-1</p>
+          </button>
+
+          <button type="button" data-step="1" class="mech-step-btn text-left p-4 rounded-2xl border-2 border-slate-200 bg-white hover:border-slate-300 transition-all">
+            <div class="flex items-center justify-between">
+              <span class="w-7 h-7 rounded-lg bg-slate-200 text-slate-700 text-xs font-bold flex items-center justify-center">2</span>
+              <span class="text-[11px] font-semibold text-slate-500 uppercase">Tahap 2</span>
+            </div>
+            <h3 class="mt-3 text-sm font-bold text-navy-900">Penurunan Berat Badan</h3>
+            <p class="mt-1 text-xs text-slate-600">Rata-rata 17,7% hingga 19,6%</p>
+          </button>
+
+          <button type="button" data-step="2" class="mech-step-btn text-left p-4 rounded-2xl border-2 border-slate-200 bg-white hover:border-slate-300 transition-all">
+            <div class="flex items-center justify-between">
+              <span class="w-7 h-7 rounded-lg bg-slate-200 text-slate-700 text-xs font-bold flex items-center justify-center">3</span>
+              <span class="text-[11px] font-semibold text-slate-500 uppercase">Tahap 3</span>
+            </div>
+            <h3 class="mt-3 text-sm font-bold text-navy-900">Penurunan Frekuensi AHI</h3>
+            <p class="mt-1 text-xs text-slate-600">Henti napas turun 25,3–29,3/jam</p>
+          </button>
+
+          <button type="button" data-step="3" class="mech-step-btn text-left p-4 rounded-2xl border-2 border-slate-200 bg-white hover:border-slate-300 transition-all">
+            <div class="flex items-center justify-between">
+              <span class="w-7 h-7 rounded-lg bg-slate-200 text-slate-700 text-xs font-bold flex items-center justify-center">4</span>
+              <span class="text-[11px] font-semibold text-slate-500 uppercase">Tahap 4</span>
+            </div>
+            <h3 class="mt-3 text-sm font-bold text-navy-900">Perbaikan Kardiovaskular</h3>
+            <p class="mt-1 text-xs text-slate-600">Tekanan darah sistolik &amp; hsCRP</p>
+          </button>
+        </div>
+
+        <!-- Panel Detail Tahapan -->
+        <div class="mt-6 bg-slate-50 rounded-2xl border border-slate-200 p-6 sm:p-8">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+            <!-- Ilustrasi SVG Dinamis -->
+            <div id="mechVisual" class="md:col-span-4 flex items-center justify-center bg-white rounded-2xl border border-slate-200 p-6 min-h-[180px]">
+              <!-- Diisi oleh JavaScript -->
+            </div>
+
+            <!-- Penjelasan Tahap -->
+            <div class="md:col-span-8">
+              <span id="mechBadge" class="inline-block px-2.5 py-1 rounded-md text-xs font-bold bg-navy-900 text-white">Tahap 1 dari 4</span>
+              <h3 id="mechTitle" class="mt-3 text-xl sm:text-2xl font-bold text-navy-900"></h3>
+              <p id="mechDesc" class="mt-2.5 text-sm sm:text-base text-slate-700 leading-relaxed"></p>
+              
+              <!-- Navigasi Sebelumnya / Berikutnya -->
+              <div class="mt-6 flex items-center gap-3">
+                <button id="mechPrevBtn" type="button" class="px-4 py-2.5 rounded-xl text-sm font-semibold border border-slate-300 bg-white text-slate-700 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed transition-colors">
+                  &larr; Sebelumnya
+                </button>
+                <button id="mechNextBtn" type="button" class="px-4 py-2.5 rounded-xl text-sm font-semibold bg-medteal-600 text-white hover:bg-medteal-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors">
+                  Tahap Berikutnya &rarr;
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4. PERBANDINGAN VISUAL FREKUENSI HENTI NAPAS (AHI) ==================== -->
+    <section id="simulasi-ahi" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div class="max-w-2xl">
+          <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-medteal-100 text-medteal-700 mb-3">
+            Simulasi Visual 1 Jam Tidur
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-navy-900">
+            Membayangkan Selisih Penurunan AHI per Jam
+          </h2>
+          <p class="mt-2 text-slate-600 text-sm sm:text-base leading-relaxed">
+            Angka 20 hingga 23,8 kejadian per jam terdengar abstrak. Visualisasi di bawah ini memetakan <strong>jumlah kejadian henti napas yang berhasil dicegah dalam 1 jam tidur</strong> antara kelompok Tirzepatide dan Plasebo.
+          </p>
+        </div>
+
+        <!-- Pilihan Uji untuk Simulasi -->
+        <div class="inline-flex p-1 bg-slate-200/80 rounded-xl gap-1 self-start md:self-auto">
+          <button id="simTrial1Btn" type="button" class="sim-trial-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-navy-900 text-white transition-all">
+            Uji 1 (Selisih 20,0/jam)
+          </button>
+          <button id="simTrial2Btn" type="button" class="sim-trial-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold text-slate-700 hover:text-navy-900 transition-all">
+            Uji 2 (Selisih 23,8/jam)
+          </button>
+        </div>
+      </div>
+
+      <!-- Kontainer Simulasi -->
+      <div class="mt-7 bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8">
+        <!-- Grid Titik 60 Menit (1 Jam) -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- Panel Tirzepatide -->
+          <div class="bg-medteal-50/50 border border-medteal-200 rounded-2xl p-5">
+            <div class="flex items-center justify-between mb-3">
+              <div>
+                <h3 class="text-base font-bold text-navy-900">Kelompok Tirzepatide</h3>
+                <p class="text-xs text-slate-600">Kejadian henti napas yang berkurang per 1 jam</p>
+              </div>
+              <span class="px-3 py-1 rounded-xl bg-medteal-600 text-white text-sm font-extrabold">
+                -<span id="simTirzNum">25,3</span> /jam
+              </span>
+            </div>
+            <!-- 30 Slot Visual (1 kotak = 1 kejadian yang berhasil dicegah) -->
+            <div id="simTirzGrid" class="grid grid-cols-10 gap-1.5 my-4" aria-label="Visualisasi titik penurunan kejadian Tirzepatide"></div>
+            <p class="text-xs text-medteal-700 font-medium">
+              Setiap kotak hijau tua mewakili ~1 episode henti napas per jam yang berhasil dikurangi.
+            </p>
+          </div>
+
+          <!-- Panel Plasebo -->
+          <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5">
+            <div class="flex items-center justify-between mb-3">
+              <div>
+                <h3 class="text-base font-bold text-slate-800">Kelompok Plasebo</h3>
+                <p class="text-xs text-slate-600">Kejadian henti napas yang berkurang per 1 jam</p>
+              </div>
+              <span class="px-3 py-1 rounded-xl bg-slate-500 text-white text-sm font-extrabold">
+                -<span id="simPlacNum">5,3</span> /jam
+              </span>
+            </div>
+            <div id="simPlacGrid" class="grid grid-cols-10 gap-1.5 my-4" aria-label="Visualisasi titik penurunan kejadian Plasebo"></div>
+            <p class="text-xs text-slate-600 font-medium">
+              Pengurangan kejadian henti napas jauh lebih kecil dibanding kelompok terapi tirzepatide.
+            </p>
+          </div>
+        </div>
+
+        <!-- Ilustrasi Gelombang Pernapasan Konseptual (Responsive Canvas) -->
+        <div class="mt-8 pt-6 border-t border-slate-100">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+            <div>
+              <h4 class="text-sm font-bold text-navy-900">Ilustrasi Konseptual Ritme Pernapasan Saat Tidur</h4>
+              <p class="text-xs text-slate-500">Membandingkan pola aliran napas dengan penurunan gangguan tinggi (Tirzepatide) vs rendah (Plasebo).</p>
+            </div>
+            <button id="toggleWaveBtn" type="button" class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-navy-900 hover:bg-navy-800 text-white text-xs font-semibold transition-colors">
+              <span id="waveBtnText">Jeda Animasi</span>
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="rounded-xl bg-navy-950 p-3.5 border border-navy-800">
+              <div class="flex items-center justify-between text-xs mb-2">
+                <span class="font-semibold text-medteal-200">Tirzepatide (Gangguan jauh berkurang)</span>
+                <span class="text-slate-400" id="waveTirzLabel">-25,3 kejadian/jam</span>
+              </div>
+              <div class="w-full h-24">
+                <canvas id="waveTirzCanvas" class="w-full h-full block"></canvas>
+              </div>
+            </div>
+
+            <div class="rounded-xl bg-navy-950 p-3.5 border border-navy-800">
+              <div class="flex items-center justify-between text-xs mb-2">
+                <span class="font-semibold text-amber-300">Plasebo (Gangguan masih sering terjadi)</span>
+                <span class="text-slate-400" id="wavePlacLabel">-5,3 kejadian/jam</span>
+              </div>
+              <div class="w-full h-24">
+                <canvas id="wavePlacCanvas" class="w-full h-full block"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 5. KUIS INTERAKTIF SINGKAT (3 SOAL) ==================== -->
+    <section id="kuis" class="bg-slate-100/80 border-y border-slate-200 py-14 sm:py-16">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div>
+            <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-medteal-100 text-medteal-700 mb-3">
+              Uji Pemahaman
+            </span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-navy-900">
+              Kuis Singkat Jurnal (3 Pertanyaan)
+            </h2>
+            <p class="mt-1.5 text-sm text-slate-600">
+              Pilih jawaban yang paling tepat berdasarkan data penelitian Malhotra, dkk. (2024).
+            </p>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="px-4 py-2 rounded-xl bg-white border border-slate-200 shadow-sm text-sm font-bold text-navy-900">
+              Skor: <span id="quizScore" class="text-medteal-600">0</span> / 3
+            </div>
+            <button id="resetQuizBtn" type="button" class="px-3.5 py-2 rounded-xl text-xs font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-slate-50 transition-colors">
+              Ulangi
+            </button>
+          </div>
+        </div>
+
+        <!-- Daftar Soal Kuis -->
+        <div id="quizContainer" class="mt-7 space-y-5">
+          <!-- Diisi oleh JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 6. KESIMPULAN & MANFAAT PRAKTIS ==================== -->
+    <section id="kesimpulan" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Kartu Kesimpulan -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8">
+          <div class="w-11 h-11 rounded-xl bg-navy-900 text-medteal-200 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h2 class="text-xl font-bold text-navy-900">Kesimpulan Penelitian</h2>
+          <p class="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed">
+            Pemberian agonis ganda reseptor hormon GIP dan GLP-1 (<strong>tirzepatide</strong>) secara langsung mengurangi frekuensi henti napas saat tidur (AHI) pada penderita obesitas dengan apnea tidur obstruktif sedang hingga berat. Perbaikan gangguan pernapasan ini terjadi secara konsisten, baik pada pasien yang tidak menggunakan alat bantu napas PAP (Uji 1) maupun yang rutin menggunakan alat PAP (Uji 2).
+          </p>
+        </div>
+
+        <!-- Kartu Manfaat Praktis -->
+        <div class="bg-gradient-to-br from-medteal-700 to-navy-900 text-white rounded-2xl shadow-sm p-6 sm:p-8">
+          <div class="w-11 h-11 rounded-xl bg-white/15 text-medteal-200 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+            </svg>
+          </div>
+          <h2 class="text-xl font-bold">Manfaat Praktis Klinis</h2>
+          <ul class="mt-3 space-y-2.5 text-sm sm:text-base text-slate-100 leading-relaxed">
+            <li class="flex items-start gap-2.5">
+              <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-medteal-200 shrink-0"></span>
+              <span>Menjadi pilihan terapi obat pertama yang menargetkan akar penyebab apnea tidur obstruktif pada pasien obesitas.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-medteal-200 shrink-0"></span>
+              <span>Membantu menekan risiko komplikasi kardiovaskular melalui penurunan berat badan, tekanan darah sistolik, dan peradangan (hsCRP).</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-medteal-200 shrink-0"></span>
+              <span>Mengurangi ketergantungan penuh pasien pada penggunaan masker mesin CPAP setiap malam.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER REFERENSI ILMIAH RESMI ==================== -->
+  <footer class="bg-navy-950 text-slate-300 border-t border-navy-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="flex flex-col md:flex-row md:items-start justify-between gap-6">
+        <div class="max-w-2xl">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-medteal-200">Referensi Ilmiah Resmi</h3>
+          <p class="mt-2 text-sm text-white leading-relaxed">
+            Malhotra, A., dkk. (2024). <em>Tirzepatide for the Treatment of Obstructive Sleep Apnea and Obesity</em>. The New England Journal of Medicine (NEJM), 391(13).
+          </p>
+          <a href="https://doi.org/10.1056/NEJMoa2404881" target="_blank" rel="noopener noreferrer"
+             class="inline-block mt-1.5 text-sm text-medteal-200 hover:underline break-all">
+            https://doi.org/10.1056/NEJMoa2404881
+          </a>
+        </div>
+
+        <div class="max-w-sm text-xs text-slate-400 leading-relaxed">
+          <strong class="text-slate-200 block mb-1">Catatan Edukasi:</strong>
+          Halaman ini disusun sebagai media edukasi sains medis berdasarkan publikasi jurnal ilmiah resmi dan tidak menggantikan diagnosis atau saran pengobatan dari dokter.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notifikasi Non-Blocking (Pengganti alert) -->
+  <div id="toastMsg" role="status" aria-live="polite"
+       class="fixed bottom-5 right-5 z-50 translate-y-20 opacity-0 pointer-events-none transition-all duration-300 bg-navy-900 text-white text-xs sm:text-sm font-medium px-4 py-3 rounded-xl shadow-lg border border-medteal-500/40">
+    Sitasi jurnal berhasil disalin ke papan klip.
+  </div>
+
+  <!-- ==================== LOGIKA INTERAKTIF JAVASCRIPT ==================== -->
+  <script>
+    (function () {
+      'use strict';
+
+      // -------------------- 1. DATA JURNAL AKURAT --------------------
+      const trialData = {
+        trial1: {
+          title: 'Uji 1 — Tanpa Alat Bantu Napas (PAP)',
+          subtitle: '234 pasien dewasa dengan obesitas & OSA sedang–berat yang tidak memakai alat PAP',
+          tirzAhi: 25.3,
+          placAhi: 5.3,
+          diffAhi: 20.0,
+          weightLoss: 17.7,
+          weightDesc: 'Pada Uji 1 (tanpa PAP), kelompok tirzepatide mencatat penurunan berat badan rata-rata sebesar <strong>17,7%</strong> dalam 52 minggu.'
+        },
+        trial2: {
+          title: 'Uji 2 — Dengan Alat Bantu Napas (PAP)',
+          subtitle: '235 pasien dewasa dengan obesitas & OSA sedang–berat yang rutin memakai alat PAP',
+          tirzAhi: 29.3,
+          placAhi: 5.5,
+          diffAhi: 23.8,
+          weightLoss: 19.6,
+          weightDesc: 'Pada Uji 2 (dengan PAP), kelompok tirzepatide mencatat penurunan berat badan rata-rata sebesar <strong>19,6%</strong> dalam 52 minggu.'
+        }
+      };
+
+      const mechanismSteps = [
+        {
+          badge: 'Tahap 1 dari 4',
+          title: 'Injeksi Mingguan Agonis Ganda GIP & GLP-1',
+          desc: 'Pasien menerima suntikan mingguan tirzepatide (dosis 10 mg atau 15 mg) selama 52 minggu. Tirzepatide bekerja sebagai agonis ganda yang mengaktifkan reseptor hormon metabolik GIP dan GLP-1 secara bersamaan.',
+          svg: `
+            <svg class="w-32 h-32 text-medteal-600" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="60" cy="60" r="52" fill="#EFFCF9" stroke="#99EFE0" stroke-width="2"/>
+              <circle cx="42" cy="48" r="14" fill="#0B1F3A"/>
+              <text x="42" y="52" text-anchor="middle" fill="white" font-size="10" font-weight="700" font-family="Inter">GIP</text>
+              <circle cx="78" cy="48" r="14" fill="#0D9488"/>
+              <text x="78" y="52" text-anchor="middle" fill="white" font-size="9" font-weight="700" font-family="Inter">GLP-1</text>
+              <path d="M42 62 L60 80 L78 62" stroke="#0B1F3A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="44" y="80" width="32" height="14" rx="7" fill="#133159"/>
+              <text x="60" y="90" text-anchor="middle" fill="#99EFE0" font-size="8" font-weight="700" font-family="Inter">1x / Mgg</text>
+            </svg>`
+        },
+        {
+          badge: 'Tahap 2 dari 4',
+          title: 'Penurunan Berat Badan Signifikan',
+          desc: 'Aktivasi jalur hormon GIP dan GLP-1 mendorong penurunan berat badan yang konsisten selama 52 minggu, mencapai rata-rata 17,7% pada Uji 1 dan 19,6% pada Uji 2, sehingga menyasar akar penyebab obesitas yang mempersempit saluran napas.',
+          svg: `
+            <svg class="w-32 h-32" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="60" cy="60" r="52" fill="#EFFCF9" stroke="#99EFE0" stroke-width="2"/>
+              <path d="M35 42 L85 42 L78 82 L42 82 Z" fill="#0B1F3A" rx="6"/>
+              <path d="M60 48 V72 M51 64 L60 73 L69 64" stroke="#99EFE0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="60" y="98" text-anchor="middle" fill="#0F766E" font-size="11" font-weight="800" font-family="Inter">-17,7% s/d -19,6%</text>
+            </svg>`
+        },
+        {
+          badge: 'Tahap 3 dari 4',
+          title: 'Pengurangan Frekuensi Henti Napas (AHI)',
+          desc: 'Penurunan beban jaringan berlebih memperbaiki kelancaran jalan napas saat tidur. Indeks Apnea-Hipopnea (AHI) turun rata-rata 25,3 kejadian/jam (Uji 1) dan 29,3 kejadian/jam (Uji 2), jauh melampaui plasebo (P < 0,001).',
+          svg: `
+            <svg class="w-32 h-32" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="60" cy="60" r="52" fill="#EFFCF9" stroke="#99EFE0" stroke-width="2"/>
+              <path d="M24 62 Q36 36 48 62 T72 62 T96 62" stroke="#0D9488" stroke-width="4" stroke-linecap="round" fill="none"/>
+              <rect x="30" y="80" width="60" height="16" rx="8" fill="#0B1F3A"/>
+              <text x="60" y="91" text-anchor="middle" fill="white" font-size="9" font-weight="700" font-family="Inter">AHI Turun</text>
+            </svg>`
+        },
+        {
+          badge: 'Tahap 4 dari 4',
+          title: 'Perbaikan Penanda Kardiovaskular',
+          desc: 'Selain meredakan apnea tidur obstruktif, terapi tirzepatide juga diikuti penurunan tekanan darah sistolik serta penurunan kadar protein penanda peradangan (hsCRP), yang berkontribusi menekan risiko komplikasi kardiovaskular.',
+          svg: `
+            <svg class="w-32 h-32" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="60" cy="60" r="52" fill="#EFFCF9" stroke="#99EFE0" stroke-width="2"/>
+              <path d="M60 84 C60 84 32 67 32 48 C32 38 40 32 49 32 C54 32 58 35 60 39 C62 35 66 32 71 32 C80 32 88 38 88 48 C88 67 60 84 60 84 Z" fill="#0D9488"/>
+              <path d="M44 54 H53 L57 45 L63 62 L67 54 H76" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="60" y="100" text-anchor="middle" fill="#0B1F3A" font-size="9" font-weight="700" font-family="Inter">TD Sistolik &amp; hsCRP &darr;</text>
+            </svg>`
+        }
+      ];
+
+      const quizQuestions = [
+        {
+          question: '1. Bagaimana pembagian total 469 peserta dewasa dalam desain uji klinis jurnal ini?',
+          options: [
+            'Seluruh 469 pasien wajib menggunakan mesin PAP selama 52 minggu.',
+            'Dibagi menjadi 2 uji terpisah: Uji 1 tanpa alat PAP (234 pasien) dan Uji 2 dengan alat PAP (235 pasien).',
+            'Dibagi menjadi 3 kelompok berdasarkan jenis kelamin selama 24 minggu.'
+          ],
+          correct: 1,
+          explanation: 'Tepat. Total 469 orang dewasa dengan obesitas dan OSA sedang–berat dibagi ke dalam Uji 1 (234 pasien tanpa alat PAP) dan Uji 2 (235 pasien yang rutin memakai alat PAP) selama 52 minggu.'
+        },
+        {
+          question: '2. Apa mekanisme farmakologis dari obat tirzepatide yang diuji dalam penelitian ini?',
+          options: [
+            'Penghambat reseptor beta jantung untuk memperlambat denyut nadi.',
+            'Agonis tunggal reseptor insulin kerja pendek.',
+            'Agonis ganda reseptor hormon GIP dan GLP-1.'
+          ],
+          correct: 2,
+          explanation: 'Benar. Tirzepatide adalah agonis ganda reseptor hormon GIP dan GLP-1 yang disuntikkan secara mingguan (dosis 10 mg atau 15 mg).'
+        },
+        {
+          question: '3. Berapa rata-rata penurunan Indeks Apnea-Hipopnea (AHI) pada kelompok tirzepatide dibandingkan plasebo?',
+          options: [
+            'Uji 1 turun 25,3/jam (vs plasebo 5,3/jam) dan Uji 2 turun 29,3/jam (vs plasebo 5,5/jam).',
+            'Uji 1 turun 5,3/jam (vs plasebo 25,3/jam) dan Uji 2 turun 5,5/jam (vs plasebo 29,3/jam).',
+            'Tidak terdapat perbedaan signifikan antara tirzepatide dan plasebo.'
+          ],
+          correct: 0,
+          explanation: 'Akurat. Pada Uji 1, tirzepatide menurunkan AHI rata-rata 25,3 kejadian/jam (plasebo 5,3/jam). Pada Uji 2, turun 29,3 kejadian/jam (plasebo 5,5/jam), keduanya dengan P < 0,001.'
+        }
+      ];
+
+      // -------------------- 2. NAVIGASI MOBILE & SALIN SITASI --------------------
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+      document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+        link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+      });
+
+      const copyBtn = document.getElementById('copyCitationBtn');
+      const toastMsg = document.getElementById('toastMsg');
+      let toastTimer = null;
+
+      function showToast(text) {
+        toastMsg.textContent = text;
+        toastMsg.classList.remove('translate-y-20', 'opacity-0');
+        toastMsg.classList.add('translate-y-0', 'opacity-100');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          toastMsg.classList.add('translate-y-20', 'opacity-0');
+          toastMsg.classList.remove('translate-y-0', 'opacity-100');
+        }, 2800);
+      }
+
+      copyBtn.addEventListener('click', () => {
+        const citation = 'Malhotra, A., dkk. (2024). Tirzepatide for the Treatment of Obstructive Sleep Apnea and Obesity. The New England Journal of Medicine, 391(13). https://doi.org/10.1056/NEJMoa2404881';
+        try {
+          const tempInput = document.createElement('textarea');
+          tempInput.value = citation;
+          tempInput.setAttribute('readonly', '');
+          tempInput.style.position = 'fixed';
+          tempInput.style.left = '-9999px';
+          document.body.appendChild(tempInput);
+          tempInput.select();
+          document.execCommand('copy');
+          document.body.removeChild(tempInput);
+          showToast('Sitasi resmi NEJM 2024 berhasil disalin.');
+        } catch (err) {
+          showToast('Gagal menyalin otomatis. Silakan salin dari footer.');
+        }
+      });
+
+      // -------------------- 3. EKSPLORASI DATA UJI KLINIS --------------------
+      const tabTrial1 = document.getElementById('tabTrial1');
+      const tabTrial2 = document.getElementById('tabTrial2');
+      const trialTitle = document.getElementById('trialTitle');
+      const trialSubtitle = document.getElementById('trialSubtitle');
+      const tirzAhiVal = document.getElementById('tirzAhiVal');
+      const placAhiVal = document.getElementById('placAhiVal');
+      const tirzAhiBar = document.getElementById('tirzAhiBar');
+      const placAhiBar = document.getElementById('placAhiBar');
+      const ahiDiffVal = document.getElementById('ahiDiffVal');
+      const weightLossVal = document.getElementById('weightLossVal');
+      const weightLossDesc = document.getElementById('weightLossDesc');
+      const weightGaugeCircle = document.getElementById('weightGaugeCircle');
+
+      function formatIndo(num) {
+        return num.toFixed(1).replace('.', ',');
+      }
+
+      function updateTrialView(key) {
+        const d = trialData[key];
+        const maxAhiScale = 32; // skala maksimal grafik batang agar proporsional
+
+        trialTitle.textContent = d.title;
+        trialSubtitle.textContent = d.subtitle;
+        tirzAhiVal.textContent = formatIndo(d.tirzAhi);
+        placAhiVal.textContent = formatIndo(d.placAhi);
+        ahiDiffVal.textContent = formatIndo(d.diffAhi);
+        weightLossVal.textContent = formatIndo(d.weightLoss);
+        weightLossDesc.innerHTML = d.weightDesc;
+
+        // Update lebar bar grafik
+        tirzAhiBar.style.width = ((d.tirzAhi / maxAhiScale) * 100).toFixed(1) + '%';
+        placAhiBar.style.width = ((d.placAhi / maxAhiScale) * 100).toFixed(1) + '%';
+
+        // Update SVG radial gauge (keliling lingkaran r=50 adalah 314.16; skala penuh 30% penurunan BB agar visual jelas)
+        const circumference = 314.16;
+        const pctRatio = Math.min(d.weightLoss / 30, 1);
+        weightGaugeCircle.style.strokeDashoffset = (circumference * (1 - pctRatio)).toFixed(2);
+
+        // Update gaya tombol tab
+        if (key === 'trial1') {
+          tabTrial1.className = 'trial-tab flex-1 sm:flex-none px-5 py-3 rounded-xl text-sm font-semibold transition-all bg-navy-900 text-white shadow-sm';
+          tabTrial1.setAttribute('aria-selected', 'true');
+          tabTrial2.className = 'trial-tab flex-1 sm:flex-none px-5 py-3 rounded-xl text-sm font-semibold transition-all text-slate-700 hover:text-navy-900';
+          tabTrial2.setAttribute('aria-selected', 'false');
+        } else {
+          tabTrial2.className = 'trial-tab flex-1 sm:flex-none px-5 py-3 rounded-xl text-sm font-semibold transition-all bg-navy-900 text-white shadow-sm';
+          tabTrial2.setAttribute('aria-selected', 'true');
+          tabTrial1.className = 'trial-tab flex-1 sm:flex-none px-5 py-3 rounded-xl text-sm font-semibold transition-all text-slate-700 hover:text-navy-900';
+          tabTrial1.setAttribute('aria-selected', 'false');
+        }
+      }
+
+      tabTrial1.addEventListener('click', () => updateTrialView('trial1'));
+      tabTrial2.addEventListener('click', () => updateTrialView('trial2'));
+
+      // -------------------- 4. DIAGRAM MEKANISME KERJA --------------------
+      let currentMechStep = 0;
+      const mechBtns = document.querySelectorAll('.mech-step-btn');
+      const mechVisual = document.getElementById('mechVisual');
+      const mechBadge = document.getElementById('mechBadge');
+      const mechTitle = document.getElementById('mechTitle');
+      const mechDesc = document.getElementById('mechDesc');
+      const mechPrevBtn = document.getElementById('mechPrevBtn');
+      const mechNextBtn = document.getElementById('mechNextBtn');
+
+      function renderMechStep(index) {
+        currentMechStep = index;
+        const step = mechanismSteps[index];
+        mechVisual.innerHTML = step.svg;
+        mechBadge.textContent = step.badge;
+        mechTitle.textContent = step.title;
+        mechDesc.textContent = step.desc;
+
+        mechPrevBtn.disabled = index === 0;
+        mechNextBtn.disabled = index === mechanismSteps.length - 1;
+
+        mechBtns.forEach((btn, i) => {
+          const numBadge = btn.querySelector('span:first-child');
+          const labelBadge = btn.querySelector('span:last-child');
+          if (i === index) {
+            btn.className = 'mech-step-btn text-left p-4 rounded-2xl border-2 border-medteal-500 bg-medteal-50/70 transition-all shadow-sm';
+            numBadge.className = 'w-7 h-7 rounded-lg bg-medteal-600 text-white text-xs font-bold flex items-center justify-center';
+            labelBadge.className = 'text-[11px] font-semibold text-medteal-700 uppercase';
+          } else {
+            btn.className = 'mech-step-btn text-left p-4 rounded-2xl border-2 border-slate-200 bg-white hover:border-slate-300 transition-all';
+            numBadge.className = 'w-7 h-7 rounded-lg bg-slate-200 text-slate-700 text-xs font-bold flex items-center justify-center';
+            labelBadge.className = 'text-[11px] font-semibold text-slate-500 uppercase';
+          }
+        });
+      }
+
+      mechBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          renderMechStep(parseInt(btn.getAttribute('data-step'), 10));
+        });
+      });
+      mechPrevBtn.addEventListener('click', () => {
+        if (currentMechStep > 0) renderMechStep(currentMechStep - 1);
+      });
+      mechNextBtn.addEventListener('click', () => {
+        if (currentMechStep < mechanismSteps.length - 1) renderMechStep(currentMechStep + 1);
+      });
+
+      // -------------------- 5. SIMULASI VISUAL AHI & GELOMBANG NAPAS --------------------
+      const simTrial1Btn = document.getElementById('simTrial1Btn');
+      const simTrial2Btn = document.getElementById('simTrial2Btn');
+      const simTirzNum = document.getElementById('simTirzNum');
+      const simPlacNum = document.getElementById('simPlacNum');
+      const simTirzGrid = document.getElementById('simTirzGrid');
+      const simPlacGrid = document.getElementById('simPlacGrid');
+      const waveTirzLabel = document.getElementById('waveTirzLabel');
+      const wavePlacLabel = document.getElementById('wavePlacLabel');
+
+      let activeSimKey = 'trial1';
+
+      function buildDotGrid(container, filledCount, activeColorClass, emptyColorClass) {
+        container.innerHTML = '';
+        const totalSlots = 30;
+        const rounded = Math.round(filledCount);
+        for (let i = 0; i < totalSlots; i++) {
+          const dot = document.createElement('div');
+          const isFilled = i < rounded;
+          dot.className = `h-4 sm:h-5 rounded-md transition-all duration-300 ${isFilled ? activeColorClass : emptyColorClass}`;
+          dot.title = isFilled ? `Kejadian ke-${i + 1} yang berkurang` : 'Slot pembanding (skala 30/jam)';
+          container.appendChild(dot);
+        }
+      }
+
+      function updateSimulation(key) {
+        activeSimKey = key;
+        const d = trialData[key];
+        simTirzNum.textContent = formatIndo(d.tirzAhi);
+        simPlacNum.textContent = formatIndo(d.placAhi);
+        waveTirzLabel.textContent = `-${formatIndo(d.tirzAhi)} kejadian/jam`;
+        wavePlacLabel.textContent = `-${formatIndo(d.placAhi)} kejadian/jam`;
+
+        buildDotGrid(simTirzGrid, d.tirzAhi, 'bg-medteal-500 shadow-sm', 'bg-medteal-100/70');
+        buildDotGrid(simPlacGrid, d.placAhi, 'bg-slate-500 shadow-sm', 'bg-slate-200/80');
+
+        if (key === 'trial1') {
+          simTrial1Btn.className = 'sim-trial-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-navy-900 text-white transition-all';
+          simTrial2Btn.className = 'sim-trial-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold text-slate-700 hover:text-navy-900 transition-all';
+        } else {
+          simTrial2Btn.className = 'sim-trial-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-navy-900 text-white transition-all';
+          simTrial1Btn.className = 'sim-trial-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold text-slate-700 hover:text-navy-900 transition-all';
+        }
+      }
+
+      simTrial1Btn.addEventListener('click', () => updateSimulation('trial1'));
+      simTrial2Btn.addEventListener('click', () => updateSimulation('trial2'));
+
+      // Animasi Canvas Gelombang Pernapasan Konseptual (Responsif)
+      const waveTirzCanvas = document.getElementById('waveTirzCanvas');
+      const wavePlacCanvas = document.getElementById('wavePlacCanvas');
+      const toggleWaveBtn = document.getElementById('toggleWaveBtn');
+      const waveBtnText = document.getElementById('waveBtnText');
+      let waveRunning = true;
+      let wavePhase = 0;
+
+      function resizeCanvas(canvas) {
+        const rect = canvas.parentElement.getBoundingClientRect();
+        const dpr = window.devicePixelRatio || 1;
+        canvas.width = Math.max(rect.width * dpr, 100);
+        canvas.height = Math.max(rect.height * dpr, 60);
+      }
+
+      function drawBreathingWave(canvas, color, pauseFrequency) {
+        const ctx = canvas.getContext('2d');
+        const w = canvas.width;
+        const h = canvas.height;
+        const midY = h / 2;
+        const amp = h * 0.30;
+
+        ctx.clearRect(0, 0, w, h);
+
+        // Garis tengah samar
+        ctx.beginPath();
+        ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+        ctx.lineWidth = 1;
+        ctx.moveTo(0, midY);
+        ctx.lineTo(w, midY);
+        ctx.stroke();
+
+        // Gelombang aliran napas
+        ctx.beginPath();
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 2.5 * (window.devicePixelRatio || 1);
+
+        for (let x = 0; x < w; x += 2) {
+          const t = (x / w) * Math.PI * 10 + wavePhase;
+          // Simulasikan jeda napas (flatline singkat) berdasarkan frekuensi gangguan
+          const cyclePos = ((x / w) * pauseFrequency + wavePhase * 0.12) % 1;
+          const isPause = pauseFrequency > 0 && cyclePos > 0.72 && cyclePos < 0.94;
+          const localAmp = isPause ? amp * 0.08 : amp;
+          const y = midY + Math.sin(t) * localAmp;
+          if (x === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+      }
+
+      function animateWaves() {
+        if (waveRunning) {
+          wavePhase += 0.045;
+          // Tirzepatide: pola napas jauh lebih teratur (sangat sedikit jeda konseptual)
+          drawBreathingWave(waveTirzCanvas, '#5EEAD4', 0.4);
+          // Plasebo: pola napas lebih sering terhenti/datar
+          const placFreq = activeSimKey === 'trial2' ? 3.2 : 2.8;
+          drawBreathingWave(wavePlacCanvas, '#FCD34D', placFreq);
+        }
+        requestAnimationFrame(animateWaves);
+      }
+
+      toggleWaveBtn.addEventListener('click', () => {
+        waveRunning = !waveRunning;
+        waveBtnText.textContent = waveRunning ? 'Jeda Animasi' : 'Lanjutkan Animasi';
+      });
+
+      window.addEventListener('resize', () => {
+        resizeCanvas(waveTirzCanvas);
+        resizeCanvas(wavePlacCanvas);
+      });
+
+      // -------------------- 6. KUIS INTERAKTIF (3 SOAL) --------------------
+      const quizContainer = document.getElementById('quizContainer');
+      const quizScoreEl = document.getElementById('quizScore');
+      const resetQuizBtn = document.getElementById('resetQuizBtn');
+      let answeredState = [];
+
+      function renderQuiz() {
+        answeredState = new Array(quizQuestions.length).fill(null);
+        quizScoreEl.textContent = '0';
+        quizContainer.innerHTML = '';
+
+        quizQuestions.forEach((q, qIdx) => {
+          const card = document.createElement('div');
+          card.className = 'bg-white rounded-2xl border border-slate-200 shadow-sm p-5 sm:p-6';
+
+          const qTitle = document.createElement('h3');
+          qTitle.className = 'text-sm sm:text-base font-bold text-navy-900 leading-snug';
+          qTitle.textContent = q.question;
+          card.appendChild(qTitle);
+
+          const optWrap = document.createElement('div');
+          optWrap.className = 'mt-4 space-y-2.5';
+
+          const feedbackBox = document.createElement('div');
+          feedbackBox.className = 'hidden mt-4 p-3.5 rounded-xl text-xs sm:text-sm leading-relaxed';
+
+          q.options.forEach((optText, oIdx) => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'w-full text-left px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-xs sm:text-sm text-slate-700 font-medium transition-all';
+            btn.textContent = optText;
+
+            btn.addEventListener('click', () => {
+              if (answeredState[qIdx] !== null) return; // kunci setelah dijawab
+              answeredState[qIdx] = oIdx;
+
+              const allBtns = optWrap.querySelectorAll('button');
+              allBtns.forEach((b, bIdx) => {
+                b.disabled = true;
+                if (bIdx === q.correct) {
+                  b.className = 'w-full text-left px-4 py-3 rounded-xl border-2 border-emerald-500 bg-emerald-50 text-xs sm:text-sm text-emerald-900 font-semibold';
+                } else if (bIdx === oIdx && oIdx !== q.correct) {
+                  b.className = 'w-full text-left px-4 py-3 rounded-xl border-2 border-rose-400 bg-rose-50 text-xs sm:text-sm text-rose-900 font-semibold';
+                } else {
+                  b.className = 'w-full text-left px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-xs sm:text-sm text-slate-400';
+                }
+              });
+
+              const isCorrect = oIdx === q.correct;
+              feedbackBox.classList.remove('hidden');
+              feedbackBox.className = `mt-4 p-3.5 rounded-xl text-xs sm:text-sm leading-relaxed ${
+                isCorrect
+                  ? 'bg-emerald-50 text-emerald-900 border border-emerald-200'
+                  : 'bg-rose-50 text-rose-900 border border-rose-200'
+              }`;
+              feedbackBox.innerHTML = `<strong>${isCorrect ? 'Jawaban Benar:' : 'Kurang Tepat:'}</strong> ${q.explanation}`;
+
+              const score = answeredState.filter((ans, idx) => ans === quizQuestions[idx].correct).length;
+              quizScoreEl.textContent = String(score);
+            });
+
+            optWrap.appendChild(btn);
+          });
+
+          card.appendChild(optWrap);
+          card.appendChild(feedbackBox);
+          quizContainer.appendChild(card);
+        });
+      }
+
+      resetQuizBtn.addEventListener('click', renderQuiz);
+
+      // -------------------- INISIALISASI SAAT HALAMAN DIMUAT --------------------
+      window.onload = function () {
+        updateTrialView('trial1');
+        renderMechStep(0);
+        updateSimulation('trial1');
+        renderQuiz();
+        resizeCanvas(waveTirzCanvas);
+        resizeCanvas(wavePlacCanvas);
+        animateWaves();
+      };
+    })();
+  </script>
+</body>
+</html>
