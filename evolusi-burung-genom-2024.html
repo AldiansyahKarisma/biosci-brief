@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Peta Genom Evolusi 363 Spesies Burung (Nature, 2024)</title>
-  <meta name="description" content="Analisis 63.430 lokus DNA dari 363 spesies burung mengungkap klade baru Elementaves, ledakan evolusi pasca-K-Pg, kesimpulan utama, dan manfaat praktisnya." />
+  <meta name="description" content="Analisis 63.430 lokus DNA dari 363 spesies burung mengungkap klade baru Elementaves, ledakan evolusi pasca-kepunahan 66 juta tahun lalu, kesimpulan utama, dan manfaat praktisnya." />
   <meta name="category" content="Zoologi" />
   <style>
     :root {
@@ -19,7 +19,6 @@
       --amber: #d97706;
       --amber-light: #fef3c7;
       --sky: #0284c7;
-      --sky-light: #e0f2fe;
       --border: #e2e8f0;
       --radius: 16px;
     }
@@ -190,7 +189,6 @@
       color: var(--text);
     }
 
-    /* Eksplorasi Data / Grafik Perbandingan Lokus */
     .chart-bars {
       display: flex;
       flex-direction: column;
@@ -228,7 +226,6 @@
       margin-top: 0.25rem;
     }
 
-    /* Eksplorasi 4 Klade */
     .clade-tabs {
       display: flex;
       flex-wrap: wrap;
@@ -445,7 +442,6 @@
       border-radius: 10px;
     }
 
-    /* Kesimpulan & Manfaat Praktis */
     .conclusion-box {
       background: linear-gradient(135deg, #f0fdfa 0%, #e0f2fe 100%);
       border: 1.5px solid #99f6e4;
@@ -482,6 +478,49 @@
     .practical-card p {
       font-size: 0.88rem;
       color: var(--text);
+    }
+
+    /* Kuis */
+    .quiz-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.15rem;
+    }
+
+    .quiz-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .score-pill {
+      background: #f1f5f9;
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.82rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 8px;
+    }
+
+    .reset-quiz-btn {
+      background: #ffffff;
+      border: 1.5px solid var(--border);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.82rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: border-color 0.15s ease, background-color 0.15s ease;
+    }
+
+    .reset-quiz-btn:hover {
+      border-color: var(--primary);
+      background: #f8fafc;
     }
 
     .quiz-item {
@@ -522,19 +561,23 @@
     .quiz-exp {
       margin-top: 0.65rem;
       font-size: 0.84rem;
-      color: var(--muted);
       display: none;
     }
 
-    .score-banner {
-      margin-top: 1rem;
-      padding: 0.95rem 1.15rem;
-      border-radius: 12px;
-      background: var(--primary-light);
-      color: #0f766e;
-      font-weight: 700;
-      display: none;
-      text-align: center;
+    .quiz-exp.is-correct {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      color: #166534;
+      border-radius: 10px;
+      padding: 0.7rem 0.85rem;
+    }
+
+    .quiz-exp.is-wrong {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #991b1b;
+      border-radius: 10px;
+      padding: 0.7rem 0.85rem;
     }
 
     footer {
@@ -560,7 +603,7 @@
         <div>
           <strong>Referensi:</strong> Stiller, J., Feng, S., Chowdhury, A.-A., dkk. (2024). <em>Complexity of avian evolution revealed by family-level genomes.</em> Nature, 629(8013), 851–860. DOI: 10.1038/s41586-024-07323-1
         </div>
-        <button class="copy-btn" id="copy-cite">Salin Sitasi</button>
+        <button class="copy-btn" id="copy-cite" type="button">Salin Sitasi</button>
       </div>
     </header>
 
@@ -583,7 +626,6 @@
       </div>
     </section>
 
-    <!-- Subjek & Metode Ringkas -->
     <section class="section">
       <h2>Subjek &amp; Metode Penelitian</h2>
       <p class="section-sub">Ringkasan pendekatan genomik komparatif yang digunakan tim konsorsium B10K.</p>
@@ -599,7 +641,6 @@
       </div>
     </section>
 
-    <!-- Grafik Perbandingan Sinyal Genomik -->
     <section class="section">
       <h2>Eksplorasi Data: Stabilitas Sinyal Filogenetik per Tipe Lokus</h2>
       <p class="section-sub">Perbandingan tingkat konsistensi rekonstruksi silsilah antar-lokus dalam dataset 63.430 lokus Stiller dkk. (2024).</p>
@@ -622,7 +663,6 @@
       </div>
     </section>
 
-    <!-- Eksplorasi 4 Klade -->
     <section class="section">
       <h2>Eksplorasi 4 Kelompok Besar Burung Modern (Neoaves)</h2>
       <p class="section-sub">Klik masing-masing kelompok hasil revisi genomik Stiller dkk. (2024) untuk melihat anggota dan ciri adaptasinya.</p>
@@ -630,7 +670,6 @@
       <div class="clade-display" id="clade-display"></div>
     </section>
 
-    <!-- Alur Riset -->
     <section class="section">
       <h2>Alur Riset: Bagaimana Pohon Kekerabatan Ini Disusun?</h2>
       <p class="section-sub">Klik tiap tahap untuk memahami cara peneliti memecahkan silsilah burung yang selama ini membingungkan.</p>
@@ -638,14 +677,13 @@
       <div class="step-detail" id="step-detail"></div>
     </section>
 
-    <!-- Simulasi K-Pg -->
     <section class="section">
       <h2>Simulasi Dampak Kepunahan K-Pg pada Evolusi Burung</h2>
       <p class="section-sub">Pilih periode waktu di bawah ini untuk melihat perubahan parameter genetik dan biologis burung berdasarkan temuan genomik.</p>
       <div class="sim-controls">
-        <button class="era-btn active" data-era="pre">1. Sebelum K-Pg (&gt;66 Jt Thn Lalu)</button>
-        <button class="era-btn" data-era="post">2. Tepat Setelah K-Pg (~66 Jt Thn Lalu)</button>
-        <button class="era-btn" data-era="modern">3. Stabilisasi &amp; Era Modern</button>
+        <button class="era-btn active" type="button" data-era="pre">1. Sebelum K-Pg (&gt;66 Jt Thn Lalu)</button>
+        <button class="era-btn" type="button" data-era="post">2. Tepat Setelah K-Pg (~66 Jt Thn Lalu)</button>
+        <button class="era-btn" type="button" data-era="modern">3. Stabilisasi &amp; Era Modern</button>
       </div>
       <div class="sim-stage">
         <div class="sim-header">
@@ -672,7 +710,6 @@
       </div>
     </section>
 
-    <!-- Kesimpulan Penelitian & Manfaat Praktis -->
     <section class="section">
       <h2>Kesimpulan Penelitian &amp; Manfaat Praktis</h2>
       <p class="section-sub">Intisari temuan akhir serta penerapan nyata pada riset evolusi, konservasi, dan biologi komparatif.</p>
@@ -698,12 +735,18 @@
       </div>
     </section>
 
-    <!-- Kuis Singkat -->
     <section class="section">
-      <h2>Kuis Singkat (3 Soal)</h2>
-      <p class="section-sub">Uji pemahaman Anda terhadap temuan utama jurnal ini.</p>
+      <div class="quiz-top">
+        <div>
+          <h2>Kuis Singkat Jurnal (3 Pertanyaan)</h2>
+          <p class="section-sub" style="margin-bottom: 0;">Pilih jawaban yang paling tepat berdasarkan data penelitian Stiller, dkk. (2024).</p>
+        </div>
+        <div class="quiz-controls">
+          <span class="score-pill" id="score-pill">Skor: 0 / 3</span>
+          <button class="reset-quiz-btn" id="reset-quiz-btn" type="button">Ulangi</button>
+        </div>
+      </div>
       <div id="quiz-container"></div>
-      <div class="score-banner" id="score-banner"></div>
     </section>
 
     <footer>
@@ -762,7 +805,7 @@
 
     function renderClades() {
       cladeTabsEl.innerHTML = clades.map(c =>
-        '<button class="clade-btn ' + (c.id === activeClade ? "active" : "") + '" data-id="' + c.id + '">' + c.name + "</button>"
+        '<button class="clade-btn ' + (c.id === activeClade ? "active" : "") + '" type="button" data-id="' + c.id + '">' + c.name + "</button>"
       ).join("");
 
       const current = clades.find(c => c.id === activeClade);
@@ -810,7 +853,7 @@
 
     function renderSteps() {
       stepsNavEl.innerHTML = steps.map((s, idx) =>
-        '<button class="step-btn ' + (idx === activeStep ? "active" : "") + '" data-idx="' + idx + '">' +
+        '<button class="step-btn ' + (idx === activeStep ? "active" : "") + '" type="button" data-idx="' + idx + '">' +
           "<strong>Tahap " + (idx + 1) + "</strong>" +
           "<span>" + s.label + "</span>" +
         "</button>"
@@ -873,65 +916,90 @@
 
     const quizData = [
       {
-        q: "1. Apa nama kelompok besar burung baru yang ditetapkan dalam studi Stiller dkk. (2024)?",
-        options: ["Telluraves", "Elementaves", "Paleognathae"],
+        q: "1. Apa nama kelompok besar burung baru yang ditetapkan dalam studi Stiller, dkk. (2024)?",
+        options: [
+          "Telluraves (hanya burung pemangsa dan pengicau)",
+          "Elementaves (menyatukan penguin, pelikan, burung pantai, dan kolibri)",
+          "Paleognathae (hanya burung tidak terbang seperti unta)"
+        ],
         correct: 1,
-        exp: "Elementaves adalah klade baru yang menyatukan burung yang beradaptasi di air, udara, dan darat seperti penguin, pelikan, burung pantai, dan kolibri."
+        correctExp: "Jawaban Benar: Tepat. Elementaves adalah klade baru yang menyatukan burung dari berbagai elemen habitat seperti penguin, pelikan, burung pantai, dan kolibri.",
+        wrongExp: "Kurang Tepat: Benar. Studi ini menetapkan kelompok besar baru bernama Elementaves yang mencakup penguin, pelikan, burung pantai, bangau, dan kolibri."
       },
       {
         q: "2. Bagian DNA mana yang terbukti memberi sinyal pohon evolusi lebih stabil dalam penelitian ini?",
-        options: ["Daerah intergenik (non-pengkode)", "Hanya DNA mitokondria", "Gen pengkode protein (ekson) saja"],
+        options: [
+          "Daerah intergenik (non-pengkode) yang lebih minim bias seleksi alam",
+          "Hanya DNA mitokondria tunggal dari satu gen saja",
+          "Gen pengkode protein (ekson) saja tanpa pembanding lokus lain"
+        ],
         correct: 0,
-        exp: "Daerah intergenik (non-pengkode) lebih sedikit terpengaruh oleh bias seleksi alam dibandingkan ekson, sehingga menghasilkan pohon kekerabatan yang lebih konsisten."
+        correctExp: "Jawaban Benar: Akurat. Daerah intergenik (non-pengkode) lebih sedikit terdistorsi oleh seleksi alam langsung dibanding ekson, sehingga menghasilkan rekonstruksi filogeni yang lebih stabil.",
+        wrongExp: "Kurang Tepat: Benar. Daerah intergenik (non-pengkode) memberi sinyal evolusi paling stabil dalam analisis 63.430 lokus penelitian ini."
       },
       {
         q: "3. Apa yang terjadi pada ukuran populasi efektif (Ne) dan ukuran otak relatif burung tepat setelah kepunahan K-Pg?",
-        options: ["Keduanya menurun drastis", "Tidak mengalami perubahan", "Keduanya mengalami lonjakan tajam"],
+        options: [
+          "Keduanya menurun drastis hingga nyaris punah",
+          "Tidak mengalami perubahan sama sekali sejak zaman Kapur",
+          "Keduanya mengalami lonjakan tajam seiring terbukanya relung ekologi"
+        ],
         correct: 2,
-        exp: "Terbukanya relung ekologi pasca-kepunahan 66 juta tahun lalu memicu lonjakan tajam pada ukuran populasi efektif, laju mutasi DNA, dan ukuran otak relatif burung."
+        correctExp: "Jawaban Benar: Tepat. Setelah kepunahan massal K-Pg sekitar 66 juta tahun lalu, data genom menunjukkan lonjakan tajam pada ukuran populasi efektif (Ne), laju mutasi DNA, dan ukuran otak relatif burung.",
+        wrongExp: "Kurang Tepat: Benar. Pasca-kepunahan K-Pg (~66 juta tahun lalu), ukuran populasi efektif, laju substitusi DNA, dan ukuran otak relatif burung justru melonjak tajam."
       }
     ];
 
     const quizContainer = document.getElementById("quiz-container");
-    const scoreBanner = document.getElementById("score-banner");
-    let answered = 0;
+    const scorePill = document.getElementById("score-pill");
+    const resetQuizBtn = document.getElementById("reset-quiz-btn");
     let score = 0;
 
-    quizData.forEach((item, qIdx) => {
-      const box = document.createElement("div");
-      box.className = "quiz-item";
-      box.innerHTML =
-        '<div class="quiz-q">' + item.q + "</div>" +
-        '<div class="quiz-opts">' +
-          item.options.map((opt, oIdx) => '<button class="opt-btn" data-o="' + oIdx + '">' + opt + "</button>").join("") +
-        "</div>" +
-        '<div class="quiz-exp" id="exp-' + qIdx + '"></div>';
-      quizContainer.appendChild(box);
+    function renderQuiz() {
+      score = 0;
+      scorePill.textContent = "Skor: 0 / " + quizData.length;
+      quizContainer.innerHTML = "";
 
-      const btns = box.querySelectorAll(".opt-btn");
-      const expEl = box.querySelector("#exp-" + qIdx);
+      quizData.forEach((item, qIdx) => {
+        const box = document.createElement("div");
+        box.className = "quiz-item";
+        box.innerHTML =
+          '<div class="quiz-q">' + item.q + "</div>" +
+          '<div class="quiz-opts">' +
+            item.options.map((opt, oIdx) => '<button class="opt-btn" type="button" data-o="' + oIdx + '">' + opt + "</button>").join("") +
+          "</div>" +
+          '<div class="quiz-exp" id="exp-' + qIdx + '"></div>';
+        quizContainer.appendChild(box);
 
-      btns.forEach(btn => {
-        btn.addEventListener("click", () => {
-          const chosen = Number(btn.dataset.o);
-          btns.forEach(b => { b.disabled = true; });
-          if (chosen === item.correct) {
-            btn.classList.add("correct");
-            score++;
-          } else {
-            btn.classList.add("wrong");
-            btns[item.correct].classList.add("correct");
-          }
-          expEl.textContent = item.exp;
-          expEl.style.display = "block";
-          answered++;
-          if (answered === quizData.length) {
-            scoreBanner.textContent = "Skor Anda: " + score + " dari " + quizData.length + " soal benar!";
-            scoreBanner.style.display = "block";
-          }
+        const btns = box.querySelectorAll(".opt-btn");
+        const expEl = box.querySelector("#exp-" + qIdx);
+
+        btns.forEach(btn => {
+          btn.addEventListener("click", () => {
+            const chosen = Number(btn.dataset.o);
+            btns.forEach(b => { b.disabled = true; });
+            expEl.classList.remove("is-correct", "is-wrong");
+
+            if (chosen === item.correct) {
+              btn.classList.add("correct");
+              score++;
+              scorePill.textContent = "Skor: " + score + " / " + quizData.length;
+              expEl.textContent = item.correctExp;
+              expEl.classList.add("is-correct");
+            } else {
+              btn.classList.add("wrong");
+              btns[item.correct].classList.add("correct");
+              expEl.textContent = item.wrongExp;
+              expEl.classList.add("is-wrong");
+            }
+            expEl.style.display = "block";
+          });
         });
       });
-    });
+    }
+
+    resetQuizBtn.addEventListener("click", renderQuiz);
+    renderQuiz();
   </script>
 </body>
 </html>
