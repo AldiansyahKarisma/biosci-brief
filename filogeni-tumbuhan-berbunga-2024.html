@@ -188,7 +188,6 @@
       color: var(--text);
     }
 
-    /* Grafik Cakupan Taksonomi */
     .chart-card {
       background: var(--surface-soft);
       border: 1px solid var(--border);
@@ -226,7 +225,6 @@
       margin-top: 0.25rem;
     }
 
-    /* Mekanisme Bertahap */
     .steps-nav {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -271,7 +269,6 @@
       color: var(--text);
     }
 
-    /* Simulasi Fase Evolusi & Biogeografi */
     .sim-controls {
       display: flex;
       flex-wrap: wrap;
@@ -364,7 +361,6 @@
       border-radius: 10px;
     }
 
-    /* Kesimpulan & Manfaat Praktis */
     .conclusion-box {
       background: linear-gradient(135deg, #f0fdf4 0%, #ecfeff 100%);
       border: 1.5px solid #86efac;
@@ -403,7 +399,6 @@
       color: var(--text);
     }
 
-    /* Kuis */
     .quiz-top {
       display: flex;
       justify-content: space-between;
@@ -524,7 +519,7 @@
       <p>Konsorsium riset botani menganalisis 353 gen inti pada 7.923 spesies angiospermae untuk memetakan kekerabatan tumbuhan berbunga global serta dinamika diversifikasinya lintas zaman.</p>
       <div class="citation-box">
         <div>
-          <strong>Referensi:</strong> Zuntini, A., Carruthers, T. E., Maurin, O., Bailey, P., Brewer, G., dkk. (2024). <em>Global phylogeny and biogeography of flowering plants.</em> Nature, 629(8013), 890–897. DOI: 10.1038/s41586-024-07324-0
+          <strong>Referensi (Harvard):</strong> Zuntini, A., Carruthers, T.E., Maurin, O., Bailey, P., Brewer, G. et al. (2024) &lsquo;Global phylogeny and biogeography of flowering plants&rsquo;, <em>Nature</em>, 629(8013), pp. 890&ndash;897. doi: 10.1038/s41586-024-07324-0.
         </div>
         <button class="copy-btn" id="copy-cite" type="button">Salin Sitasi</button>
       </div>
@@ -566,7 +561,7 @@
 
     <section class="section">
       <h2>Eksplorasi Data: Cakupan &amp; Kekuatan Resolusi Dataset</h2>
-      <p class="section-sub">Ringkasan skala representasi taksonomi dan data genetik pada studi Zuntini, dkk. (2024).</p>
+      <p class="section-sub">Ringkasan skala representasi taksonomi dan data genetik pada studi Zuntini et al. (2024).</p>
       <div class="chart-card">
         <div>
           <div class="bar-head"><span>Cakupan Ordo Tumbuhan Berbunga (60 dari 64 Ordo)</span><span>93,8% Ordo</span></div>
@@ -650,7 +645,7 @@
       <div class="quiz-top">
         <div>
           <h2>Kuis Singkat Jurnal (3 Pertanyaan)</h2>
-          <p class="section-sub" style="margin-bottom: 0;">Pilih jawaban yang paling tepat berdasarkan data penelitian Zuntini, dkk. (2024).</p>
+          <p class="section-sub" style="margin-bottom: 0;">Pilih jawaban yang paling tepat berdasarkan data penelitian Zuntini et al. (2024).</p>
         </div>
         <div class="quiz-controls">
           <span class="score-pill" id="score-pill">Skor: 0 / 3</span>
@@ -661,12 +656,12 @@
     </section>
 
     <footer>
-      BioSci Brief • Ringkasan Edukasi Sains Interaktif
+      BioSci Brief &bull; Ringkasan Edukasi Sains Interaktif
     </footer>
   </div>
 
   <script>
-    const citeText = "Zuntini, A., Carruthers, T. E., Maurin, O., Bailey, P., Brewer, G., et al. (2024). Global phylogeny and biogeography of flowering plants. Nature, 629(8013), 890–897. https://doi.org/10.1038/s41586-024-07324-0";
+    const citeText = "Zuntini, A., Carruthers, T.E., Maurin, O., Bailey, P., Brewer, G. et al. (2024) 'Global phylogeny and biogeography of flowering plants', Nature, 629(8013), pp. 890\u2013897. doi: 10.1038/s41586-024-07324-0.";
     const copyBtn = document.getElementById("copy-cite");
     copyBtn.addEventListener("click", () => {
       navigator.clipboard.writeText(citeText).then(() => {
@@ -763,7 +758,7 @@
 
     const quizData = [
       {
-        q: "1. Berapa banyak spesies tumbuhan berbunga yang dianalisis dalam studi Zuntini, dkk. (2024)?",
+        q: "1. Berapa banyak spesies tumbuhan berbunga yang dianalisis dalam studi Zuntini et al. (2024)?",
         options: [
           "7.923 spesies tumbuhan berbunga",
           "150 spesies lumut saja",
