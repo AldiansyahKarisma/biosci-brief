@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Peta 139.255 Neuron &amp; 50 Juta Sinapsis Otak Lalat Buah (Nature, 2024)</title>
+  <meta name="description" content="Konsorsium FlyWire merekonstruksi konektom utuh otak Drosophila melanogaster dewasa dengan 139.255 neuron dan sekitar 50 juta sinapsis kimia." />
+  <meta name="category" content="Zoologi" />
+  <meta name="date" content="2026-11-28" />
+  <style>
+    :root {
+      --paper: #f6f1e7;
+      --card: #fdfaf4;
+      --ink: #1f1d1a;
+      --muted: #57524a;
+      --moss: #234232;
+      --moss-soft: #e4ede7;
+      --terra: #b8502b;
+      --terra-soft: #f9e6de;
+      --ochre: #b7791f;
+      --ochre-soft: #f9efd8;
+      --line: #dfd5c3;
+      --serif: Georgia, "Times New Roman", Times, serif;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.65;
+      padding-bottom: 4rem;
+    }
+
+    /* Editorial Masthead */
+    .masthead {
+      background: var(--card);
+      border-bottom: 2px solid var(--ink);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+    }
+
+    .masthead-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0.7rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .back-link {
+      text-decoration: none;
+      color: var(--moss);
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .back-link:hover { color: var(--terra); }
+
+    .issue-tag {
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .nav-jump {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-jump a {
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .nav-jump a:hover { color: var(--terra); }
+
+    .page {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 1.75rem 1.25rem 0;
+    }
+
+    /* Asymmetric Field Guide Hero Spread */
+    .spread {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 1.5rem;
+      align-items: stretch;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 820px) {
+      .spread { grid-template-columns: 1fr; }
+    }
+
+    .editorial-lead {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-top: 4px solid var(--moss);
+      padding: 1.85rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .kicker {
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--terra);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.65rem;
+    }
+
+    .editorial-lead h1 {
+      font-family: var(--serif);
+      font-size: clamp(1.7rem, 3.6vw, 2.45rem);
+      line-height: 1.18;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 0.85rem;
+    }
+
+    .editorial-lead .deck {
+      font-size: 0.98rem;
+      color: var(--muted);
+      margin-bottom: 1.3rem;
+    }
+
+    .cite-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--terra);
+      padding: 0.9rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      font-size: 0.81rem;
+      color: var(--ink);
+    }
+
+    .copy-btn {
+      background: var(--moss);
+      color: #ffffff;
+      border: none;
+      padding: 0.5rem 0.92rem;
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+    }
+
+    .copy-btn:hover { background: var(--terra); }
+
+    /* Specimen Plate Card */
+    .specimen-plate {
+      background: #234232;
+      color: #f6f1e7;
+      border: 1px solid #183024;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .plate-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid rgba(246, 241, 231, 0.22);
+      padding-bottom: 0.55rem;
+    }
+
+    .plate-header span {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #d6c5a3;
+    }
+
+    .plate-art {
+      background: rgba(15, 31, 23, 0.45);
+      border: 1px dashed rgba(214, 197, 163, 0.38);
+      padding: 0.9rem;
+      text-align: center;
+    }
+
+    .specimen-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+
+    .specimen-table tr {
+      border-bottom: 1px solid rgba(246, 241, 231, 0.14);
+    }
+
+    .specimen-table td {
+      padding: 0.42rem 0;
+    }
+
+    .specimen-table td:first-child {
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      color: #c8d6cc;
+      text-transform: uppercase;
+    }
+
+    .specimen-table td:last-child {
+      text-align: right;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    /* Editorial Sections */
+    .ed-section {
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 1.65rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .ed-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 0.85rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .ed-num {
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      color: var(--terra);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .ed-head h2 {
+      font-family: var(--serif);
+      font-size: 1.42rem;
+      color: var(--ink);
+      margin-top: 0.15rem;
+    }
+
+    .ed-sub {
+      font-size: 0.88rem;
+      color: var(--muted);
+      max-width: 640px;
+    }
+
+    /* Section 01: Latar Belakang & Metode */
+    .context-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.15rem;
+    }
+
+    @media (max-width: 820px) {
+      .context-grid { grid-template-columns: 1fr; }
+    }
+
+    .ctx-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-top: 3px solid var(--moss);
+      padding: 1.05rem;
+    }
+
+    .ctx-card.accent-terra { border-top-color: var(--terra); }
+    .ctx-card.accent-ochre { border-top-color: var(--ochre); }
+
+    .ctx-label {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--moss);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.3rem;
+      display: block;
+    }
+
+    .ctx-card.accent-terra .ctx-label { color: var(--terra); }
+    .ctx-card.accent-ochre .ctx-label { color: var(--ochre); }
+
+    .ctx-card h3 {
+      font-family: var(--serif);
+      font-size: 1.02rem;
+      color: var(--ink);
+      margin-bottom: 0.35rem;
+    }
+
+    .ctx-card p {
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .workflow-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.85rem;
+    }
+
+    @media (max-width: 820px) {
+      .workflow-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 520px) {
+      .workflow-grid { grid-template-columns: 1fr; }
+    }
+
+    .wf-card {
+      background: var(--card);
+      border: 1px dashed var(--line);
+      border-left: 3px solid var(--moss);
+      padding: 0.85rem 0.95rem;
+    }
+
+    .wf-step {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--terra);
+      margin-bottom: 0.2rem;
+    }
+
+    .wf-card h4 {
+      font-family: var(--serif);
+      font-size: 0.93rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .wf-card p {
+      font-size: 0.81rem;
+      color: var(--muted);
+    }
+
+    /* Interactive Brain Atlas (Canvas + Hotspot Inspector) */
+    .atlas-layout {
+      display: grid;
+      grid-template-columns: 1.45fr 1fr;
+      gap: 1.25rem;
+      align-items: stretch;
+    }
+
+    @media (max-width: 820px) {
+      .atlas-layout { grid-template-columns: 1fr; }
+    }
+
+    .stimulus-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .stim-btn {
+      padding: 0.5rem 0.88rem;
+      border: 1.5px solid var(--line);
+      background: var(--paper);
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .stim-btn:hover { border-color: var(--moss); }
+    .stim-btn.active {
+      background: var(--terra);
+      border-color: var(--terra);
+      color: #ffffff;
+    }
+
+    .canvas-frame {
+      background: #1b2822;
+      border: 1px solid #13201a;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .canvas-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 0.6rem 0.9rem;
+      background: #141f1a;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      color: #d6e4da;
+    }
+
+    #brain-canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+      cursor: pointer;
+    }
+
+    .canvas-hint {
+      padding: 0.55rem 0.9rem;
+      background: #141f1a;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.78rem;
+      color: #c9d5cd;
+    }
+
+    .inspector-box {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 1.15rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.9rem;
+    }
+
+    .region-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .reg-btn {
+      padding: 0.36rem 0.68rem;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 0.73rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .reg-btn.active {
+      background: var(--moss);
+      border-color: var(--moss);
+      color: #ffffff;
+    }
+
+    .inspector-title {
+      font-family: var(--serif);
+      font-size: 1.18rem;
+      color: var(--moss);
+      margin-bottom: 0.25rem;
+    }
+
+    .inspector-role {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: var(--ochre-soft);
+      color: #8a5612;
+      padding: 0.16rem 0.55rem;
+      margin-bottom: 0.55rem;
+    }
+
+    .inspector-desc {
+      font-size: 0.88rem;
+      color: var(--ink);
+    }
+
+    .pathway-readout {
+      background: var(--card);
+      border-left: 3px solid var(--terra);
+      padding: 0.75rem 0.85rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .pathway-readout strong {
+      display: block;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
+    }
+
+    /* Interactive Synaptic Decision Simulator & Scale Comparison */
+    .sim-two-col {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 1.35rem;
+      align-items: start;
+    }
+
+    @media (max-width: 820px) {
+      .sim-two-col { grid-template-columns: 1fr; }
+    }
+
+    .slider-panel {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 1.15rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .slider-row label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.84rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+
+    .slider-row input[type="range"] {
+      width: 100%;
+      accent-color: var(--moss);
+      cursor: pointer;
+    }
+
+    .decision-box {
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 0.9rem 1rem;
+    }
+
+    .decision-badge {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .badge-go { background: var(--moss-soft); color: var(--moss); }
+    .badge-halt { background: var(--terra-soft); color: var(--terra); }
+    .badge-wait { background: var(--ochre-soft); color: #8a5612; }
+
+    /* Scale Comparison Chart */
+    .scale-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 1.15rem;
+    }
+
+    .scale-card h3 {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .scale-card p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 0.95rem;
+    }
+
+    .scale-row {
+      margin-bottom: 0.85rem;
+    }
+
+    .scale-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .scale-track {
+      height: 12px;
+      background: #e6decb;
+      overflow: hidden;
+    }
+
+    .scale-fill {
+      height: 100%;
+      background: var(--moss);
+    }
+
+    .scale-fill.accent { background: var(--terra); }
+
+    .scale-meta {
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      color: var(--muted);
+      margin-top: 0.18rem;
+    }
+
+    /* Conclusion & Practical */
+    .concl-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 1.2rem;
+    }
+
+    @media (max-width: 760px) {
+      .concl-grid { grid-template-columns: 1fr; }
+    }
+
+    .concl-editorial {
+      background: var(--moss-soft);
+      border: 1px solid #bfd2c5;
+      padding: 1.25rem;
+    }
+
+    .concl-editorial h3 {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: var(--moss);
+      margin-bottom: 0.5rem;
+    }
+
+    .concl-editorial p {
+      font-size: 0.9rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .prac-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .prac-box {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--ochre);
+      padding: 0.85rem 1rem;
+    }
+
+    .prac-box strong {
+      display: block;
+      font-size: 0.88rem;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
+    }
+
+    .prac-box p {
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+
+    /* Quiz */
+    .quiz-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .score-pill {
+      font-family: var(--mono);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      font-weight: 700;
+      font-size: 0.82rem;
+      padding: 0.38rem 0.75rem;
+    }
+
+    .reset-quiz-btn {
+      background: var(--card);
+      border: 1.5px solid var(--ink);
+      color: var(--ink);
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 0.78rem;
+      padding: 0.38rem 0.8rem;
+      cursor: pointer;
+    }
+
+    .reset-quiz-btn:hover {
+      background: var(--ink);
+      color: #ffffff;
+    }
+
+    .quiz-item {
+      border: 1px solid var(--line);
+      padding: 1.1rem;
+      margin-bottom: 0.95rem;
+      background: var(--paper);
+    }
+
+    .quiz-q {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 0.98rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .quiz-opts {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .opt-btn {
+      text-align: left;
+      padding: 0.65rem 0.9rem;
+      border: 1.5px solid var(--line);
+      background: var(--card);
+      font-size: 0.88rem;
+      cursor: pointer;
+    }
+
+    .opt-btn:hover:not(:disabled) { border-color: var(--moss); }
+    .opt-btn.correct { background: #dcfce7; border-color: #15803d; color: #14532d; font-weight: 700; }
+    .opt-btn.wrong { background: #fee2e2; border-color: #b91c1c; color: #7f1d1d; }
+
+    .quiz-exp {
+      margin-top: 0.65rem;
+      font-size: 0.84rem;
+      display: none;
+      padding: 0.7rem 0.85rem;
+    }
+
+    .quiz-exp.is-correct { background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; }
+    .quiz-exp.is-wrong { background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
+
+    footer {
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      color: var(--muted);
+      margin-top: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <a class="back-link" href="./">&larr; BioSci Brief</a>
+      <span class="issue-tag">Field Guide Editorial &bull; Zoologi</span>
+      <nav class="nav-jump">
+        <a href="#latar-metode">Latar &amp; Metode</a>
+        <a href="#peta-otak">Peta Otak</a>
+        <a href="#simulator">Simulator Sinapsis</a>
+        <a href="#kesimpulan">Kesimpulan</a>
+        <a href="#kuis">Kuis</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <!-- Asymmetric Magazine Spread -->
+    <section class="spread">
+      <article class="editorial-lead">
+        <div>
+          <div class="kicker">Arsip Neurobiologi Serangga &bull; Nature (2024)</div>
+          <h1>Diagram Pengkabelan Utuh Otak Lalat Buah Dewasa</h1>
+          <p class="deck">Konsorsium FlyWire menyelesaikan peta sambungan saraf pertama pada otak hewan dewasa secara menyeluruh, merekam 139.255 neuron dan sekitar 50 juta sinapsis kimia di dalam kepala <em>Drosophila melanogaster</em>.</p>
+        </div>
+        <div class="cite-card">
+          <div>
+            <strong>Referensi (Harvard):</strong> Dorkenwald, S., Matsliah, A., Sterling, A.R., Schlegel, P., Yu, S.-c., McKellar, C.E. et al. (2024) &lsquo;Neuronal wiring diagram of an adult brain&rsquo;, <em>Nature</em>, 634(8032), pp. 124&ndash;138. doi: 10.1038/s41586-024-07558-y.
+          </div>
+          <button class="copy-btn" id="copy-cite" type="button">Salin Sitasi</button>
+        </div>
+      </article>
+
+      <aside class="specimen-plate">
+        <div class="plate-header">
+          <span>Specimen Plate 01</span>
+          <span><em>D. melanogaster</em> (&#9792;)</span>
+        </div>
+        <div class="plate-art">
+          <svg viewBox="0 0 240 120" width="100%" height="110" aria-label="Ilustrasi Spesimen Lalat Buah dan Otak">
+            <ellipse cx="120" cy="64" rx="22" ry="30" fill="#3a634d" stroke="#d6c5a3" stroke-width="1.6"/>
+            <ellipse cx="120" cy="96" rx="14" ry="16" fill="#2d4f3d" stroke="#d6c5a3" stroke-width="1.4"/>
+            <ellipse cx="90" cy="70" rx="34" ry="12" transform="rotate(-22 90 70)" fill="rgba(246,241,231,0.16)" stroke="#d6c5a3" stroke-width="1.2"/>
+            <ellipse cx="150" cy="70" rx="34" ry="12" transform="rotate(22 150 70)" fill="rgba(246,241,231,0.16)" stroke="#d6c5a3" stroke-width="1.2"/>
+            <circle cx="120" cy="34" r="15" fill="#46725b" stroke="#d6c5a3" stroke-width="1.6"/>
+            <ellipse cx="104" cy="33" rx="6" ry="9" fill="#b8502b" stroke="#f6f1e7" stroke-width="1.2"/>
+            <ellipse cx="136" cy="33" rx="6" ry="9" fill="#b8502b" stroke="#f6f1e7" stroke-width="1.2"/>
+            <path d="M111 33c4-4 14-4 18 0c-3 5-15 5-18 0z" fill="#fde047" opacity="0.85"/>
+            <text x="120" y="16" text-anchor="middle" fill="#fde047" font-size="9" font-family="monospace">OTAK (&lt; 1 mm)</text>
+          </svg>
+        </div>
+        <table class="specimen-table">
+          <tr><td>Spesies</td><td><em>Drosophila melanogaster</em></td></tr>
+          <tr><td>Total Neuron</td><td>139.255 sel saraf</td></tr>
+          <tr><td>Sinapsis Kimia</td><td>~50.000.000 sambungan</td></tr>
+          <tr><td>Konsorsium</td><td>FlyWire (Global)</td></tr>
+        </table>
+      </aside>
+    </section>
+
+    <!-- Section 01: Latar Belakang & Metode Penelitian -->
+    <section class="ed-section" id="latar-metode">
+      <div class="ed-head">
+        <div>
+          <span class="ed-num">Pengantar 01 &bull; Konteks &amp; Protokol FlyWire</span>
+          <h2>Latar Belakang &amp; Metode Rekonstruksi Konektom</h2>
+        </div>
+        <p class="ed-sub">Pahami tujuan pemetaan otak utuh dan alur kerja mikroskop elektron sebelum mengeksplorasi peta saraf interaktif di bawah.</p>
+      </div>
+
+      <div class="context-grid">
+        <div class="ctx-card accent-terra">
+          <span class="ctx-label">Latar Belakang</span>
+          <h3>Mengapa Perlu Peta Otak Utuh?</h3>
+          <p>Sebelumnya, konektom hewan lengkap hanya tersedia untuk cacing <em>C. elegans</em> (302 neuron) dan larva lalat buah (3.016 neuron). Hewan dewasa yang mampu terbang, bernavigasi visual, dan berinteraksi sosial belum pernah terpetakan utuh hingga tingkat sinapsis.</p>
+        </div>
+
+        <div class="ctx-card">
+          <span class="ctx-label">Subjek Spesimen</span>
+          <h3>Otak <em>Drosophila</em> Betina Dewasa</h3>
+          <p>Objek penelitian adalah otak utuh satu ekor lalat buah betina dewasa (<em>Drosophila melanogaster</em>) selebar kurang dari 1 milimeter yang mencakup lobus optik, pusat penciuman, memori, navigasi, dan jalur motorik.</p>
+        </div>
+
+        <div class="ctx-card accent-ochre">
+          <span class="ctx-label">Metode Kolaboratif</span>
+          <h3>Mikroskop Elektron + AI + Koreksi Manusia</h3>
+          <p>Volume citra mikroskop elektron beresolusi nanometer disegmentasi otomatis oleh kecerdasan buatan, lalu diverifikasi manual oleh konsorsium peneliti global FlyWire agar setiap cabang akson dan sinapsis akurat.</p>
+        </div>
+      </div>
+
+      <div class="workflow-grid">
+        <div class="wf-card">
+          <div class="wf-step">TAHAP 01</div>
+          <h4>Pemindaian Elektron</h4>
+          <p>Otak diiris setipis nanometer dan dipindai hingga menghasilkan puluhan terabita citra beresolusi tinggi.</p>
+        </div>
+        <div class="wf-card">
+          <div class="wf-step">TAHAP 02</div>
+          <h4>Segmentasi AI 3D</h4>
+          <p>Jaringan saraf tiruan melacak serabut neuron melintasi ribuan lapisan dan mendeteksi lokasi sinapsis.</p>
+        </div>
+        <div class="wf-card">
+          <div class="wf-step">TAHAP 03</div>
+          <h4>Verifikasi FlyWire</h4>
+          <p>Ratusan peneliti memeriksa serta menyambungkan ulang cabang yang terputus atau keliru gabung.</p>
+        </div>
+        <div class="wf-card">
+          <div class="wf-step">TAHAP 04</div>
+          <h4>Simulasi Perilaku</h4>
+          <p>Peta utuh diuji dalam model komputasi untuk memprediksi respons makan dan gerak berjalan.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 02: Brain Atlas + Live Signal Canvas -->
+    <section class="ed-section" id="peta-otak">
+      <div class="ed-head">
+        <div>
+          <span class="ed-num">Atlas Interaktif 02 &bull; Klik Hotspot &amp; Uji Rangsangan</span>
+          <h2>Peta Jalur Saraf Hidup Otak <em>Drosophila</em></h2>
+        </div>
+        <p class="ed-sub">Pilih rangsangan indra untuk melihat impuls saraf merambat langsung melintasi sinapsis menuju perintah gerak, atau klik lingkaran wilayah otak langsung pada kanvas.</p>
+      </div>
+
+      <div class="stimulus-bar">
+        <button class="stim-btn active" type="button" data-stim="odor">1. Aroma Buah Matang (Penciuman)</button>
+        <button class="stim-btn" type="button" data-stim="visual">2. Bayangan Predator (Penglihatan)</button>
+        <button class="stim-btn" type="button" data-stim="taste">3. Tetesan Gula (Pengecapan)</button>
+      </div>
+
+      <div class="atlas-layout">
+        <div class="canvas-frame">
+          <div class="canvas-top">
+            <span id="atlas-hud-left">JALUR AKTIF: AROMA BUAH &rarr; NAVIGASI MENDEKAT</span>
+            <span id="atlas-hud-right">IMPULS: AKTIF</span>
+          </div>
+          <canvas id="brain-canvas" width="560" height="330"></canvas>
+          <div class="canvas-hint">Klik salah satu dari 5 titik wilayah (Lingkaran Bernomor) di atas untuk membaca fungsi anatomisnya.</div>
+        </div>
+
+        <aside class="inspector-box">
+          <div>
+            <div class="region-pills" id="region-pills"></div>
+            <div style="margin-top: 0.9rem;">
+              <h3 class="inspector-title" id="ins-title">Lobus Antena (Antennal Lobe)</h3>
+              <span class="inspector-role" id="ins-role">INPUT PENCIUMAN</span>
+              <p class="inspector-desc" id="ins-desc"></p>
+            </div>
+          </div>
+
+          <div class="pathway-readout" id="pathway-readout"></div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Section 03: Synaptic Threshold Simulator + Connectome Scale -->
+    <section class="ed-section" id="simulator">
+      <div class="ed-head">
+        <div>
+          <span class="ed-num">Simulasi 03 &bull; Eksitasi vs Inhibisi &amp; Skala Konektom</span>
+          <h2>Simulator Pengambilan Keputusan Sirkuit &amp; Perbandingan Skala</h2>
+        </div>
+        <p class="ed-sub">Konektom utuh memungkinkan ilmuwan memodelkan keseimbangan sinyal pemicu (eksitatori) dan sinyal rem (inhibitori) pada neuron motorik.</p>
+      </div>
+
+      <div class="sim-two-col">
+        <div class="slider-panel">
+          <div class="slider-row">
+            <label for="exc-slider">
+              <span>Sinyal Pemicu Sensorik (Eksitasi)</span>
+              <span id="exc-val" style="font-family: var(--mono); color: var(--moss);">72%</span>
+            </label>
+            <input type="range" id="exc-slider" min="0" max="100" value="72" />
+          </div>
+
+          <div class="slider-row">
+            <label for="inh-slider">
+              <span>Sinyal Penghambat / Rem Saraf (Inhibisi)</span>
+              <span id="inh-val" style="font-family: var(--mono); color: var(--terra);">28%</span>
+            </label>
+            <input type="range" id="inh-slider" min="0" max="100" value="28" />
+          </div>
+
+          <svg id="spike-svg" viewBox="0 0 420 130" width="100%" style="background: #fdfaf4; border: 1px solid #dfd5c3;" aria-label="Kurva Potensial Aksi Neuron Motorik"></svg>
+
+          <div class="decision-box" id="decision-box"></div>
+        </div>
+
+        <div class="scale-card">
+          <h3>Lompatan Skala Konektom Hewan</h3>
+          <p>Perbandingan jumlah neuron pada peta konektom otak utuh yang pernah diselesaikan (skala logaritmik visual):</p>
+
+          <div class="scale-row">
+            <div class="scale-label"><span>Cacing <em>C. elegans</em> (Dewasa)</span><span>302 neuron</span></div>
+            <div class="scale-track"><div class="scale-fill" style="width: 14%"></div></div>
+            <div class="scale-meta">Konektom hewan pertama (1986) &bull; ~7.000 sinapsis</div>
+          </div>
+
+          <div class="scale-row">
+            <div class="scale-label"><span>Larva <em>Drosophila melanogaster</em></span><span>3.016 neuron</span></div>
+            <div class="scale-track"><div class="scale-fill" style="width: 44%"></div></div>
+            <div class="scale-meta">Winding et al. (2023) &bull; ~548.000 sinapsis</div>
+          </div>
+
+          <div class="scale-row" style="margin-bottom: 0;">
+            <div class="scale-label"><span><em>Drosophila melanogaster</em> Dewasa (FlyWire)</span><span>139.255 neuron</span></div>
+            <div class="scale-track"><div class="scale-fill accent" style="width: 100%"></div></div>
+            <div class="scale-meta">Dorkenwald et al. (2024) &bull; ~50.000.000 sinapsis kimia</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 04: Conclusion & Practical Benefits -->
+    <section class="ed-section" id="kesimpulan">
+      <div class="ed-head">
+        <div>
+          <span class="ed-num">Sintesis 04</span>
+          <h2>Kesimpulan Penelitian &amp; Manfaat Praktis</h2>
+        </div>
+      </div>
+
+      <div class="concl-grid">
+        <div class="concl-editorial">
+          <h3>Kesimpulan Penelitian</h3>
+          <p>Konsorsium FlyWire berhasil menyusun peta pengkabelan sinaptik lengkap pertama pada otak hewan dewasa, mencakup 139.255 neuron dan sekitar 50 juta sinapsis kimia pada <em>Drosophila melanogaster</em>.</p>
+          <p style="margin-bottom: 0;">Peta ini menghubungkan seluruh jalur pemrosesan dari indra hingga perintah otot, sekaligus membuktikan bahwa konektom utuh dapat memprediksi aktivasi sirkuit perilaku secara komputasional.</p>
+        </div>
+
+        <div class="prac-list">
+          <div class="prac-box">
+            <strong>Akselerasi Riset Neurobiologi</strong>
+            <p>Peneliti dapat langsung menelusuri hubungan antar-neuron secara terbuka tanpa harus memetakan ulang jalur anatomi dari nol.</p>
+          </div>
+          <div class="prac-box">
+            <strong>Uji Hipotesis In Silico</strong>
+            <p>Memungkinkan simulasi gangguan atau stimulasi neuron tertentu di komputer sebelum diuji pada serangga hidup di laboratorium.</p>
+          </div>
+          <div class="prac-box">
+            <strong>Acuan Arsitektur Komputasi Efisien</strong>
+            <p>Menyediakan cetak biru bagaimana otak berukuran kurang dari 1 milimeter memproses navigasi visual, penciuman, dan pengambilan keputusan cepat.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 05: Quiz -->
+    <section class="ed-section" id="kuis">
+      <div class="ed-head">
+        <div>
+          <span class="ed-num">Evaluasi 05</span>
+          <h2>Kuis Singkat Jurnal (3 Pertanyaan)</h2>
+        </div>
+        <div class="quiz-controls">
+          <span class="score-pill" id="score-pill">Skor: 0 / 3</span>
+          <button class="reset-quiz-btn" id="reset-quiz-btn" type="button">Ulangi</button>
+        </div>
+      </div>
+      <div id="quiz-container"></div>
+    </section>
+
+    <footer>
+      BioSci Brief &bull; Field Guide Editorial &bull; Sumber: Dorkenwald et al., Nature (2024)
+    </footer>
+  </main>
+
+  <script>
+    // 1. Copy Harvard Citation
+    const citeText = "Dorkenwald, S., Matsliah, A., Sterling, A.R., Schlegel, P., Yu, S.-c., McKellar, C.E. et al. (2024) 'Neuronal wiring diagram of an adult brain', Nature, 634(8032), pp. 124\u2013138. doi: 10.1038/s41586-024-07558-y.";
+    const copyBtn = document.getElementById("copy-cite");
+    copyBtn.addEventListener("click", () => {
+      navigator.clipboard.writeText(citeText).then(() => {
+        copyBtn.textContent = "Sitasi Tersalin!";
+        setTimeout(() => { copyBtn.textContent = "Salin Sitasi"; }, 2000);
+      });
+    });
+
+    // 2. Interactive Brain Atlas (Canvas + Clickable Hotspots + Live Impulses)
+    const canvas = document.getElementById("brain-canvas");
+    const ctx = canvas.getContext("2d");
+
+    const regions = [
+      {
+        id: "optic",
+        num: "1",
+        name: "Lobus Optik (Optic Lobe)",
+        short: "1. Lobus Optik",
+        role: "INPUT PENGLIHATAN",
+        x: 112,
+        y: 162,
+        r: 34,
+        color: "#e07a5f",
+        desc: "Wilayah terbesar di kedua sisi otak lalat buah. Menerima sinyal cahaya, kontras, warna, dan arah gerakan bayangan predator dari mata majemuk sebelum meneruskannya ke pusat otak."
+      },
+      {
+        id: "antennal",
+        num: "2",
+        name: "Lobus Antena (Antennal Lobe)",
+        short: "2. Lobus Antena",
+        role: "INPUT PENCIUMAN",
+        x: 215,
+        y: 190,
+        r: 25,
+        color: "#f2cc8f",
+        desc: "Gerbang pertama sinyal bau dari antena. Memilah senyawa volatil seperti aroma buah matang atau feromon, lalu mengirimkannya ke badan jamur untuk evaluasi dan memori."
+      },
+      {
+        id: "mushroom",
+        num: "3",
+        name: "Badan Jamur (Mushroom Body)",
+        short: "3. Badan Jamur",
+        role: "MEMORI & ASOSIASI",
+        x: 282,
+        y: 96,
+        r: 28,
+        color: "#81b29a",
+        desc: "Pusat pembelajaran asosiatif serangga. Menghubungkan bau atau rasa tertentu dengan pengalaman positif (makanan) atau negatif (bahaya) agar lalat memilih respons tepat."
+      },
+      {
+        id: "central",
+        num: "4",
+        name: "Kompleks Sentral (Central Complex)",
+        short: "4. Kompleks Sentral",
+        role: "KOMPAS & NAVIGASI",
+        x: 345,
+        y: 170,
+        r: 27,
+        color: "#f4a261",
+        desc: "Berfungsi sebagai kompas internal dan pengendali arah gerak. Mengintegrasikan informasi visual dan memori untuk menentukan belokan kiri, kanan, maju, atau menghindar."
+      },
+      {
+        id: "sez",
+        num: "5",
+        name: "Zona Subesofageal & Motorik (SEZ)",
+        short: "5. SEZ & Motorik",
+        role: "PENGECAPAN & PERINTAH OTOT",
+        x: 452,
+        y: 222,
+        r: 30,
+        color: "#6ec1e4",
+        desc: "Memproses rasa manis/pahit sekaligus menjadi jalur keluar neuron menurun (descending neurons) menuju saraf leher dan kaki untuk menjulurkan probosis, berjalan, atau berhenti."
+      }
+    ];
+
+    const stimuli = {
+      odor: {
+        hud: "JALUR AKTIF: AROMA BUAH \u2192 NAVIGASI MENDEKAT",
+        route: ["antennal", "mushroom", "central", "sez"],
+        color: "#f2cc8f",
+        summaryTitle: "Alur Sinyal Aroma Buah Matang",
+        summaryText: "Lobus Antena mendeteksi molekul bau \u2192 Badan Jamur mengenali aroma sumber pakan \u2192 Kompleks Sentral mengarahkan navigasi \u2192 Neuron menurun SEZ memerintahkan kaki bergerak mendekat."
+      },
+      visual: {
+        hud: "JALUR AKTIF: BAYANGAN PREDATOR \u2192 REFLEKS MENGHINDAR",
+        route: ["optic", "central", "sez"],
+        color: "#e07a5f",
+        summaryTitle: "Alur Sinyal Bayangan Mendekat",
+        summaryText: "Lobus Optik mendeteksi pelebaran bayangan cepat \u2192 Kompleks Sentral menghitung arah ancaman \u2192 SEZ memicu neuron menurun untuk melompat atau berbalik arah."
+      },
+      taste: {
+        hud: "JALUR AKTIF: RASA GULA \u2192 REFLEKS MAKAN",
+        route: ["sez", "mushroom", "sez"],
+        color: "#6ec1e4",
+        summaryTitle: "Alur Sinyal Pengecapan Gula",
+        summaryText: "Reseptor rasa di probosis dan kaki mengirim sinyal ke SEZ \u2192 Badan Jamur mencatat nilai hadiah gula \u2192 SEZ mengaktifkan otot probosis untuk mulai makan."
+      }
+    };
+
+    let activeRegionId = "antennal";
+    let activeStimId = "odor";
+    const pulses = [];
+    let tick = 0;
+
+    const pillsEl = document.getElementById("region-pills");
+    const insTitleEl = document.getElementById("ins-title");
+    const insRoleEl = document.getElementById("ins-role");
+    const insDescEl = document.getElementById("ins-desc");
+    const pathReadoutEl = document.getElementById("pathway-readout");
+    const hudLeftEl = document.getElementById("atlas-hud-left");
+
+    function getRegionById(id) {
+      return regions.find(r => r.id === id);
+    }
+
+    function updateInspector() {
+      const reg = getRegionById(activeRegionId);
+      const stim = stimuli[activeStimId];
+
+      pillsEl.innerHTML = regions.map(r =>
+        '<button class="reg-btn ' + (r.id === activeRegionId ? "active" : "") + '" type="button" data-rid="' + r.id + '">' + r.short + "</button>"
+      ).join("");
+
+      pillsEl.querySelectorAll(".reg-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          activeRegionId = btn.dataset.rid;
+          updateInspector();
+        });
+      });
+
+      insTitleEl.textContent = reg.name;
+      insRoleEl.textContent = reg.role;
+      insDescEl.textContent = reg.desc;
+      hudLeftEl.textContent = stim.hud;
+      pathReadoutEl.innerHTML = "<strong>" + stim.summaryTitle + "</strong>" + stim.summaryText;
+    }
+
+    document.querySelectorAll(".stim-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".stim-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        activeStimId = btn.dataset.stim;
+        activeRegionId = stimuli[activeStimId].route[0];
+        pulses.length = 0;
+        spawnPulse();
+        updateInspector();
+      });
+    });
+
+    canvas.addEventListener("click", (evt) => {
+      const rect = canvas.getBoundingClientRect();
+      const scaleX = canvas.width / rect.width;
+      const scaleY = canvas.height / rect.height;
+      const mx = (evt.clientX - rect.left) * scaleX;
+      const my = (evt.clientY - rect.top) * scaleY;
+
+      for (let i = 0; i < regions.length; i++) {
+        const r = regions[i];
+        if (Math.hypot(mx - r.x, my - r.y) <= r.r + 10) {
+          activeRegionId = r.id;
+          updateInspector();
+          break;
+        }
+      }
+    });
+
+    function spawnPulse() {
+      pulses.push({ seg: 0, t: 0, speed: 0.02 + Math.random() * 0.006 });
+    }
+
+    function drawBrainSilhouette() {
+      ctx.save();
+      ctx.fillStyle = "rgba(129, 178, 154, 0.08)";
+      ctx.strokeStyle = "rgba(214, 197, 163, 0.28)";
+      ctx.lineWidth = 2;
+
+      ctx.beginPath();
+      ctx.ellipse(108, 162, 68, 92, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.ellipse(455, 162, 68, 92, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.ellipse(282, 165, 128, 118, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.fillStyle = "rgba(214, 197, 163, 0.35)";
+      ctx.font = "10px monospace";
+      ctx.fillText("SILUET OTAK DROSOPHILA MELANOGASTER (SKALA MIKRON)", 18, 24);
+      ctx.restore();
+    }
+
+    function drawConnections() {
+      const allEdges = [
+        ["optic", "central"],
+        ["optic", "mushroom"],
+        ["antennal", "mushroom"],
+        ["antennal", "central"],
+        ["mushroom", "central"],
+        ["central", "sez"],
+        ["mushroom", "sez"]
+      ];
+
+      allEdges.forEach(pair => {
+        const a = getRegionById(pair[0]);
+        const b = getRegionById(pair[1]);
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.strokeStyle = "rgba(246, 241, 231, 0.16)";
+        ctx.lineWidth = 2;
+        ctx.stroke();
+      });
+
+      const stim = stimuli[activeStimId];
+      for (let i = 0; i < stim.route.length - 1; i++) {
+        const a = getRegionById(stim.route[i]);
+        const b = getRegionById(stim.route[i + 1]);
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.strokeStyle = stim.color;
+        ctx.lineWidth = 3.2;
+        ctx.setLineDash([6, 4]);
+        ctx.stroke();
+        ctx.setLineDash([]);
+      }
+    }
+
+    function animateBrain() {
+      tick++;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawBrainSilhouette();
+      drawConnections();
+
+      const stim = stimuli[activeStimId];
+      if (tick % 48 === 0 && pulses.length < 8) {
+        spawnPulse();
+      }
+
+      for (let i = pulses.length - 1; i >= 0; i--) {
+        const p = pulses[i];
+        p.t += p.speed;
+        if (p.t >= 1) {
+          p.t = 0;
+          p.seg++;
+        }
+        if (p.seg >= stim.route.length - 1) {
+          pulses.splice(i, 1);
+          continue;
+        }
+
+        const a = getRegionById(stim.route[p.seg]);
+        const b = getRegionById(stim.route[p.seg + 1]);
+        const px = a.x + (b.x - a.x) * p.t;
+        const py = a.y + (b.y - a.y) * p.t;
+
+        ctx.beginPath();
+        ctx.arc(px, py, 7, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(253, 224, 71, 0.28)";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(px, py, 3.8, 0, Math.PI * 2);
+        ctx.fillStyle = "#fde047";
+        ctx.fill();
+      }
+
+      regions.forEach(r => {
+        const isSelected = r.id === activeRegionId;
+        const pulseRing = isSelected ? 4 + Math.sin(tick * 0.1) * 3 : 0;
+
+        if (isSelected) {
+          ctx.beginPath();
+          ctx.arc(r.x, r.y, r.r + pulseRing, 0, Math.PI * 2);
+          ctx.strokeStyle = "#fde047";
+          ctx.lineWidth = 2;
+          ctx.stroke();
+        }
+
+        ctx.beginPath();
+        ctx.arc(r.x, r.y, r.r, 0, Math.PI * 2);
+        ctx.fillStyle = isSelected ? r.color : "rgba(35, 66, 50, 0.85)";
+        ctx.fill();
+        ctx.strokeStyle = r.color;
+        ctx.lineWidth = 2.5;
+        ctx.stroke();
+
+        ctx.fillStyle = isSelected ? "#1f1d1a" : "#f6f1e7";
+        ctx.font = "bold 13px monospace";
+        ctx.textAlign = "center";
+        ctx.fillText(r.num, r.x, r.y + 4);
+
+        ctx.fillStyle = "#e2ece5";
+        ctx.font = "bold 10px sans-serif";
+        ctx.fillText(r.short.replace(/^\d+\.\s*/, ""), r.x, r.y + r.r + 14);
+        ctx.textAlign = "left";
+      });
+
+      requestAnimationFrame(animateBrain);
+    }
+
+    updateInspector();
+    spawnPulse();
+    animateBrain();
+
+    // 3. Synaptic Threshold Simulator (Excitation vs Inhibition Sliders)
+    const excSlider = document.getElementById("exc-slider");
+    const inhSlider = document.getElementById("inh-slider");
+    const excValEl = document.getElementById("exc-val");
+    const inhValEl = document.getElementById("inh-val");
+    const spikeSvg = document.getElementById("spike-svg");
+    const decisionBox = document.getElementById("decision-box");
+
+    function renderSynapseSim() {
+      const exc = Number(excSlider.value);
+      const inh = Number(inhSlider.value);
+      excValEl.textContent = exc + "%";
+      inhValEl.textContent = inh + "%";
+
+      const net = Math.max(-60, Math.min(100, exc - inh));
+      const threshold = 25;
+
+      let path = "M 15,96 ";
+      const spikeCount = net >= threshold ? Math.max(1, Math.round((net - threshold) / 14) + 1) : 0;
+
+      for (let x = 15; x <= 405; x += 6) {
+        let y = 96 - Math.max(-18, net * 0.42);
+        if (spikeCount > 0) {
+          const spacing = 360 / (spikeCount + 1);
+          for (let s = 1; s <= spikeCount; s++) {
+            const center = 25 + s * spacing;
+            if (Math.abs(x - center) < 5) {
+              y = 18;
+            } else if (Math.abs(x - (center + 7)) < 4) {
+              y = 110;
+            }
+          }
+        }
+        path += "L " + x + "," + Math.round(y) + " ";
+      }
+
+      const threshY = 96 - threshold * 0.42;
+      spikeSvg.innerHTML =
+        '<line x1="15" y1="' + threshY + '" x2="405" y2="' + threshY + '" stroke="#b8502b" stroke-width="1.3" stroke-dasharray="4 4"/>' +
+        '<text x="20" y="' + (threshY - 5) + '" fill="#b8502b" font-size="9" font-family="monospace">AMBANG PICU SINAPSIS</text>' +
+        '<path d="' + path + '" fill="none" stroke="' + (net >= threshold ? "#234232" : "#8a7f70") + '" stroke-width="2.4"/>' +
+        '<text x="20" y="122" fill="#57524a" font-size="9" font-family="monospace">AKTIVITAS NEURON MOTORIK MENURUN (WAKTU &rarr;)</text>';
+
+      if (net >= 50) {
+        decisionBox.innerHTML =
+          '<span class="decision-badge badge-go">OUTPUT: AKTIVASI MOTORIK KUAT (' + spikeCount + ' LONJAKAN)</span>' +
+          '<p style="font-size:0.85rem;">Sinyal eksitatori jauh melampaui inhibisi (skor bersih +' + net + '). Neuron motorik menembakkan potensial aksi beruntun untuk segera menjalankan perilaku (mendekati pakan atau menghindar cepat).</p>';
+      } else if (net >= threshold) {
+        decisionBox.innerHTML =
+          '<span class="decision-badge badge-wait">OUTPUT: RESPONS RINGAN / SIAGA (' + spikeCount + ' LONJAKAN)</span>' +
+          '<p style="font-size:0.85rem;">Sinyal bersih (+' + net + ') tepat melewati ambang picu. Lalat mulai menoleh atau menjulurkan probosis perlahan sambil menunggu konfirmasi indra tambahan.</p>';
+      } else {
+        decisionBox.innerHTML =
+          '<span class="decision-badge badge-halt">OUTPUT: PERILAKU DITAHAN / DIAM</span>' +
+          '<p style="font-size:0.85rem;">Sinyal inhibisi menahan eksitasi (skor bersih ' + (net >= 0 ? "+" : "") + net + ', di bawah ambang +' + threshold + '). Neuron motorik tetap tenang sehingga lalat tidak bereaksi secara impulsif.</p>';
+      }
+    }
+
+    excSlider.addEventListener("input", renderSynapseSim);
+    inhSlider.addEventListener("input", renderSynapseSim);
+    renderSynapseSim();
+
+    // 4. Quiz with Live Score & Reset Button
+    const quizData = [
+      {
+        q: "1. Berapa jumlah neuron dan sinapsis kimia yang dipetakan pada otak utuh Drosophila melanogaster dewasa dalam studi FlyWire ini?",
+        options: [
+          "139.255 neuron dan sekitar 50 juta sinapsis kimia",
+          "302 neuron dan sekitar 7.000 sinapsis kimia",
+          "3.016 neuron dan sekitar 548.000 sinapsis kimia"
+        ],
+        correct: 0,
+        correctExp: "Jawaban Benar: Tepat. Dorkenwald et al. (2024) memetakan 139.255 neuron dan sekitar 50 juta sinapsis kimia pada otak lalat buah betina dewasa.",
+        wrongExp: "Kurang Tepat: Otak Drosophila dewasa yang dipetakan FlyWire memiliki 139.255 neuron dan sekitar 50 juta sinapsis (302 adalah C. elegans; 3.016 adalah larva lalat buah)."
+      },
+      {
+        q: "2. Metode apa yang digunakan konsorsium FlyWire untuk merekonstruksi diagram pengkabelan otak secara akurat?",
+        options: [
+          "Segmentasi kecerdasan buatan pada citra mikroskop elektron yang diverifikasi manual oleh kolaborasi peneliti global",
+          "Pengamatan mata telanjang menggunakan kaca pembesar tanpa mikroskop elektron",
+          "Hanya pengurutan DNA mitokondria tanpa pencitraan jaringan saraf"
+        ],
+        correct: 0,
+        correctExp: "Jawaban Benar: Akurat. Rekonstruksi 3D memadukan citra mikroskop elektron, segmentasi otomatis berbasis AI, dan koreksi manual ratusan peneliti.",
+        wrongExp: "Kurang Tepat: Peta ini disusun dari citra mikroskop elektron beresolusi tinggi dengan segmentasi AI serta koreksi manual oleh konsorsium global FlyWire."
+      },
+      {
+        q: "3. Apa bukti bahwa peta konektom utuh ini mampu menjelaskan fungsi otak hidup secara fungsional?",
+        options: [
+          "Simulasi komputer berbasis konektom mampu memprediksi aktivasi sirkuit perilaku nyata seperti makan dan pengendalian gerak",
+          "Konektom menunjukkan lalat buah tidak memiliki hubungan antara indra dan otot",
+          "Peta tersebut membuktikan bahwa serangga tidak memakai sinapsis kimia"
+        ],
+        correct: 0,
+        correctExp: "Jawaban Benar: Tepat. Pemodelan jaringan komputer dari konektom utuh ini berhasil memprediksi aktivasi sirkuit perilaku makan dan kontrol gerak.",
+        wrongExp: "Kurang Tepat: Konektom utuh ini dipakai menyusun simulasi komputasional yang akurat memprediksi aktivasi sirkuit perilaku nyata pada lalat buah."
+      }
+    ];
+
+    const quizContainer = document.getElementById("quiz-container");
+    const scorePill = document.getElementById("score-pill");
+    const resetQuizBtn = document.getElementById("reset-quiz-btn");
+    let score = 0;
+
+    function renderQuiz() {
+      score = 0;
+      scorePill.textContent = "Skor: 0 / " + quizData.length;
+      quizContainer.innerHTML = "";
+
+      quizData.forEach((item, qIdx) => {
+        const box = document.createElement("div");
+        box.className = "quiz-item";
+        box.innerHTML =
+          '<div class="quiz-q">' + item.q + "</div>" +
+          '<div class="quiz-opts">' +
+            item.options.map((opt, oIdx) => '<button class="opt-btn" type="button" data-o="' + oIdx + '">' + opt + "</button>").join("") +
+          "</div>" +
+          '<div class="quiz-exp" id="exp-' + qIdx + '"></div>';
+        quizContainer.appendChild(box);
+
+        const btns = box.querySelectorAll(".opt-btn");
+        const expEl = box.querySelector("#exp-" + qIdx);
+
+        btns.forEach(btn => {
+          btn.addEventListener("click", () => {
+            const chosen = Number(btn.dataset.o);
+            btns.forEach(b => { b.disabled = true; });
+            expEl.classList.remove("is-correct", "is-wrong");
+
+            if (chosen === item.correct) {
+              btn.classList.add("correct");
+              score++;
+              scorePill.textContent = "Skor: " + score + " / " + quizData.length;
+              expEl.textContent = item.correctExp;
+              expEl.classList.add("is-correct");
+            } else {
+              btn.classList.add("wrong");
+              btns[item.correct].classList.add("correct");
+              expEl.textContent = item.wrongExp;
+              expEl.classList.add("is-wrong");
+            }
+            expEl.style.display = "block";
+          });
+        });
+      });
+    }
+
+    resetQuizBtn.addEventListener("click", renderQuiz);
+    renderQuiz();
+  </script>
+</body>
+</html>
