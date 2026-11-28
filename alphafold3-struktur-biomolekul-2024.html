@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AlphaFold 3: Prediksi Struktur Interaksi Protein, DNA, RNA &amp; Obat (Nature, 2024)</title>
+  <meta name="description" content="Model AI berbasis difusi AlphaFold 3 memprediksi struktur gabungan protein, DNA, RNA, dan ligan obat pada tingkat atom dengan akurasi ~76% pada uji PoseBusters." />
+  <meta name="category" content="Kesehatan & Terapi Gen" />
+  <meta name="date" content="2026-11-28" />
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --surface: #ffffff;
+      --surface-dark: #0b1324;
+      --surface-dark-2: #142038;
+      --text: #0f172a;
+      --muted: #475569;
+      --primary: #1d4ed8;
+      --primary-soft: #dbeafe;
+      --cyan: #0891b2;
+      --emerald: #059669;
+      --emerald-soft: #d1fae5;
+      --danger: #dc2626;
+      --danger-soft: #fee2e2;
+      --amber: #d97706;
+      --border: #dde5f0;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding-bottom: 4rem;
+    }
+
+    /* Sticky Clinical Dashboard Navbar */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .topbar-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .brand-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 800;
+      font-size: 0.9rem;
+    }
+
+    .brand-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--primary);
+      display: inline-block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.1rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--muted);
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover { color: var(--primary); }
+
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 0;
+    }
+
+    /* Split 2-Column Hero */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.45fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 820px) {
+      .hero-grid { grid-template-columns: 1fr; }
+    }
+
+    .hero-main {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .pill-row {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.9rem;
+    }
+
+    .pill {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.7rem;
+      border-radius: 6px;
+      letter-spacing: 0.02em;
+    }
+
+    .pill-blue { background: var(--primary-soft); color: var(--primary); }
+    .pill-dark { background: #e2e8f0; color: #1e293b; font-family: var(--mono); }
+
+    .hero-main h1 {
+      font-size: clamp(1.45rem, 3vw, 2.02rem);
+      line-height: 1.22;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-lead {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .cite-strip {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--primary);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      font-size: 0.8rem;
+      color: #334155;
+    }
+
+    .copy-btn {
+      background: var(--text);
+      color: #ffffff;
+      border: none;
+      padding: 0.48rem 0.9rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.78rem;
+      cursor: pointer;
+    }
+
+    .copy-btn:hover { background: var(--primary); }
+
+    .hero-outcome {
+      background: linear-gradient(155deg, var(--surface-dark) 0%, #152b54 100%);
+      color: #f8fafc;
+      border-radius: 20px;
+      padding: 1.6rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.1rem;
+    }
+
+    .outcome-kicker {
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #38bdf8;
+    }
+
+    .big-stat {
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+    }
+
+    .big-stat .num {
+      font-family: var(--mono);
+      font-size: 3rem;
+      font-weight: 800;
+      color: #34d399;
+      line-height: 1;
+    }
+
+    .big-stat .unit {
+      font-size: 0.88rem;
+      color: #cbd5e1;
+    }
+
+    .outcome-mini-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.65rem;
+    }
+
+    .mini-metric {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 0.7rem 0.85rem;
+    }
+
+    .mini-metric strong {
+      display: block;
+      font-family: var(--mono);
+      font-size: 1.12rem;
+      color: #ffffff;
+    }
+
+    .mini-metric span {
+      font-size: 0.75rem;
+      color: #94a3b8;
+    }
+
+    /* Section Panels */
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.6rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.2rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.9rem;
+    }
+
+    .panel-tag {
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .panel-head h2 {
+      font-size: 1.28rem;
+      line-height: 1.25;
+      margin-top: 0.15rem;
+    }
+
+    .panel-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      max-width: 660px;
+    }
+
+    /* Section 1: Latar Belakang & Metode */
+    .context-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    @media (max-width: 820px) {
+      .context-grid { grid-template-columns: 1fr; }
+    }
+
+    .ctx-card {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--primary);
+      border-radius: 14px;
+      padding: 1.1rem 1.15rem;
+    }
+
+    .ctx-card.accent-amber { border-top-color: var(--amber); }
+    .ctx-card.accent-green { border-top-color: var(--emerald); }
+
+    .ctx-label {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.35rem;
+      display: block;
+    }
+
+    .ctx-card.accent-amber .ctx-label { color: var(--amber); }
+    .ctx-card.accent-green .ctx-label { color: var(--emerald); }
+
+    .ctx-card h3 {
+      font-size: 0.98rem;
+      margin-bottom: 0.4rem;
+      color: var(--text);
+    }
+
+    .ctx-card p {
+      font-size: 0.87rem;
+      color: var(--muted);
+    }
+
+    /* Section 2: Diffusion & Docking Canvas Lab */
+    .lab-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 1rem;
+    }
+
+    .mode-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .lab-btn {
+      padding: 0.55rem 0.9rem;
+      border-radius: 10px;
+      border: 1.5px solid var(--border);
+      background: #f8fafc;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .lab-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #ffffff;
+    }
+
+    .action-btn {
+      padding: 0.55rem 0.95rem;
+      border-radius: 10px;
+      border: none;
+      background: #0f172a;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.82rem;
+      cursor: pointer;
+    }
+
+    .action-btn:hover { background: #334155; }
+
+    .canvas-shell {
+      background: var(--surface-dark);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #1e293b;
+    }
+
+    .canvas-hud {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      background: var(--surface-dark-2);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: #e2e8f0;
+    }
+
+    .hud-stats {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .hud-good { color: #34d399; font-weight: 700; }
+    .hud-cyan { color: #38bdf8; font-weight: 700; }
+
+    #diffusion-canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: radial-gradient(circle at 50% 50%, #152546 0%, #0b1324 78%);
+    }
+
+    .diffusion-scrubber {
+      padding: 0.85rem 1rem;
+      background: #101b33;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    @media (max-width: 640px) {
+      .diffusion-scrubber { grid-template-columns: 1fr; }
+    }
+
+    .scrub-label {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: #cbd5e1;
+      margin-bottom: 0.35rem;
+    }
+
+    .diffusion-scrubber input[type="range"] {
+      width: 100%;
+      accent-color: #38bdf8;
+      cursor: pointer;
+    }
+
+    .canvas-caption {
+      padding: 0.85rem 1rem;
+      font-size: 0.86rem;
+      color: #cbd5e1;
+      background: #0d172c;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Section 3: Benchmark Data & Confidence Filter Simulator */
+    .bench-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    @media (max-width: 820px) {
+      .bench-grid { grid-template-columns: 1fr; }
+    }
+
+    .bench-card {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.15rem;
+    }
+
+    .bench-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .bench-sub {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .bar-item {
+      margin-bottom: 0.9rem;
+    }
+
+    .bar-head {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.84rem;
+      font-weight: 700;
+      margin-bottom: 0.28rem;
+      gap: 0.5rem;
+    }
+
+    .bar-track {
+      height: 15px;
+      background: #e2e8f0;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 999px;
+    }
+
+    .fill-af3 { background: linear-gradient(90deg, #1d4ed8, #059669); }
+    .fill-vina { background: linear-gradient(90deg, #0284c7, #38bdf8); }
+    .fill-rfaa { background: linear-gradient(90deg, #64748b, #94a3b8); }
+
+    .bar-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.22rem;
+    }
+
+    .conf-controls {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.15rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .slider-block label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.84rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+
+    .slider-block input[type="range"] {
+      width: 100%;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+
+    .conf-readout {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.85rem;
+      font-size: 0.85rem;
+    }
+
+    .status-tag {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 0.18rem 0.55rem;
+      border-radius: 6px;
+      margin-bottom: 0.4rem;
+    }
+
+    .tag-high { background: var(--emerald-soft); color: #065f46; }
+    .tag-mid { background: #fef3c7; color: #92400e; }
+    .tag-low { background: var(--danger-soft); color: #991b1b; }
+
+    /* Pipeline Stepper */
+    .pipe-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 820px) {
+      .pipe-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 500px) {
+      .pipe-grid { grid-template-columns: 1fr; }
+    }
+
+    .pipe-step {
+      background: #f8fafc;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 0.95rem;
+      cursor: pointer;
+      transition: all 0.15s;
+      text-align: left;
+    }
+
+    .pipe-step.active {
+      background: var(--primary-soft);
+      border-color: var(--primary);
+    }
+
+    .pipe-step span {
+      display: block;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.2rem;
+    }
+
+    .pipe-step strong {
+      font-size: 0.88rem;
+      color: var(--text);
+    }
+
+    .pipe-detail {
+      margin-top: 0.9rem;
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      border-radius: 0 12px 12px 0;
+      padding: 0.95rem 1.1rem;
+      font-size: 0.88rem;
+      color: var(--text);
+    }
+
+    /* Conclusion & Practical */
+    .bento-concl {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 760px) {
+      .bento-concl { grid-template-columns: 1fr; }
+    }
+
+    .concl-main {
+      background: #eff6ff;
+      border: 1.5px solid #bfdbfe;
+      border-radius: 14px;
+      padding: 1.2rem;
+    }
+
+    .concl-main h3 { color: #1e3a8a; font-size: 1.02rem; margin-bottom: 0.5rem; }
+    .concl-main p { font-size: 0.9rem; margin-bottom: 0.7rem; }
+
+    .practical-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .prac-item {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--emerald);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+    }
+
+    .prac-item strong { display: block; font-size: 0.88rem; margin-bottom: 0.2rem; }
+    .prac-item p { font-size: 0.84rem; color: var(--muted); }
+
+    /* Quiz */
+    .quiz-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .score-pill {
+      font-family: var(--mono);
+      background: #f1f5f9;
+      border: 1px solid var(--border);
+      font-weight: 700;
+      font-size: 0.82rem;
+      padding: 0.38rem 0.75rem;
+      border-radius: 8px;
+    }
+
+    .reset-quiz-btn {
+      background: #ffffff;
+      border: 1.5px solid var(--border);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.82rem;
+      padding: 0.38rem 0.8rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .reset-quiz-btn:hover { border-color: var(--primary); }
+
+    .quiz-item {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.1rem;
+      margin-bottom: 0.95rem;
+      background: #f8fafc;
+    }
+
+    .quiz-q { font-weight: 700; font-size: 0.94rem; margin-bottom: 0.7rem; }
+    .quiz-opts { display: flex; flex-direction: column; gap: 0.45rem; }
+
+    .opt-btn {
+      text-align: left;
+      padding: 0.65rem 0.9rem;
+      border-radius: 10px;
+      border: 1.5px solid var(--border);
+      background: #ffffff;
+      font-size: 0.88rem;
+      cursor: pointer;
+    }
+
+    .opt-btn:hover:not(:disabled) { border-color: var(--primary); }
+    .opt-btn.correct { background: #dcfce7; border-color: #16a34a; color: #14532d; font-weight: 700; }
+    .opt-btn.wrong { background: #fee2e2; border-color: #dc2626; color: #7f1d1d; }
+
+    .quiz-exp {
+      margin-top: 0.65rem;
+      font-size: 0.84rem;
+      display: none;
+      border-radius: 10px;
+      padding: 0.7rem 0.85rem;
+    }
+
+    .quiz-exp.is-correct { background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; }
+    .quiz-exp.is-wrong { background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
+
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand-back" href="./">
+        <span class="brand-dot"></span>
+        &larr; Katalog BioSci Brief
+      </a>
+      <div class="nav-links">
+        <a href="#latar-metode">Latar &amp; Metode</a>
+        <a href="#lab-difusi">Lab Difusi Live</a>
+        <a href="#benchmark">Data &amp; pLDDT</a>
+        <a href="#kesimpulan">Kesimpulan</a>
+        <a href="#kuis">Kuis</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <!-- 1. Split Clinical Dashboard Hero -->
+    <section class="hero-grid">
+      <div class="hero-main">
+        <div>
+          <div class="pill-row">
+            <span class="pill pill-blue">Kesehatan &amp; Terapi Gen &bull; AI Biomedis</span>
+            <span class="pill pill-dark">Nature &bull; Bioinformatika Struktural</span>
+          </div>
+          <h1>AlphaFold 3: Prediksi Struktur Interaksi Protein, DNA, RNA, dan Obat dalam Satu Model</h1>
+          <p class="hero-lead">Mengganti pendekatan pelipatan protein tradisional dengan arsitektur Pairformer dan jaringan difusi atomik untuk memetakan interaksi hampir seluruh kelas biomolekul seluler.</p>
+        </div>
+        <div class="cite-strip">
+          <div>
+            <strong>Referensi (Harvard):</strong> Abramson, J., Adler, J., Dunger, J., Evans, R., Green, T., Pritzel, A. et al. (2024) &lsquo;Accurate structure prediction of biomolecular interactions with AlphaFold 3&rsquo;, <em>Nature</em>, 630(8016), pp. 493&ndash;500. doi: 10.1038/s41586-024-07487-w.
+          </div>
+          <button class="copy-btn" id="copy-cite" type="button">Salin Sitasi</button>
+        </div>
+      </div>
+
+      <aside class="hero-outcome">
+        <div>
+          <div class="outcome-kicker">Uji Patok Docking Protein&ndash;Ligan (PoseBusters)</div>
+          <div class="big-stat">
+            <span class="num">~76%</span>
+            <span class="unit">sukses (RMSD &lt; 2 &Aring;) tanpa info kantong</span>
+          </div>
+        </div>
+        <div class="outcome-mini-grid">
+          <div class="mini-metric">
+            <strong>~2&times;</strong>
+            <span>Akurasi antibodi vs AF-Multimer</span>
+          </div>
+          <div class="mini-metric">
+            <strong>48 Blok</strong>
+            <span>Arsitektur inti Pairformer</span>
+          </div>
+          <div class="mini-metric">
+            <strong>All-Atom</strong>
+            <span>Protein, DNA, RNA, Ligan, Ion</span>
+          </div>
+          <div class="mini-metric">
+            <strong>Difusi</strong>
+            <span>Koordinat atom 3D langsung</span>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- 2. Latar Belakang & Metode Penelitian -->
+    <section class="panel" id="latar-metode">
+      <div class="panel-head">
+        <div>
+          <span class="panel-tag">Pengantar Riset &bull; Konteks &amp; Arsitektur</span>
+          <h2>Latar Belakang &amp; Metode AlphaFold 3</h2>
+        </div>
+        <p class="panel-desc">Pahami keterbatasan model sebelumnya dan desain arsitektur baru sebelum menjalankan simulasi difusi biomolekul di bawah.</p>
+      </div>
+
+      <div class="context-grid">
+        <div class="ctx-card accent-amber">
+          <span class="ctx-label">01 &bull; Latar Belakang</span>
+          <h3>Batas Prediksi Protein Tunggal</h3>
+          <p>AlphaFold 2 berhasil memecahkan struktur protein tunggal dan multimer, tetapi reaksi biologis nyata bergantung pada ikatan protein dengan molekul lain seperti kandidat obat, untai DNA/RNA, ion logam, serta modifikasi pascatranslasi.</p>
+        </div>
+
+        <div class="ctx-card">
+          <span class="ctx-label">02 &bull; Cakupan Biomolekul</span>
+          <h3>Kompleks Seluler Terpadu</h3>
+          <p>Model dilatih menggunakan data struktur eksperimental Protein Data Bank (PDB) yang mencakup protein, asam nukleat, ligan kecil, ion, hingga ikatan kovalen dan modifikasi kimia (fosforilasi, glikosilasi) dalam satu representasi atomik.</p>
+        </div>
+
+        <div class="ctx-card accent-green">
+          <span class="ctx-label">03 &bull; Metode Arsitektur</span>
+          <h3>Pairformer + Modul Difusi</h3>
+          <p>Modul <em>Evoformer</em> disederhanakan menjadi <em>Pairformer</em> (48 blok) yang mengurangi beban pemrosesan MSA. Selanjutnya, jaringan difusi memprediksi koordinat 3D atom langsung dari awan acak, disertai distilasi silang untuk menekan halusinasi struktur tak teratur.</p>
+        </div>
+      </div>
+
+      <div class="pipe-grid" id="pipe-grid"></div>
+      <div class="pipe-detail" id="pipe-detail"></div>
+    </section>
+
+    <!-- 3. Eksperimen Visual 01: Live Diffusion & Docking Simulator -->
+    <section class="panel" id="lab-difusi">
+      <div class="panel-head">
+        <div>
+          <span class="panel-tag">Eksperimen Visual 01 &bull; Simulasi Difusi Atomik</span>
+          <h2>Lab Difusi &amp; Docking Biomolekul Secara Langsung</h2>
+        </div>
+        <p class="panel-desc">Pilih jenis kompleks biomolekul untuk melihat cara jaringan difusi mengubah awan atom acak menjadi struktur terlipat dan terikat presisi, atau geser tahap difusi secara manual.</p>
+      </div>
+
+      <div class="lab-toolbar">
+        <div class="mode-group">
+          <button class="lab-btn active" type="button" data-complex="ligand">1. Protein + Ligan Obat</button>
+          <button class="lab-btn" type="button" data-complex="dna">2. Protein + Heliks DNA</button>
+          <button class="lab-btn" type="button" data-complex="antibody">3. Antibodi + Antigen</button>
+        </div>
+        <button class="action-btn" id="replay-diff-btn" type="button">&#8635; Ulangi Proses Difusi</button>
+      </div>
+
+      <div class="canvas-shell">
+        <div class="canvas-hud">
+          <div id="hud-complex">KOMPLEKS: PROTEIN TARGET + LIGAN OBAT</div>
+          <div class="hud-stats">
+            <span>Tahap Difusi: <span class="hud-cyan" id="hud-step">200 / 200</span></span>
+            <span>Status: <span class="hud-good" id="hud-status">TERLIPAT &amp; TERIKAT</span></span>
+          </div>
+        </div>
+        <canvas id="diffusion-canvas" width="840" height="330"></canvas>
+        <div class="diffusion-scrubber">
+          <div>
+            <div class="scrub-label">
+              <span>Langkah Denoising Difusi (0 = Awan Atom Acak &rarr; 200 = Struktur 3D Final)</span>
+              <span id="scrub-val">Langkah 200</span>
+            </div>
+            <input type="range" id="diff-slider" min="0" max="200" value="200" />
+          </div>
+          <button class="action-btn" id="toggle-play-btn" type="button">Jeda / Putar</button>
+        </div>
+        <div class="canvas-caption" id="canvas-caption">
+          Pada tahap awal difusi (langkah 0), posisi atom masih berupa awan acak. Modul difusi menghapus derau sedikit demi sedikit hingga membentuk kantong aktif protein dan menempatkan ligan obat secara presisi tanpa informasi lokasi kantong sebelumnya.
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Eksperimen Visual 02: Benchmark PoseBusters & Filter Kepercayaan -->
+    <section class="panel" id="benchmark">
+      <div class="panel-head">
+        <div>
+          <span class="panel-tag">Eksperimen Visual 02 &bull; Data Uji Patok &amp; Validasi</span>
+          <h2>Perbandingan Akurasi PoseBusters &amp; Simulator Ambang pLDDT</h2>
+        </div>
+        <p class="panel-desc">Bandingkan tingkat keberhasilan docking protein&ndash;ligan dan geser skor kepercayaan (pLDDT) untuk memahami bagaimana peneliti membedakan struktur akurat dari daerah rawan halusinasi.</p>
+      </div>
+
+      <div class="bench-grid">
+        <div class="bench-card">
+          <h3>Tingkat Keberhasilan Uji PoseBusters (RMSD &lt; 2 &Aring;)</h3>
+          <p class="bench-sub">Persentase prediksi posisi ikatan ligan obat pada protein target yang valid secara kimia dan akurat mendekati struktur eksperimental (Abramson et al., 2024).</p>
+
+          <div class="bar-item">
+            <div class="bar-head"><span>AlphaFold 3 (Tanpa Info Kantong Ikatan)</span><span style="color: var(--emerald);">~76%</span></div>
+            <div class="bar-track"><div class="bar-fill fill-af3" style="width: 76%"></div></div>
+            <div class="bar-note">Memprediksi pelipatan protein sekaligus penempatan ligan secara serentak pada tingkat atom.</div>
+          </div>
+
+          <div class="bar-item">
+            <div class="bar-head"><span>AutoDock Vina (Diberi Lokasi Kantong Ikatan)</span><span style="color: var(--cyan);">~52%</span></div>
+            <div class="bar-track"><div class="bar-fill fill-vina" style="width: 52%"></div></div>
+            <div class="bar-note">Perangkat lunak docking fisika klasik; tetap tertinggal meski sudah dibantu koordinat kantong aktif.</div>
+          </div>
+
+          <div class="bar-item" style="margin-bottom: 0;">
+            <div class="bar-head"><span>RoseTTAFold All-Atom (Model AI Pembanding)</span><span style="color: var(--muted);">~42%</span></div>
+            <div class="bar-track"><div class="bar-fill fill-rfaa" style="width: 42%"></div></div>
+            <div class="bar-note">Model berbasis jaringan saraf sebelumnya untuk prediksi kompleks biomolekul umum.</div>
+          </div>
+        </div>
+
+        <div class="conf-controls">
+          <div>
+            <h3 style="font-size: 1rem; margin-bottom: 0.25rem;">Inspektor Skor Kepercayaan (pLDDT)</h3>
+            <p style="font-size: 0.82rem; color: var(--muted);">Geser skor kepercayaan prediksi per atom untuk menilai reliabilitas struktur dan risiko halusinasi difusi:</p>
+          </div>
+
+          <div class="slider-block">
+            <label for="plddt-slider">
+              <span>Skor pLDDT Wilayah Struktur</span>
+              <span id="plddt-val" style="font-family: var(--mono); color: var(--primary);">92 / 100</span>
+            </label>
+            <input type="range" id="plddt-slider" min="35" max="98" value="92" />
+          </div>
+
+          <svg id="conf-svg" viewBox="0 0 360 95" width="100%" style="background: #ffffff; border: 1px solid #dde5f0; border-radius: 10px;" aria-label="Visualisasi Pita Kepercayaan pLDDT"></svg>
+
+          <div class="conf-readout" id="conf-readout"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Kesimpulan & Manfaat Praktis -->
+    <section class="panel" id="kesimpulan">
+      <div class="panel-head">
+        <div>
+          <span class="panel-tag">Sintesis Riset</span>
+          <h2>Kesimpulan Penelitian &amp; Manfaat Praktis</h2>
+        </div>
+      </div>
+
+      <div class="bento-concl">
+        <div class="concl-main">
+          <h3>Kesimpulan Utama</h3>
+          <p>AlphaFold 3 memprediksi struktur gabungan protein, DNA, RNA, molekul kecil, ion, dan modifikasi pascatranslasi dengan akurasi tinggi melalui arsitektur Pairformer dan jaringan difusi pada koordinat atom langsung.</p>
+          <p style="margin-bottom: 0;">Pada uji PoseBusters, akurasi prediksi protein&ndash;ligan mencapai sekitar 76% (melampaui AutoDock Vina ~52% dan RoseTTAFold All-Atom ~42%), sementara prediksi antibodi&ndash;antigen meningkat sekitar dua kali lipat dari AlphaFold-Multimer v2.3.</p>
+        </div>
+
+        <div class="practical-stack">
+          <div class="prac-item">
+            <strong>Akselerasi Penapisan Obat</strong>
+            <p>Mempercepat seleksi kandidat molekul obat terhadap target enzim atau reseptor penyakit sebelum uji sintesis di laboratorium.</p>
+          </div>
+          <div class="prac-item">
+            <strong>Desain Antibodi Terapeutik</strong>
+            <p>Memperbaiki akurasi pemetaan ikatan antibodi&ndash;antigen untuk pengembangan imunoterapi dan vaksin presisi.</p>
+          </div>
+          <div class="prac-item">
+            <strong>Analisis Dampak Mutasi Genetik</strong>
+            <p>Membantu menilai pengaruh mutasi asam nukleat atau modifikasi kimia protein terhadap stabilitas kompleks biologis.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Kuis Singkat (3 Pertanyaan) -->
+    <section class="panel" id="kuis">
+      <div class="panel-head">
+        <div>
+          <span class="panel-tag">Uji Pemahaman</span>
+          <h2>Kuis Singkat Jurnal (3 Pertanyaan)</h2>
+        </div>
+        <div class="quiz-controls">
+          <span class="score-pill" id="score-pill">Skor: 0 / 3</span>
+          <button class="reset-quiz-btn" id="reset-quiz-btn" type="button">Ulangi</button>
+        </div>
+      </div>
+      <div id="quiz-container"></div>
+    </section>
+
+    <footer>
+      BioSci Brief &bull; Clinical Dashboard Interaktif &bull; Sumber: Abramson et al., Nature (2024)
+    </footer>
+  </main>
+
+  <script>
+    // 1. Copy Harvard Citation
+    const citeText = "Abramson, J., Adler, J., Dunger, J., Evans, R., Green, T., Pritzel, A. et al. (2024) 'Accurate structure prediction of biomolecular interactions with AlphaFold 3', Nature, 630(8016), pp. 493\u2013500. doi: 10.1038/s41586-024-07487-w.";
+    const copyBtn = document.getElementById("copy-cite");
+    copyBtn.addEventListener("click", () => {
+      navigator.clipboard.writeText(citeText).then(() => {
+        copyBtn.textContent = "Sitasi Tersalin!";
+        setTimeout(() => { copyBtn.textContent = "Salin Sitasi"; }, 2000);
+      });
+    });
+
+    // 2. Interactive Architecture Pipeline Stepper
+    const pipeSteps = [
+      {
+        code: "MODUL 01",
+        title: "Input Representasi Atom",
+        desc: "Urutan protein, DNA, RNA, grafik kimia ligan obat, ion, dan modifikasi kovalen dikodekan menjadi token representasi tunggal tanpa pembatasan hanya pada 20 asam amino standar."
+      },
+      {
+        code: "MODUL 02",
+        title: "Pairformer (48 Blok)",
+        desc: "Menggantikan Evoformer dengan meminimalkan pemrosesan MSA dan berfokus pada matriks pasangan (pair representation) untuk menangkap interaksi spasial dan kimia antar-residu maupun antar-molekul."
+      },
+      {
+        code: "MODUL 03",
+        title: "Modul Difusi Generatif",
+        desc: "Menghapus derau secara bertahap dari awan koordinat atom acak hingga terbentuk posisi 3D seluruh atom secara langsung, memungkinkan pemodelan bentuk kompleks molekul non-protein."
+      },
+      {
+        code: "MODUL 04",
+        title: "Kalibrasi Kepercayaan & Anti-Halusinasi",
+        desc: "Menghasilkan skor kepercayaan per atom (pLDDT) dan antarmuka (ipTM). Pelatihan distilasi silang dari AlphaFold-Multimer v2.3 mencegah difusi mengarang struktur heliks palsu pada daerah tak teratur."
+      }
+    ];
+
+    let activePipe = 0;
+    const pipeGridEl = document.getElementById("pipe-grid");
+    const pipeDetailEl = document.getElementById("pipe-detail");
+
+    function renderPipe() {
+      pipeGridEl.innerHTML = pipeSteps.map((s, idx) =>
+        '<button class="pipe-step ' + (idx === activePipe ? "active" : "") + '" type="button" data-pidx="' + idx + '">' +
+          "<span>" + s.code + "</span>" +
+          "<strong>" + s.title + "</strong>" +
+        "</button>"
+      ).join("");
+      pipeDetailEl.textContent = pipeSteps[activePipe].desc;
+
+      pipeGridEl.querySelectorAll(".pipe-step").forEach(btn => {
+        btn.addEventListener("click", () => {
+          activePipe = Number(btn.dataset.pidx);
+          renderPipe();
+        });
+      });
+    }
+    renderPipe();
+
+    // 3. Live HTML5 Canvas Diffusion & Docking Simulator
+    const canvas = document.getElementById("diffusion-canvas");
+    const ctx = canvas.getContext("2d");
+    const hudComplexEl = document.getElementById("hud-complex");
+    const hudStepEl = document.getElementById("hud-step");
+    const hudStatusEl = document.getElementById("hud-status");
+    const diffSlider = document.getElementById("diff-slider");
+    const scrubValEl = document.getElementById("scrub-val");
+    const captionEl = document.getElementById("canvas-caption");
+    const replayBtn = document.getElementById("replay-diff-btn");
+    const togglePlayBtn = document.getElementById("toggle-play-btn");
+
+    let activeComplex = "ligand";
+    let diffStep = 0;
+    let isPlaying = true;
+    let animClock = 0;
+    let atoms = [];
+
+    const complexInfo = {
+      ligand: {
+        hud: "KOMPLEKS: PROTEIN TARGET + LIGAN OBAT",
+        caption: "Modul difusi membentuk kantong aktif protein (biru) dan menempatkan molekul ligan obat (hijau-kuning) dengan orientasi ikatan hidrogen presisi tanpa memerlukan lokasi kantong sebelumnya."
+      },
+      dna: {
+        hud: "KOMPLEKS: FAKTOR TRANSKRIPSI PROTEIN + HELIKS GANDA DNA",
+        caption: "AlphaFold 3 memodelkan lekukan heliks ganda DNA (cyan & amber) sekaligus domain pengikat protein (biru) yang menempel tepat pada alur mayor DNA."
+      },
+      antibody: {
+        hud: "KOMPLEKS: ANTIBODI (CDR LOOP) + EPITOP ANTIGEN",
+        caption: "Lengan pengenal antibodi (biru-ungu) melipat dan mencocokkan permukaannya terhadap epitop antigen (merah muda), mencapai peningkatan akurasi sekitar 2x dibanding AlphaFold-Multimer v2.3."
+      }
+    };
+
+    function buildComplexAtoms(type) {
+      const list = [];
+      function addAtom(tx, ty, color, r, group) {
+        const angle = Math.random() * Math.PI * 2;
+        const spread = 130 + Math.random() * 190;
+        list.push({
+          tx: tx,
+          ty: ty,
+          nx: 420 + Math.cos(angle) * spread,
+          ny: 165 + Math.sin(angle) * (spread * 0.55),
+          color: color,
+          r: r,
+          group: group,
+          phase: Math.random() * Math.PI * 2
+        });
+      }
+
+      if (type === "ligand") {
+        // C-shaped protein binding pocket
+        for (let i = 0; i < 28; i++) {
+          const a = 0.45 + (i / 27) * (Math.PI * 2 - 0.9);
+          const rad = 98 + Math.sin(i * 1.1) * 14;
+          addAtom(390 + Math.cos(a) * rad, 165 + Math.sin(a) * rad, "#38bdf8", 7.5, "protein");
+        }
+        // Secondary outer fold
+        for (let i = 0; i < 16; i++) {
+          const a = 0.8 + (i / 15) * (Math.PI * 2 - 1.6);
+          const rad = 132 + Math.cos(i * 1.3) * 10;
+          addAtom(385 + Math.cos(a) * rad, 165 + Math.sin(a) * rad, "#1d4ed8", 6.5, "protein2");
+        }
+        // Small molecule ligand hexagonal ring + side group inside pocket
+        const lx = 435;
+        const ly = 165;
+        for (let i = 0; i < 6; i++) {
+          const a = (Math.PI / 3) * i;
+          addAtom(lx + Math.cos(a) * 24, ly + Math.sin(a) * 24, "#34d399", 6.5, "ligand");
+        }
+        addAtom(lx + 42, ly - 12, "#fbbf24", 6, "ligand");
+        addAtom(lx + 44, ly + 16, "#fbbf24", 6, "ligand");
+      } else if (type === "dna") {
+        // DNA double helix across middle-left to right
+        for (let i = 0; i < 22; i++) {
+          const x = 140 + i * 26;
+          const y1 = 165 + Math.sin(i * 0.55) * 44;
+          const y2 = 165 - Math.sin(i * 0.55) * 44;
+          addAtom(x, y1, "#38bdf8", 6.5, "dna1");
+          addAtom(x, y2, "#fbbf24", 6.5, "dna2");
+        }
+        // Protein dimer gripping DNA major groove
+        for (let i = 0; i < 18; i++) {
+          const a = (i / 17) * Math.PI;
+          addAtom(420 + Math.cos(a) * 78, 92 + Math.sin(a) * 34, "#818cf8", 7.5, "protTop");
+          addAtom(420 + Math.cos(a) * 78, 238 - Math.sin(a) * 34, "#34d399", 7.5, "protBot");
+        }
+      } else {
+        // Antibody Y-arm / CDR loops on left
+        for (let i = 0; i < 20; i++) {
+          const t = i / 19;
+          const x = 210 + t * 185;
+          const y = 110 + Math.sin(t * Math.PI * 2) * 26 + t * 25;
+          addAtom(x, y, "#60a5fa", 7.5, "ab1");
+        }
+        for (let i = 0; i < 20; i++) {
+          const t = i / 19;
+          const x = 210 + t * 185;
+          const y = 220 - Math.sin(t * Math.PI * 2) * 26 - t * 25;
+          addAtom(x, y, "#a78bfa", 7.5, "ab2");
+        }
+        // Antigen globular cluster on right
+        for (let i = 0; i < 22; i++) {
+          const a = (i / 22) * Math.PI * 2;
+          const rad = (i % 2 === 0 ? 58 : 34);
+          addAtom(515 + Math.cos(a) * rad, 165 + Math.sin(a) * rad, "#fb7185", 7.5, "antigen");
+        }
+      }
+      return list;
+    }
+
+    function selectComplex(type) {
+      activeComplex = type;
+      atoms = buildComplexAtoms(type);
+      diffStep = 0;
+      isPlaying = true;
+      diffSlider.value = "0";
+      hudComplexEl.textContent = complexInfo[type].hud;
+      captionEl.textContent = complexInfo[type].caption;
+    }
+
+    document.querySelectorAll(".lab-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".lab-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        selectComplex(btn.dataset.complex);
+      });
+    });
+
+    replayBtn.addEventListener("click", () => {
+      atoms = buildComplexAtoms(activeComplex);
+      diffStep = 0;
+      isPlaying = true;
+      diffSlider.value = "0";
+    });
+
+    togglePlayBtn.addEventListener("click", () => {
+      isPlaying = !isPlaying;
+      if (isPlaying && diffStep >= 200) {
+        diffStep = 0;
+      }
+    });
+
+    diffSlider.addEventListener("input", () => {
+      isPlaying = false;
+      diffStep = Number(diffSlider.value);
+    });
+
+    function drawDiffusionFrame() {
+      animClock += 0.04;
+      if (isPlaying && diffStep < 200) {
+        diffStep = Math.min(200, diffStep + 1.25);
+        diffSlider.value = String(Math.round(diffStep));
+      }
+
+      const progress = diffStep / 200;
+      // Smooth ease-out curve for reverse diffusion denoising
+      const ease = 1 - Math.pow(1 - progress, 3);
+      const jitterAmp = (1 - ease) * 14;
+
+      hudStepEl.textContent = Math.round(diffStep) + " / 200";
+      scrubValEl.textContent = "Langkah " + Math.round(diffStep);
+
+      if (progress < 0.25) {
+        hudStatusEl.textContent = "AWAN ATOM ACAK (NOISE)";
+        hudStatusEl.style.color = "#f87171";
+      } else if (progress < 0.85) {
+        hudStatusEl.textContent = "DENOISING & PELIPATAN...";
+        hudStatusEl.style.color = "#fbbf24";
+      } else {
+        hudStatusEl.textContent = "TERLIPAT & TERIKAT PRESISI";
+        hudStatusEl.style.color = "#34d399";
+      }
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Background subtle grid
+      ctx.strokeStyle = "rgba(148, 163, 184, 0.08)";
+      ctx.lineWidth = 1;
+      for (let gx = 40; gx < canvas.width; gx += 40) {
+        ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, canvas.height); ctx.stroke();
+      }
+      for (let gy = 40; gy < canvas.height; gy += 40) {
+        ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(canvas.width, gy); ctx.stroke();
+      }
+
+      // Compute current atom positions
+      const pts = atoms.map(a => {
+        const jx = Math.sin(animClock * 2.2 + a.phase) * jitterAmp;
+        const jy = Math.cos(animClock * 1.9 + a.phase) * jitterAmp;
+        const breathe = progress > 0.9 ? Math.sin(animClock + a.phase) * 1.2 : 0;
+        return {
+          x: a.nx + (a.tx - a.nx) * ease + jx + breathe,
+          y: a.ny + (a.ty - a.ny) * ease + jy,
+          color: a.color,
+          r: a.r,
+          group: a.group
+        };
+      });
+
+      // Draw backbone bonds within same group as structure emerges
+      if (progress > 0.2) {
+        ctx.lineWidth = 2.5;
+        ctx.globalAlpha = Math.min(0.85, (progress - 0.2) * 1.15);
+        for (let i = 0; i < pts.length - 1; i++) {
+          if (pts[i].group === pts[i + 1].group && Math.hypot(pts[i].x - pts[i + 1].x, pts[i].y - pts[i + 1].y) < 75) {
+            ctx.beginPath();
+            ctx.moveTo(pts[i].x, pts[i].y);
+            ctx.lineTo(pts[i + 1].x, pts[i + 1].y);
+            ctx.strokeStyle = pts[i].color;
+            ctx.stroke();
+          }
+        }
+
+        // Draw DNA base-pair rungs if DNA mode
+        if (activeComplex === "dna") {
+          for (let i = 0; i < 44; i += 2) {
+            ctx.beginPath();
+            ctx.moveTo(pts[i].x, pts[i].y);
+            ctx.lineTo(pts[i + 1].x, pts[i + 1].y);
+            ctx.strokeStyle = "rgba(226, 232, 240, 0.35)";
+            ctx.lineWidth = 1.6;
+            ctx.stroke();
+          }
+        }
+        ctx.globalAlpha = 1;
+      }
+
+      // Draw non-covalent interaction bonds (dashed green) once nearly docked
+      if (progress > 0.78) {
+        ctx.save();
+        ctx.strokeStyle = "#34d399";
+        ctx.lineWidth = 2;
+        ctx.setLineDash([4, 4]);
+        if (activeComplex === "ligand") {
+          ctx.beginPath(); ctx.moveTo(355, 130); ctx.lineTo(418, 152); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(360, 200); ctx.lineTo(418, 178); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(475, 118); ctx.lineTo(468, 148); ctx.stroke();
+        } else if (activeComplex === "dna") {
+          ctx.beginPath(); ctx.moveTo(395, 118); ctx.lineTo(395, 146); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(445, 118); ctx.lineTo(445, 146); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(420, 212); ctx.lineTo(420, 184); ctx.stroke();
+        } else {
+          ctx.beginPath(); ctx.moveTo(395, 135); ctx.lineTo(458, 148); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(395, 195); ctx.lineTo(458, 182); ctx.stroke();
+        }
+        ctx.restore();
+      }
+
+      // Draw atoms
+      pts.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r + 3.5, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(255, 255, 255, 0.08)";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+        ctx.strokeStyle = "#0f172a";
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+      });
+
+      // Labels when docked
+      if (progress > 0.72) {
+        ctx.font = "bold 11px monospace";
+        ctx.fillStyle = "#e2e8f0";
+        if (activeComplex === "ligand") {
+          ctx.fillText("KANTONG AKTIF PROTEIN", 215, 58);
+          ctx.fillStyle = "#6ee7b7";
+          ctx.fillText("LIGAN OBAT (TERIKAT)", 500, 170);
+        } else if (activeComplex === "dna") {
+          ctx.fillText("HELIKS GANDA DNA", 145, 92);
+          ctx.fillStyle = "#a5b4fc";
+          ctx.fillText("DOMAIN PROTEIN PENGIKAT DNA", 330, 48);
+        } else {
+          ctx.fillText("LENGAN ANTIBODI (CDR)", 205, 62);
+          ctx.fillStyle = "#fda4af";
+          ctx.fillText("EPITOP ANTIGEN", 505, 86);
+        }
+      }
+
+      requestAnimationFrame(drawDiffusionFrame);
+    }
+
+    selectComplex("ligand");
+    drawDiffusionFrame();
+
+    // 4. pLDDT Confidence Threshold Inspector
+    const plddtSlider = document.getElementById("plddt-slider");
+    const plddtValEl = document.getElementById("plddt-val");
+    const confSvg = document.getElementById("conf-svg");
+    const confReadout = document.getElementById("conf-readout");
+
+    function renderConfInspector() {
+      const v = Number(plddtSlider.value);
+      plddtValEl.textContent = v + " / 100";
+      const markerX = 20 + ((v - 35) / (98 - 35)) * 320;
+
+      confSvg.innerHTML =
+        '<rect x="20" y="30" width="76" height="22" rx="4" fill="#ef4444"/>' +
+        '<rect x="98" y="30" width="102" height="22" rx="4" fill="#f59e0b"/>' +
+        '<rect x="202" y="30" width="84" height="22" rx="4" fill="#38bdf8"/>' +
+        '<rect x="288" y="30" width="52" height="22" rx="4" fill="#1d4ed8"/>' +
+        '<text x="24" y="70" fill="#b91c1c" font-size="9" font-family="monospace">&lt;50 Rendah</text>' +
+        '<text x="115" y="70" fill="#92400e" font-size="9" font-family="monospace">50-70 Sedang</text>' +
+        '<text x="210" y="70" fill="#0369a1" font-size="9" font-family="monospace">70-90 Baik</text>' +
+        '<text x="292" y="70" fill="#1e3a8a" font-size="9" font-family="monospace">&gt;90 Tinggi</text>' +
+        '<line x1="' + markerX + '" y1="14" x2="' + markerX + '" y2="58" stroke="#0f172a" stroke-width="2.5"/>' +
+        '<polygon points="' + (markerX - 5) + ',12 ' + (markerX + 5) + ',12 ' + markerX + ',20" fill="#0f172a"/>';
+
+      if (v >= 90) {
+        confReadout.innerHTML =
+          '<span class="status-tag tag-high">KEPERCAYAAN SANGAT TINGGI (&ge; 90)</span>' +
+          "<p>Posisi tulang punggung protein maupun rantai samping atom sangat akurat. Wilayah ini layak dipakai untuk analisis interaksi kimia kantong aktif dan perancangan awal ligan obat.</p>";
+      } else if (v >= 70) {
+        confReadout.innerHTML =
+          '<span class="status-tag tag-high">KEPERCAYAAN BAIK (70&ndash;89)</span>' +
+          "<p>Pelipatan utama struktur sudah tepat, namun orientasi beberapa rantai samping fleksibel tetap perlu diperiksa bersama skor antarmuka (ipTM).</p>";
+      } else if (v >= 50) {
+        confReadout.innerHTML =
+          '<span class="status-tag tag-mid">KEPERCAYAAN RENDAH&ndash;SEDANG (50&ndash;69)</span>' +
+          "<p>Menunjukkan daerah fleksibel atau perbatasan domain. Peneliti perlu berhati-hati dan memvalidasi hasilnya dengan data eksperimental.</p>";
+      } else {
+        confReadout.innerHTML =
+          '<span class="status-tag tag-low">SANGAT RENDAH / TAK TERATUR (&lt; 50)</span>' +
+          "<p>Ciri khas wilayah protein tak teratur (intrinsically disordered). Pada skor ini, model difusi berisiko mengalami halusinasi bentuk sehingga posisi 3D tidak boleh ditafsirkan sebagai struktur kaku.</p>";
+      }
+    }
+
+    plddtSlider.addEventListener("input", renderConfInspector);
+    renderConfInspector();
+
+    // 5. Quiz with Live Score & Reset Button
+    const quizData = [
+      {
+        q: "1. Perubahan arsitektur utama apa yang membedakan AlphaFold 3 dari AlphaFold 2?",
+        options: [
+          "Menggunakan modul Pairformer dan jaringan difusi untuk memprediksi koordinat atom mentah lintas biomolekul secara langsung",
+          "Menghapus kemampuan memprediksi protein dan hanya membaca sekuens RNA pendek",
+          "Mengganti pembelajaran mendalam dengan simulasi mekanika klasik tanpa data pelatihan"
+        ],
+        correct: 0,
+        correctExp: "Jawaban Benar: Tepat. AlphaFold 3 menggantikan Evoformer dengan Pairformer (48 blok) dan memakai modul difusi yang memprediksi koordinat 3D seluruh atom secara langsung.",
+        wrongExp: "Kurang Tepat: Inovasi inti AlphaFold 3 adalah kombinasi modul Pairformer dan jaringan difusi pada tingkat atom untuk memodelkan protein, DNA, RNA, ligan, dan ion sekaligus."
+      },
+      {
+        q: "2. Bagaimana capaian AlphaFold 3 pada uji patok docking protein-ligan PoseBusters (RMSD < 2 Angstrom)?",
+        options: [
+          "Mencapai sekitar 76% keberhasilan tanpa diberi informasi lokasi kantong ikatan, melampaui AutoDock Vina (~52%)",
+          "Mencapai 15% keberhasilan dan selalu kalah dari perangkat lunak docking klasik",
+          "Hanya bekerja apabila posisi koordinat ligan obat dimasukkan terlebih dahulu"
+        ],
+        correct: 0,
+        correctExp: "Jawaban Benar: Akurat. Pada uji PoseBusters, AlphaFold 3 mencatat tingkat keberhasilan sekitar 76% tanpa info kantong ikatan, mengungguli AutoDock Vina (~52%) dan RoseTTAFold All-Atom (~42%).",
+        wrongExp: "Kurang Tepat: AlphaFold 3 mencapai sekitar 76% keberhasilan pada PoseBusters tanpa info lokasi kantong, lebih tinggi dibanding AutoDock Vina (~52%)."
+      },
+      {
+        q: "3. Bagaimana tim peneliti mengatasi risiko halusinasi struktur dari model difusi pada daerah protein yang tidak teratur?",
+        options: [
+          "Menggunakan pelatihan distilasi silang (cross-distillation) dari AlphaFold-Multimer v2.3",
+          "Menghapus seluruh protein yang memiliki daerah fleksibel dari biologi seluler",
+          "Mengunci semua skor pLDDT menjadi 100 agar tidak ada wilayah fleksibel"
+        ],
+        correct: 0,
+        correctExp: "Jawaban Benar: Tepat. Distilasi silang dari AlphaFold-Multimer v2.3 melatih modul difusi agar tidak mengarang struktur heliks palsu pada wilayah protein tak teratur.",
+        wrongExp: "Kurang Tepat: Risiko halusinasi difusi pada daerah tak teratur ditekan melalui pelatihan distilasi silang (cross-distillation) menggunakan prediksi AlphaFold-Multimer v2.3."
+      }
+    ];
+
+    const quizContainer = document.getElementById("quiz-container");
+    const scorePill = document.getElementById("score-pill");
+    const resetQuizBtn = document.getElementById("reset-quiz-btn");
+    let score = 0;
+
+    function renderQuiz() {
+      score = 0;
+      scorePill.textContent = "Skor: 0 / " + quizData.length;
+      quizContainer.innerHTML = "";
+
+      quizData.forEach((item, qIdx) => {
+        const box = document.createElement("div");
+        box.className = "quiz-item";
+        box.innerHTML =
+          '<div class="quiz-q">' + item.q + "</div>" +
+          '<div class="quiz-opts">' +
+            item.options.map((opt, oIdx) => '<button class="opt-btn" type="button" data-o="' + oIdx + '">' + opt + "</button>").join("") +
+          "</div>" +
+          '<div class="quiz-exp" id="exp-' + qIdx + '"></div>';
+        quizContainer.appendChild(box);
+
+        const btns = box.querySelectorAll(".opt-btn");
+        const expEl = box.querySelector("#exp-" + qIdx);
+
+        btns.forEach(btn => {
+          btn.addEventListener("click", () => {
+            const chosen = Number(btn.dataset.o);
+            btns.forEach(b => { b.disabled = true; });
+            expEl.classList.remove("is-correct", "is-wrong");
+
+            if (chosen === item.correct) {
+              btn.classList.add("correct");
+              score++;
+              scorePill.textContent = "Skor: " + score + " / " + quizData.length;
+              expEl.textContent = item.correctExp;
+              expEl.classList.add("is-correct");
+            } else {
+              btn.classList.add("wrong");
+              btns[item.correct].classList.add("correct");
+              expEl.textContent = item.wrongExp;
+              expEl.classList.add("is-wrong");
+            }
+            expEl.style.display = "block";
+          });
+        });
+      });
+    }
+
+    resetQuizBtn.addEventListener("click", renderQuiz);
+    renderQuiz();
+  </script>
+</body>
+</html>
