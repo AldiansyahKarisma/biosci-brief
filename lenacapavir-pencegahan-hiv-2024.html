@@ -8,470 +8,526 @@
   <meta name="category" content="Kesehatan & Terapi Gen" />
   <style>
     :root {
-      --bg: #f8fafc;
+      --bg: #f4f7fb;
       --surface: #ffffff;
-      --surface-soft: #f1f5f9;
+      --surface-dark: #0b1324;
+      --surface-dark-2: #142038;
       --text: #0f172a;
       --muted: #475569;
       --primary: #1d4ed8;
-      --primary-dark: #1e3a8a;
-      --primary-light: #dbeafe;
-      --teal: #0f766e;
-      --teal-light: #ccfbf1;
-      --amber: #b45309;
-      --amber-light: #fef3c7;
-      --border: #e2e8f0;
-      --radius: 16px;
+      --primary-soft: #dbeafe;
+      --emerald: #059669;
+      --emerald-soft: #d1fae5;
+      --danger: #dc2626;
+      --danger-soft: #fee2e2;
+      --amber: #d97706;
+      --border: #dde5f0;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: linear-gradient(180deg, #eff6ff 0%, #f8fafc 35%, #f0fdfa 100%);
+      background: var(--bg);
       color: var(--text);
-      line-height: 1.65;
-      padding: 1.5rem 1rem 4rem;
+      line-height: 1.6;
+      padding-bottom: 4rem;
     }
 
-    .container {
-      max-width: 840px;
+    /* Sticky Clinical Navbar */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .topbar-inner {
+      max-width: 1080px;
       margin: 0 auto;
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
 
-    .back-link {
+    .brand-back {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      text-decoration: none;
-      color: var(--primary);
-      font-weight: 700;
-      font-size: 0.9rem;
-      margin-bottom: 1.2rem;
-    }
-
-    .back-link:hover { text-decoration: underline; }
-
-    .hero {
-      background: linear-gradient(135deg, #1e3a8a 0%, #0e7490 100%);
-      color: #ffffff;
-      border-radius: 22px;
-      padding: 2rem 1.75rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 12px 28px rgba(30, 58, 138, 0.18);
-    }
-
-    .badge-row {
-      display: flex;
-      flex-wrap: wrap;
       gap: 0.5rem;
-      margin-bottom: 0.85rem;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 800;
+      font-size: 0.9rem;
     }
 
-    .badge {
-      background: rgba(255, 255, 255, 0.18);
-      padding: 0.25rem 0.78rem;
-      border-radius: 999px;
-      font-size: 0.78rem;
+    .brand-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--primary);
+      display: inline-block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.1rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--muted);
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover { color: var(--primary); }
+
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 0;
+    }
+
+    /* Split Asymmetric Clinical Hero */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.45fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 820px) {
+      .hero-grid { grid-template-columns: 1fr; }
+    }
+
+    .hero-main {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .pill-row {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.9rem;
+    }
+
+    .pill {
+      font-size: 0.75rem;
       font-weight: 700;
-      letter-spacing: 0.03em;
+      padding: 0.25rem 0.7rem;
+      border-radius: 6px;
+      letter-spacing: 0.02em;
     }
 
-    .hero h1 {
-      font-size: clamp(1.5rem, 3.8vw, 2.12rem);
-      line-height: 1.25;
+    .pill-blue { background: var(--primary-soft); color: var(--primary); }
+    .pill-dark { background: #e2e8f0; color: #1e293b; font-family: var(--mono); }
+
+    .hero-main h1 {
+      font-size: clamp(1.45rem, 3vw, 2.05rem);
+      line-height: 1.22;
+      letter-spacing: -0.02em;
       margin-bottom: 0.75rem;
     }
 
-    .hero p {
-      font-size: 0.97rem;
-      opacity: 0.95;
+    .hero-lead {
+      font-size: 0.95rem;
+      color: var(--muted);
       margin-bottom: 1.25rem;
     }
 
-    .citation-box {
-      background: rgba(15, 23, 42, 0.32);
-      border: 1px solid rgba(255, 255, 255, 0.22);
-      border-radius: 12px;
-      padding: 0.95rem 1.05rem;
+    .cite-strip {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--primary);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
       display: flex;
-      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
       gap: 0.8rem;
-      font-size: 0.84rem;
+      flex-wrap: wrap;
+      font-size: 0.8rem;
+      color: #334155;
     }
 
     .copy-btn {
-      background: #fde047;
-      color: #0f172a;
+      background: var(--text);
+      color: #ffffff;
       border: none;
-      padding: 0.52rem 0.98rem;
+      padding: 0.48rem 0.9rem;
       border-radius: 8px;
       font-weight: 700;
-      font-size: 0.82rem;
-      cursor: pointer;
-      transition: transform 0.15s ease, opacity 0.15s ease;
-    }
-
-    .copy-btn:hover { transform: scale(1.03); opacity: 0.96; }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
-      gap: 0.9rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .stat-card {
-      background: var(--surface);
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.15rem;
-      text-align: center;
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
-    }
-
-    .stat-num {
-      font-size: 1.7rem;
-      font-weight: 800;
-      color: var(--primary);
-      line-height: 1.15;
-    }
-
-    .stat-label {
-      font-size: 0.82rem;
-      color: var(--muted);
-      margin-top: 0.3rem;
-    }
-
-    .section {
-      background: var(--surface);
-      border: 1.5px solid var(--border);
-      border-radius: 20px;
-      padding: 1.55rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.03);
-    }
-
-    .section h2 {
-      font-size: 1.24rem;
-      margin-bottom: 0.35rem;
-      color: var(--text);
-    }
-
-    .section-sub {
-      font-size: 0.89rem;
-      color: var(--muted);
-      margin-bottom: 1.2rem;
-    }
-
-    .two-col {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1rem;
-    }
-
-    .info-box {
-      background: var(--surface-soft);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.05rem 1.15rem;
-    }
-
-    .info-box h3 {
-      font-size: 0.98rem;
-      color: var(--primary-dark);
-      margin-bottom: 0.45rem;
-    }
-
-    .info-box p {
-      font-size: 0.9rem;
-      color: var(--text);
-    }
-
-    /* Eksplorasi Data Grafik Interaktif */
-    .metric-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .metric-btn {
-      padding: 0.48rem 0.95rem;
-      border-radius: 999px;
-      border: 1.5px solid var(--border);
-      background: #ffffff;
-      color: var(--muted);
-      font-weight: 700;
-      font-size: 0.84rem;
-      cursor: pointer;
-      transition: all 0.15s ease;
-    }
-
-    .metric-btn.active {
-      background: var(--primary);
-      border-color: var(--primary);
-      color: #ffffff;
-    }
-
-    .chart-card {
-      background: var(--surface-soft);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.15rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.95rem;
-    }
-
-    .bar-head {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.86rem;
-      font-weight: 700;
-      margin-bottom: 0.3rem;
-      gap: 0.5rem;
-    }
-
-    .bar-track {
-      height: 15px;
-      background: #e2e8f0;
-      border-radius: 999px;
-      overflow: hidden;
-    }
-
-    .bar-fill {
-      height: 100%;
-      border-radius: 999px;
-      transition: width 0.45s ease;
-    }
-
-    .fill-bg { background: linear-gradient(90deg, #64748b, #475569); }
-    .fill-ftaf { background: linear-gradient(90deg, #d97706, #f59e0b); }
-    .fill-ftdf { background: linear-gradient(90deg, #0284c7, #38bdf8); }
-    .fill-len { background: linear-gradient(90deg, #059669, #10b981); }
-
-    .bar-caption {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-top: 0.25rem;
-    }
-
-    /* Mekanisme Bertahap */
-    .steps-nav {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 0.6rem;
-      margin-bottom: 1rem;
-    }
-
-    .step-btn {
-      text-align: left;
-      padding: 0.75rem 0.9rem;
-      border-radius: 12px;
-      border: 1.5px solid var(--border);
-      background: #ffffff;
-      cursor: pointer;
-      transition: all 0.15s ease;
-    }
-
-    .step-btn strong {
-      display: block;
       font-size: 0.78rem;
-      color: var(--primary);
-      margin-bottom: 0.15rem;
-    }
-
-    .step-btn span {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--text);
-    }
-
-    .step-btn.active {
-      background: var(--primary-light);
-      border-color: var(--primary);
-    }
-
-    .step-detail {
-      background: #f8fafc;
-      border-left: 4px solid var(--primary);
-      padding: 1rem 1.15rem;
-      border-radius: 0 12px 12px 0;
-      font-size: 0.92rem;
-      color: var(--text);
-    }
-
-    /* Simulasi Visual Interaktif Regimen PrEP */
-    .sim-controls {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.55rem;
-      margin-bottom: 1.15rem;
-    }
-
-    .regimen-btn {
-      flex: 1;
-      min-width: 170px;
-      padding: 0.7rem 0.95rem;
-      border-radius: 12px;
-      border: 1.5px solid var(--border);
-      background: #ffffff;
-      font-weight: 700;
-      font-size: 0.85rem;
       cursor: pointer;
-      color: var(--muted);
-      transition: all 0.2s ease;
     }
 
-    .regimen-btn.active {
-      background: var(--primary);
-      border-color: var(--primary);
-      color: #ffffff;
-    }
+    .copy-btn:hover { background: var(--primary); }
 
-    .sim-stage {
-      background: #0f172a;
+    .hero-outcome {
+      background: linear-gradient(155deg, var(--surface-dark) 0%, #162749 100%);
       color: #f8fafc;
-      border-radius: 16px;
-      padding: 1.3rem;
-    }
-
-    .sim-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .sim-badge {
-      background: #34d399;
-      color: #0f172a;
-      font-weight: 800;
-      font-size: 0.78rem;
-      padding: 0.22rem 0.72rem;
-      border-radius: 999px;
-    }
-
-    .sim-visual-box {
-      display: grid;
-      grid-template-columns: 125px 1fr;
-      gap: 1.1rem;
-      align-items: center;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      border-radius: 14px;
-      padding: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    @media (max-width: 560px) {
-      .sim-visual-box { grid-template-columns: 1fr; text-align: center; }
-      .sim-svg-wrap { margin: 0 auto; }
-    }
-
-    .sim-svg-wrap {
-      width: 115px;
-      height: 96px;
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .meter-group {
+      border-radius: 20px;
+      padding: 1.6rem;
       display: flex;
       flex-direction: column;
-      gap: 0.85rem;
+      justify-content: space-between;
+      gap: 1.1rem;
     }
 
-    .meter-label {
+    .outcome-kicker {
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #38bdf8;
+    }
+
+    .big-stat {
       display: flex;
-      justify-content: space-between;
-      font-size: 0.84rem;
-      margin-bottom: 0.28rem;
+      align-items: baseline;
+      gap: 0.6rem;
+    }
+
+    .big-stat .num {
+      font-family: var(--mono);
+      font-size: 3.1rem;
+      font-weight: 800;
+      color: #34d399;
+      line-height: 1;
+    }
+
+    .big-stat .unit {
+      font-size: 0.9rem;
       color: #cbd5e1;
     }
 
-    .meter-track {
-      height: 11px;
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 999px;
-      overflow: hidden;
+    .outcome-mini-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.65rem;
     }
 
-    .meter-fill {
-      height: 100%;
-      border-radius: 999px;
-      transition: width 0.5s ease;
+    .mini-metric {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 0.7rem 0.85rem;
     }
 
-    .fill-a { background: linear-gradient(90deg, #10b981, #34d399); }
-    .fill-b { background: linear-gradient(90deg, #38bdf8, #818cf8); }
-    .fill-c { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+    .mini-metric strong {
+      display: block;
+      font-family: var(--mono);
+      font-size: 1.15rem;
+      color: #ffffff;
+    }
 
-    .sim-note {
+    .mini-metric span {
+      font-size: 0.75rem;
+      color: #94a3b8;
+    }
+
+    /* Section Panels */
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.6rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.2rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.9rem;
+    }
+
+    .panel-tag {
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .panel-head h2 {
+      font-size: 1.28rem;
+      line-height: 1.25;
+      margin-top: 0.15rem;
+    }
+
+    .panel-desc {
       font-size: 0.88rem;
-      color: #e2e8f0;
-      background: rgba(255, 255, 255, 0.08);
-      padding: 0.85rem 1rem;
-      border-radius: 10px;
+      color: var(--muted);
+      max-width: 660px;
     }
 
-    /* Kesimpulan & Manfaat Praktis */
-    .conclusion-box {
-      background: linear-gradient(135deg, #eff6ff 0%, #f0fdfa 100%);
-      border: 1.5px solid #bfdbfe;
-      border-radius: 16px;
-      padding: 1.25rem;
+    /* Lab 1: Live Canvas Viral Blockade Simulator */
+    .lab-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.65rem;
       margin-bottom: 1rem;
     }
 
-    .conclusion-box h3 {
-      color: var(--primary-dark);
-      font-size: 1.05rem;
-      margin-bottom: 0.45rem;
+    .mode-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
     }
 
-    .practical-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 0.9rem;
-    }
-
-    .practical-card {
-      background: #fffbeb;
-      border: 1.5px solid #fde68a;
-      border-radius: 14px;
-      padding: 1rem 1.1rem;
-    }
-
-    .practical-card h4 {
-      color: var(--amber);
-      font-size: 0.95rem;
-      margin-bottom: 0.35rem;
-    }
-
-    .practical-card p {
-      font-size: 0.88rem;
+    .lab-btn {
+      padding: 0.55rem 0.9rem;
+      border-radius: 10px;
+      border: 1.5px solid var(--border);
+      background: #f8fafc;
       color: var(--text);
+      font-weight: 700;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: all 0.15s;
     }
 
-    /* Kuis */
-    .quiz-top {
+    .lab-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #ffffff;
+    }
+
+    .action-btn {
+      padding: 0.55rem 0.95rem;
+      border-radius: 10px;
+      border: none;
+      background: #0f172a;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.82rem;
+      cursor: pointer;
+    }
+
+    .action-btn:hover { background: #334155; }
+
+    .canvas-shell {
+      background: var(--surface-dark);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #1e293b;
+    }
+
+    .canvas-hud {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      background: var(--surface-dark-2);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: #e2e8f0;
+    }
+
+    .hud-stats {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .hud-good { color: #34d399; font-weight: 700; }
+    .hud-bad { color: #f87171; font-weight: 700; }
+
+    #cell-canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: radial-gradient(circle at 78% 50%, #172554 0%, #0b1324 72%);
+    }
+
+    .canvas-caption {
+      padding: 0.85rem 1rem;
+      font-size: 0.86rem;
+      color: #cbd5e1;
+      background: #0d172c;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Lab 2: 52-Week Pharmacokinetic Slider Simulator */
+    .pk-grid {
+      display: grid;
+      grid-template-columns: 1.55fr 1fr;
+      gap: 1.2rem;
+      align-items: start;
+    }
+
+    @media (max-width: 820px) {
+      .pk-grid { grid-template-columns: 1fr; }
+    }
+
+    .svg-chart-wrap {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 0.9rem;
+    }
+
+    .pk-controls {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .slider-block label {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-bottom: 1.15rem;
+      font-size: 0.84rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
     }
 
+    .slider-block input[type="range"] {
+      width: 100%;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+
+    .pk-readout {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.85rem;
+      font-size: 0.85rem;
+    }
+
+    .status-tag {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 0.18rem 0.55rem;
+      border-radius: 6px;
+      margin-bottom: 0.4rem;
+    }
+
+    .tag-safe { background: var(--emerald-soft); color: #065f46; }
+    .tag-risk { background: var(--danger-soft); color: #991b1b; }
+
+    /* Lab 3: Cohort Dot-Matrix & Bento Data */
+    .cohort-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1rem;
+    }
+
+    .cohort-card {
+      background: #f8fafc;
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      padding: 1.05rem;
+    }
+
+    .cohort-card.highlight {
+      border-color: var(--emerald);
+      background: #f0fdf9;
+    }
+
+    .cohort-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.55rem;
+    }
+
+    .cohort-top h3 { font-size: 0.95rem; }
+    .cohort-rate { font-family: var(--mono); font-weight: 800; font-size: 0.92rem; }
+
+    .dot-matrix {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 4px;
+      margin: 0.7rem 0;
+    }
+
+    .dot {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: #cbd5e1;
+    }
+
+    .dot.safe { background: #10b981; }
+    .dot.infected { background: #ef4444; box-shadow: 0 0 0 2px #fecaca; }
+
+    .cohort-foot {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* Bento Conclusion & Practical */
+    .bento-concl {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 760px) {
+      .bento-concl { grid-template-columns: 1fr; }
+    }
+
+    .concl-main {
+      background: #eff6ff;
+      border: 1.5px solid #bfdbfe;
+      border-radius: 14px;
+      padding: 1.2rem;
+    }
+
+    .concl-main h3 { color: #1e3a8a; font-size: 1.02rem; margin-bottom: 0.5rem; }
+    .concl-main p { font-size: 0.9rem; margin-bottom: 0.7rem; }
+
+    .practical-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .prac-item {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--emerald);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+    }
+
+    .prac-item strong { display: block; font-size: 0.88rem; margin-bottom: 0.2rem; }
+    .prac-item p { font-size: 0.84rem; color: var(--muted); }
+
+    /* Quiz */
     .quiz-controls {
       display: flex;
       align-items: center;
@@ -479,12 +535,12 @@
     }
 
     .score-pill {
+      font-family: var(--mono);
       background: #f1f5f9;
       border: 1px solid var(--border);
-      color: var(--text);
       font-weight: 700;
       font-size: 0.82rem;
-      padding: 0.35rem 0.75rem;
+      padding: 0.38rem 0.75rem;
       border-radius: 8px;
     }
 
@@ -494,36 +550,23 @@
       color: var(--text);
       font-weight: 700;
       font-size: 0.82rem;
-      padding: 0.35rem 0.75rem;
+      padding: 0.38rem 0.8rem;
       border-radius: 8px;
       cursor: pointer;
-      transition: border-color 0.15s ease, background-color 0.15s ease;
     }
 
-    .reset-quiz-btn:hover {
-      border-color: var(--primary);
-      background: #f8fafc;
-    }
+    .reset-quiz-btn:hover { border-color: var(--primary); }
 
     .quiz-item {
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 1.1rem;
-      margin-bottom: 1rem;
+      margin-bottom: 0.95rem;
       background: #f8fafc;
     }
 
-    .quiz-q {
-      font-weight: 700;
-      font-size: 0.94rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .quiz-opts {
-      display: flex;
-      flex-direction: column;
-      gap: 0.45rem;
-    }
+    .quiz-q { font-weight: 700; font-size: 0.94rem; margin-bottom: 0.7rem; }
+    .quiz-opts { display: flex; flex-direction: column; gap: 0.45rem; }
 
     .opt-btn {
       text-align: left;
@@ -533,7 +576,6 @@
       background: #ffffff;
       font-size: 0.88rem;
       cursor: pointer;
-      transition: all 0.15s ease;
     }
 
     .opt-btn:hover:not(:disabled) { border-color: var(--primary); }
@@ -544,168 +586,210 @@
       margin-top: 0.65rem;
       font-size: 0.84rem;
       display: none;
-    }
-
-    .quiz-exp.is-correct {
-      background: #f0fdf4;
-      border: 1px solid #bbf7d0;
-      color: #166534;
       border-radius: 10px;
       padding: 0.7rem 0.85rem;
     }
 
-    .quiz-exp.is-wrong {
-      background: #fef2f2;
-      border: 1px solid #fecaca;
-      color: #991b1b;
-      border-radius: 10px;
-      padding: 0.7rem 0.85rem;
-    }
+    .quiz-exp.is-correct { background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; }
+    .quiz-exp.is-wrong { background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
 
     footer {
       text-align: center;
       font-size: 0.8rem;
       color: var(--muted);
-      margin-top: 1.5rem;
+      margin-top: 1rem;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <a class="back-link" href="./">&larr; Kembali ke Katalog BioSci Brief</a>
-
-    <header class="hero">
-      <div class="badge-row">
-        <span class="badge">Kesehatan &amp; Terapi Gen &bull; Uji Klinis Fase 3</span>
-        <span class="badge">NEJM (2024)</span>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand-back" href="./">
+        <span class="brand-dot"></span>
+        &larr; Katalog BioSci Brief
+      </a>
+      <div class="nav-links">
+        <a href="#lab-sel">Simulasi Sel Live</a>
+        <a href="#kurva-obat">Kurva 52 Minggu</a>
+        <a href="#data-kohort">Data Kohort</a>
+        <a href="#kesimpulan">Kesimpulan</a>
+        <a href="#kuis">Kuis</a>
       </div>
-      <h1>Suntikan Lenacapavir Dua Kali Setahun Cegah 100% Infeksi HIV pada Uji PURPOSE 1</h1>
-      <p>Uji klinis terhadap 5.338 perempuan muda dan remaja putri menunjukkan nol kasus infeksi HIV pada kelompok penerima inhibitor kapsid kerja panjang lenacapavir dibandingkan pil harian.</p>
-      <div class="citation-box">
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <!-- Split Clinical Hero -->
+    <section class="hero-grid">
+      <div class="hero-main">
         <div>
-          <strong>Referensi (Harvard):</strong> Bekker, L.-G., Das, M., Abdool Karim, Q., Ahmed, K., Batting, J., Brumskine, W. et al. (2024) &lsquo;Twice-Yearly Lenacapavir or Daily F/TAF for HIV Prevention in Cisgender Women&rsquo;, <em>New England Journal of Medicine</em>, 391(13), pp. 1179&ndash;1192. doi: 10.1056/NEJMoa2407001.
+          <div class="pill-row">
+            <span class="pill pill-blue">Kesehatan &amp; Terapi Gen</span>
+            <span class="pill pill-dark">NEJM &bull; Uji Klinis Fase 3 (PURPOSE 1)</span>
+          </div>
+          <h1>Suntikan Lenacapavir Dua Kali Setahun Cegah 100% Infeksi HIV</h1>
+          <p class="hero-lead">Uji klinis acak pada 5.338 perempuan muda dan remaja putri (16&ndash;25 tahun) di Afrika Selatan dan Uganda membandingkan suntikan inhibitor kapsid kerja panjang lenacapavir terhadap pil harian F/TAF dan F/TDF.</p>
         </div>
-        <button class="copy-btn" id="copy-cite" type="button">Salin Sitasi</button>
-      </div>
-    </header>
-
-    <section class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-num">5.338</div>
-        <div class="stat-label">Total peserta dalam analisis utama</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">0</div>
-        <div class="stat-label">Infeksi HIV pada kelompok lenacapavir</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">2&times; / Thn</div>
-        <div class="stat-label">Jadwal suntikan subkutan (per 26 minggu)</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">P &lt; 0,001</div>
-        <div class="stat-label">Signifikansi penurunan infeksi vs kontrol</div>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>Subjek &amp; Desain Uji Klinis</h2>
-      <p class="section-sub">Ringkasan protokol uji klinis fase 3 PURPOSE 1 yang berlangsung di Afrika Selatan dan Uganda.</p>
-      <div class="two-col">
-        <div class="info-box">
-          <h3>Subjek Penelitian</h3>
-          <p>5.338 perempuan cisgender dan remaja putri berusia 16&ndash;25 tahun yang negatif HIV saat skrining awal di wilayah dengan tingkat penularan HIV tinggi.</p>
-        </div>
-        <div class="info-box">
-          <h3>Desain Acak Tersamar Ganda</h3>
-          <p>Peserta dibagi secara acak (rasio 2:2:1) ke kelompok suntikan lenacapavir setiap 26 minggu (2.134 orang), pil harian F/TAF (2.136 orang), atau pil harian F/TDF (1.068 orang).</p>
+        <div class="cite-strip">
+          <div>
+            <strong>Referensi (Harvard):</strong> Bekker, L.-G., Das, M., Abdool Karim, Q., Ahmed, K., Batting, J., Brumskine, W. et al. (2024) &lsquo;Twice-Yearly Lenacapavir or Daily F/TAF for HIV Prevention in Cisgender Women&rsquo;, <em>New England Journal of Medicine</em>, 391(13), pp. 1179&ndash;1192. doi: 10.1056/NEJMoa2407001.
+          </div>
+          <button class="copy-btn" id="copy-cite" type="button">Salin Sitasi</button>
         </div>
       </div>
-    </section>
 
-    <section class="section">
-      <h2>Eksplorasi Data Klinis: Perbandingan Insidensi &amp; Kasus HIV</h2>
-      <p class="section-sub">Ganti metrik tampilan di bawah ini untuk membandingkan tingkat infeksi HIV antar-kelompok uji PURPOSE 1.</p>
-      <div class="metric-tabs">
-        <button class="metric-btn active" type="button" data-metric="rate">Insidensi (per 100 Orang-Tahun)</button>
-        <button class="metric-btn" type="button" data-metric="cases">Jumlah Kasus Infeksi HIV</button>
-      </div>
-      <div class="chart-card" id="chart-card"></div>
-    </section>
-
-    <section class="section">
-      <h2>Mekanisme Bertahap: Cara Kerja Inhibitor Kapsid Lenacapavir</h2>
-      <p class="section-sub">Klik setiap tahap untuk melihat bagaimana lenacapavir memblokir siklus hidup virus HIV-1 secara berlapis.</p>
-      <div class="steps-nav" id="steps-nav"></div>
-      <div class="step-detail" id="step-detail"></div>
-    </section>
-
-    <section class="section">
-      <h2>Simulasi Perbandingan Regimen Pencegahan HIV (PrEP)</h2>
-      <p class="section-sub">Pilih regimen pencegahan di bawah ini untuk membandingkan frekuensi pemakaian, profil kepatuhan, dan hasil proteksi uji PURPOSE 1.</p>
-      <div class="sim-controls">
-        <button class="regimen-btn active" type="button" data-reg="len">1. Lenacapavir (Suntik 2&times;/Tahun)</button>
-        <button class="regimen-btn" type="button" data-reg="ftdf">2. Pil Harian F/TDF</button>
-        <button class="regimen-btn" type="button" data-reg="ftaf">3. Pil Harian F/TAF</button>
-      </div>
-      <div class="sim-stage">
-        <div class="sim-top">
-          <strong id="sim-title">Lenacapavir: Proteksi Penuh dengan Jadwal Suntikan Per 6 Bulan</strong>
-          <span class="sim-badge" id="sim-badge">0 Kasus dari 2.134 Peserta</span>
-        </div>
-        <div class="sim-visual-box">
-          <div class="sim-svg-wrap" id="sim-svg"></div>
-          <div class="meter-group">
-            <div>
-              <div class="meter-label"><span>Efektivitas Pencegahan di Uji PURPOSE 1</span><strong id="val-a">100% (0 Infeksi)</strong></div>
-              <div class="meter-track"><div class="meter-fill fill-a" id="bar-a" style="width: 100%"></div></div>
-            </div>
-            <div>
-              <div class="meter-label"><span>Kemudahan Kepatuhan Jadwal Obat</span><strong id="val-b">Sangat Tinggi (2&times;/Thn)</strong></div>
-              <div class="meter-track"><div class="meter-fill fill-b" id="bar-b" style="width: 95%"></div></div>
-            </div>
-            <div>
-              <div class="meter-label"><span>Risiko Lupa Dosis Harian</span><strong id="val-c">Minimal</strong></div>
-              <div class="meter-track"><div class="meter-fill fill-c" id="bar-c" style="width: 10%"></div></div>
-            </div>
+      <aside class="hero-outcome">
+        <div>
+          <div class="outcome-kicker">Hasil Utama Kelompok Lenacapavir</div>
+          <div class="big-stat">
+            <span class="num">0</span>
+            <span class="unit">kasus HIV dari 2.134 peserta</span>
           </div>
         </div>
-        <div class="sim-note" id="sim-note">
-          Suntikan subkutan setiap 26 minggu membentuk depot obat pelepas lambat sehingga menjaga kadar antivirus tetap stabil di tubuh tanpa perlu mengingat minum pil setiap hari.
+        <div class="outcome-mini-grid">
+          <div class="mini-metric">
+            <strong>0,00</strong>
+            <span>Insidensi / 100 org-thn</span>
+          </div>
+          <div class="mini-metric">
+            <strong>26 Mgg</strong>
+            <span>Interval suntikan subkutan</span>
+          </div>
+          <div class="mini-metric">
+            <strong>39 vs 16</strong>
+            <span>Kasus di F/TAF vs F/TDF</span>
+          </div>
+          <div class="mini-metric">
+            <strong>P &lt; 0,001</strong>
+            <span>Vs latar belakang (2,41)</span>
+          </div>
         </div>
-      </div>
+      </aside>
     </section>
 
-    <section class="section">
-      <h2>Kesimpulan Penelitian &amp; Manfaat Praktis</h2>
-      <p class="section-sub">Ringkasan temuan utama uji PURPOSE 1 serta dampaknya bagi strategi kesehatan masyarakat.</p>
-
-      <div class="conclusion-box">
-        <h3>Kesimpulan Penelitian</h3>
-        <p>Suntikan lenacapavir dua kali setahun menghasilkan insidensi infeksi HIV sebesar 0,00 per 100 orang-tahun pada perempuan muda dan remaja putri, jauh lebih unggul dibandingkan insidensi latar belakang (2,41) maupun pil harian F/TDF (1,69). Tidak ada kekhawatiran keamanan baru yang ditemukan, dengan reaksi ringan hingga sedang di lokasi suntikan sebagai efek samping terbanyak.</p>
-      </div>
-
-      <div class="practical-list">
-        <div class="practical-card">
-          <h4>Mengatasi Hambatan Kepatuhan</h4>
-          <p>Frekuensi suntikan dua kali setahun membantu kelompok berisiko yang mengalami kendala lupa dosis, stigma sosial, atau keterbatasan penyimpanan pil harian.</p>
-        </div>
-        <div class="practical-card">
-          <h4>Dampak Kesehatan Masyarakat</h4>
-          <p>Berpotensi menurunkan angka penularan HIV baru secara drastis jika ketersediaan, harga, dan layanan distribusi di negara berkembang dapat diperluas.</p>
-        </div>
-        <div class="practical-card">
-          <h4>Inovasi Target Kapsid Virus</h4>
-          <p>Memperkuat bukti klinis bahwa penghambatan kapsid HIV-1 efektif memutus banyak tahap replikasi virus sekaligus dengan durasi kerja sangat panjang.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="quiz-top">
+    <!-- Lab 1: Real-Time Canvas Viral Blockade Simulation -->
+    <section class="panel" id="lab-sel">
+      <div class="panel-head">
         <div>
+          <span class="panel-tag">Eksperimen Visual 01 &bull; Animasi Sel T</span>
+          <h2>Lab Mikroskopik: Bagaimana Lenacapavir Memblokir Kapsid HIV-1</h2>
+        </div>
+        <p class="panel-desc">Ubah regimen di bawah ini dan amati secara langsung bagaimana partikel HIV-1 mencoba menembus inti sel T saat kadar obat stabil versus ketika pil harian terlewat.</p>
+      </div>
+
+      <div class="lab-toolbar">
+        <div class="mode-group">
+          <button class="lab-btn active" type="button" data-sim="len">Lenacapavir (Suntik 2&times;/Thn)</button>
+          <button class="lab-btn" type="button" data-sim="oral_missed">Pil Harian (Kepatuhan Rendah)</button>
+          <button class="lab-btn" type="button" data-sim="none">Tanpa Obat (Kontrol)</button>
+        </div>
+        <button class="action-btn" id="spawn-wave-btn" type="button">+ Lepas Gelombang HIV</button>
+      </div>
+
+      <div class="canvas-shell">
+        <div class="canvas-hud">
+          <div id="hud-mode-label">MODE: LENACAPAVIR &mdash; BLOKADE KAPSID p24 AKTIF</div>
+          <div class="hud-stats">
+            <span>Virus Diblokir: <span class="hud-good" id="cnt-blocked">0</span></span>
+            <span>Tembus Inti Sel: <span class="hud-bad" id="cnt-infected">0</span></span>
+          </div>
+        </div>
+        <canvas id="cell-canvas" width="840" height="320"></canvas>
+        <div class="canvas-caption" id="canvas-caption">
+          Molekul lenacapavir (titik hijau) mengikat kantong protein kapsid p24 pada HIV-1 secara stabil selama 26 minggu, menghentikan masuknya genom virus ke inti sel T dan mengacaukan perakitan virus baru.
+        </div>
+      </div>
+    </section>
+
+    <!-- Lab 2: Interactive 52-Week Pharmacokinetic & Adherence Slider -->
+    <section class="panel" id="kurva-obat">
+      <div class="panel-head">
+        <div>
+          <span class="panel-tag">Eksperimen Visual 02 &bull; Simulasi 1 Tahun</span>
+          <h2>Simulator Kurva Proteksi Obat: 52 Minggu &amp; Kepatuhan Minum Pil</h2>
+        </div>
+        <p class="panel-desc">Geser minggu pengamatan dan persentase kepatuhan minum pil harian untuk melihat mengapa uji PURPOSE 1 mencatat perbedaan proteksi yang sangat tajam.</p>
+      </div>
+
+      <div class="pk-grid">
+        <div class="svg-chart-wrap">
+          <svg id="pk-svg" viewBox="0 0 560 260" width="100%" aria-label="Grafik Kurva Kadar Obat 52 Minggu"></svg>
+        </div>
+
+        <div class="pk-controls">
+          <div class="slider-block">
+            <label for="week-slider">
+              <span>Posisi Waktu (Garis Vertikal)</span>
+              <span id="week-val" style="font-family: var(--mono); color: var(--primary);">Minggu ke-18</span>
+            </label>
+            <input type="range" id="week-slider" min="1" max="52" value="18" />
+          </div>
+
+          <div class="slider-block">
+            <label for="adh-slider">
+              <span>Kepatuhan Pil Harian (F/TAF &amp; F/TDF)</span>
+              <span id="adh-val" style="font-family: var(--mono); color: var(--amber);">55%</span>
+            </label>
+            <input type="range" id="adh-slider" min="30" max="100" value="55" />
+          </div>
+
+          <div class="pk-readout" id="pk-readout"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lab 3: Visual Cohort Matrix -->
+    <section class="panel" id="data-kohort">
+      <div class="panel-head">
+        <div>
+          <span class="panel-tag">Data Uji Klinis &bull; Rasio Acak 2:2:1</span>
+          <h2>Visualisasi Risiko Infeksi per 100 Orang-Tahun (Uji PURPOSE 1)</h2>
+        </div>
+        <p class="panel-desc">Setiap kotak mewakili 100 orang-tahun pengamatan. Titik merah menggambarkan kasus infeksi HIV yang muncul pada tiap kelompok.</p>
+      </div>
+
+      <div class="cohort-grid" id="cohort-grid"></div>
+    </section>
+
+    <!-- Kesimpulan & Manfaat Praktis -->
+    <section class="panel" id="kesimpulan">
+      <div class="panel-head">
+        <div>
+          <span class="panel-tag">Sintesis Klinis</span>
+          <h2>Kesimpulan Penelitian &amp; Manfaat Praktis</h2>
+        </div>
+      </div>
+
+      <div class="bento-concl">
+        <div class="concl-main">
+          <h3>Kesimpulan Utama</h3>
+          <p>Suntikan subkutan lenacapavir setiap 26 minggu mencegah 100% infeksi HIV baru pada 2.134 perempuan muda dan remaja putri dalam analisis utama PURPOSE 1 (insidensi 0,00 per 100 orang-tahun; P &lt; 0,001 terhadap insidensi latar belakang 2,41 maupun F/TDF 1,69).</p>
+          <p style="margin-bottom: 0;">Profil keamanannya terkendali tanpa temuan efek samping baru yang mengkhawatirkan; keluhan tersering adalah reaksi ringan hingga sedang di lokasi suntikan.</p>
+        </div>
+
+        <div class="practical-stack">
+          <div class="prac-item">
+            <strong>Menghilangkan Beban Pil Harian</strong>
+            <p>Cukup 2 kunjungan suntik per tahun sehingga mengatasi kendala lupa dosis, stigma sosial, dan penyimpanan botol pil.</p>
+          </div>
+          <div class="prac-item">
+            <strong>Potensi Penurunan Epidemi Global</strong>
+            <p>Mempercepat penurunan kasus HIV baru pada populasi berisiko tinggi apabila akses distribusi dan harga obat dapat dijangkau luas.</p>
+          </div>
+          <div class="prac-item">
+            <strong>Validasi Target Kapsid HIV-1</strong>
+            <p>Membuktikan penghambatan protein kapsid p24 efektif memutus replikasi virus jangka panjang di beberapa tahap siklus sekaligus.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kuis 3 Soal -->
+    <section class="panel" id="kuis">
+      <div class="panel-head">
+        <div>
+          <span class="panel-tag">Uji Pemahaman</span>
           <h2>Kuis Singkat Jurnal (3 Pertanyaan)</h2>
-          <p class="section-sub" style="margin-bottom: 0;">Pilih jawaban yang paling tepat berdasarkan data penelitian Bekker et al. (2024).</p>
         </div>
         <div class="quiz-controls">
           <span class="score-pill" id="score-pill">Skor: 0 / 3</span>
@@ -716,11 +800,12 @@
     </section>
 
     <footer>
-      BioSci Brief &bull; Ringkasan Edukasi Sains Interaktif &bull; Ilustrasi vektor asli dibuat untuk visualisasi mekanisme obat
+      BioSci Brief &bull; Clinical Dashboard Interaktif &bull; Data bersumber langsung dari Bekker et al., NEJM (2024)
     </footer>
-  </div>
+  </main>
 
   <script>
+    // 1. Copy Harvard Citation
     const citeText = "Bekker, L.-G., Das, M., Abdool Karim, Q., Ahmed, K., Batting, J., Brumskine, W. et al. (2024) 'Twice-Yearly Lenacapavir or Daily F/TAF for HIV Prevention in Cisgender Women', New England Journal of Medicine, 391(13), pp. 1179\u20131192. doi: 10.1056/NEJMoa2407001.";
     const copyBtn = document.getElementById("copy-cite");
     copyBtn.addEventListener("click", () => {
@@ -730,177 +815,390 @@
       });
     });
 
-    const chartData = {
-      rate: [
-        {
-          label: "Insidensi Latar Belakang Populasi",
-          valText: "2,41 / 100 orang-tahun",
-          width: "100%",
-          cls: "fill-bg",
-          note: "Angka dasar penularan HIV pada populasi skrining sebelum intervensi."
-        },
-        {
-          label: "Pil Harian F/TAF (2.136 peserta)",
-          valText: "2,02 / 100 orang-tahun",
-          width: "84%",
-          cls: "fill-ftaf",
-          note: "Tidak berbeda signifikan dari insidensi latar belakang karena kepatuhan pil harian yang rendah."
-        },
-        {
-          label: "Pil Harian F/TDF (1.068 peserta)",
-          valText: "1,69 / 100 orang-tahun",
-          width: "70%",
-          cls: "fill-ftdf",
-          note: "Regimen kontrol aktif standar oral harian; tetap rentan gagal jika dosis terlewat."
-        },
-        {
-          label: "Suntikan Lenacapavir 2x/Tahun (2.134 peserta)",
-          valText: "0,00 / 100 orang-tahun",
-          width: "3%",
-          cls: "fill-len",
-          note: "Nol infeksi baru (P < 0,001 dibanding insidensi latar belakang maupun F/TDF)."
-        }
-      ],
-      cases: [
-        {
-          label: "Pil Harian F/TAF (2.136 peserta)",
-          valText: "39 kasus infeksi HIV",
-          width: "100%",
-          cls: "fill-ftaf",
-          note: "Sebagian besar infeksi terjadi pada peserta dengan kadar obat rendah akibat tidak rutin minum pil."
-        },
-        {
-          label: "Pil Harian F/TDF (1.068 peserta)",
-          valText: "16 kasus infeksi HIV",
-          width: "41%",
-          cls: "fill-ftdf",
-          note: "Jumlah peserta kelompok F/TDF adalah setengah dari kelompok lenacapavir dan F/TAF (rasio 2:2:1)."
-        },
-        {
-          label: "Suntikan Lenacapavir 2x/Tahun (2.134 peserta)",
-          valText: "0 kasus infeksi HIV",
-          width: "3%",
-          cls: "fill-len",
-          note: "Tidak ada satu pun infeksi HIV terdeteksi sepanjang masa tindak lanjut analisis primer."
-        }
-      ]
-    };
+    // 2. Live Canvas Viral Blockade Simulator
+    const canvas = document.getElementById("cell-canvas");
+    const ctx = canvas.getContext("2d");
+    const hudModeEl = document.getElementById("hud-mode-label");
+    const cntBlockedEl = document.getElementById("cnt-blocked");
+    const cntInfectedEl = document.getElementById("cnt-infected");
+    const canvasCaptionEl = document.getElementById("canvas-caption");
 
-    const chartCardEl = document.getElementById("chart-card");
+    let simMode = "len";
+    let blockedCount = 0;
+    let infectedCount = 0;
+    let frameTick = 0;
+    let nucleusFlash = 0;
+    const virions = [];
+    const drugs = [];
 
-    function renderChart(metric) {
-      const rows = chartData[metric];
-      chartCardEl.innerHTML = rows.map(r =>
-        "<div>" +
-          '<div class="bar-head"><span>' + r.label + "</span><span>" + r.valText + "</span></div>" +
-          '<div class="bar-track"><div class="bar-fill ' + r.cls + '" style="width: ' + r.width + '"></div></div>' +
-          '<div class="bar-caption">' + r.note + "</div>" +
-        "</div>"
-      ).join("");
+    const CELL_CENTER_X = 690;
+    const CELL_CENTER_Y = 160;
+    const MEMBRANE_R = 235;
+    const NUCLEUS_R = 72;
+
+    function initDrugs() {
+      drugs.length = 0;
+      for (let i = 0; i < 38; i++) {
+        drugs.push({
+          x: 470 + Math.random() * 190,
+          y: 40 + Math.random() * 240,
+          vx: (Math.random() - 0.5) * 0.7,
+          vy: (Math.random() - 0.5) * 0.7
+        });
+      }
     }
 
-    document.querySelectorAll(".metric-btn").forEach(btn => {
+    function spawnVirion(offsetX) {
+      virions.push({
+        x: 30 - (offsetX || 0),
+        y: 55 + Math.random() * 210,
+        vx: 1.55 + Math.random() * 0.65,
+        vy: (Math.random() - 0.5) * 0.35,
+        state: "active",
+        timer: 0
+      });
+    }
+
+    function spawnWave() {
+      for (let i = 0; i < 6; i++) {
+        spawnVirion(i * 28);
+      }
+    }
+
+    function setSimMode(mode) {
+      simMode = mode;
+      blockedCount = 0;
+      infectedCount = 0;
+      cntBlockedEl.textContent = "0";
+      cntInfectedEl.textContent = "0";
+      virions.length = 0;
+      spawnWave();
+
+      if (mode === "len") {
+        hudModeEl.textContent = "MODE: LENACAPAVIR \u2014 BLOKADE KAPSID p24 AKTIF 26 MINGGU";
+        canvasCaptionEl.textContent = "Molekul lenacapavir (titik hijau) mengikat kantong protein kapsid p24 pada HIV-1 secara stabil, menghentikan masuknya genom virus ke inti sel T sehingga 0 infeksi terjadi.";
+      } else if (mode === "oral_missed") {
+        hudModeEl.textContent = "MODE: PIL HARIAN (KEPATUHAN RENDAH) \u2014 KADAR OBAT NAIK-TURUN";
+        canvasCaptionEl.textContent = "Saat pil harian diminum, obat (titik biru) menahan virus. Namun ketika dosis terlewat, kadar obat turun dan celah proteksi terbuka sehingga virus dapat menembus inti sel T.";
+      } else {
+        hudModeEl.textContent = "MODE: TANPA OBAT (KONTROL) \u2014 TIDAK ADA PENGHAMBAT";
+        canvasCaptionEl.textContent = "Tanpa profilaksis antivirus, partikel HIV-1 bebas menembus membran sel T, mengimpor materi genetiknya ke dalam inti sel, dan memulai infeksi.";
+      }
+    }
+
+    document.querySelectorAll(".lab-btn").forEach(btn => {
       btn.addEventListener("click", () => {
-        document.querySelectorAll(".metric-btn").forEach(b => b.classList.remove("active"));
+        document.querySelectorAll(".lab-btn").forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
-        renderChart(btn.dataset.metric);
+        setSimMode(btn.dataset.sim);
       });
     });
-    renderChart("rate");
 
-    const steps = [
+    document.getElementById("spawn-wave-btn").addEventListener("click", spawnWave);
+
+    function drawHexagon(x, y, r, strokeColor, fillColor) {
+      ctx.beginPath();
+      for (let i = 0; i < 6; i++) {
+        const angle = (Math.PI / 3) * i;
+        const px = x + r * Math.cos(angle);
+        const py = y + r * Math.sin(angle);
+        if (i === 0) ctx.moveTo(px, py);
+        else ctx.lineTo(px, py);
+      }
+      ctx.closePath();
+      ctx.fillStyle = fillColor;
+      ctx.fill();
+      ctx.strokeStyle = strokeColor;
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    }
+
+    function animateCanvas() {
+      frameTick++;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Periodic wave
+      if (frameTick % 95 === 0 && virions.length < 18) {
+        spawnVirion(0);
+      }
+
+      // Draw Extracellular label
+      ctx.fillStyle = "rgba(148, 163, 184, 0.7)";
+      ctx.font = "bold 11px monospace";
+      ctx.fillText("AREA LUAR SEL (ALIRAN DARAH)", 18, 24);
+
+      // Draw T-Cell Cytoplasm
+      ctx.beginPath();
+      ctx.arc(CELL_CENTER_X, CELL_CENTER_Y, MEMBRANE_R, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(30, 58, 138, 0.25)";
+      ctx.fill();
+      ctx.strokeStyle = "#38bdf8";
+      ctx.lineWidth = 3;
+      ctx.setLineDash([8, 4]);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      ctx.fillStyle = "#7dd3fc";
+      ctx.fillText("SITOPLASMA SEL T", 480, 24);
+
+      // Oral missed drug cycle (oscillates between protected and unprotected)
+      const oralDrugActive = simMode === "oral_missed" ? (Math.sin(frameTick * 0.03) > -0.1) : false;
+
+      // Draw drug protection status bar inside canvas for oral_missed
+      if (simMode === "oral_missed") {
+        ctx.fillStyle = oralDrugActive ? "rgba(56, 189, 248, 0.22)" : "rgba(239, 68, 68, 0.25)";
+        ctx.fillRect(18, 282, 270, 24);
+        ctx.fillStyle = oralDrugActive ? "#7dd3fc" : "#fca5a5";
+        ctx.font = "bold 11px monospace";
+        ctx.fillText(oralDrugActive ? "STATUS PIL: KADAR OBAT CUKUP" : "STATUS PIL: DOSIS TERLEWAT (RENTAN!)", 26, 298);
+      } else if (simMode === "len") {
+        ctx.fillStyle = "rgba(16, 185, 129, 0.2)";
+        ctx.fillRect(18, 282, 270, 24);
+        ctx.fillStyle = "#6ee7b7";
+        ctx.font = "bold 11px monospace";
+        ctx.fillText("DEPOT LENACAPAVIR: STABIL 100%", 26, 298);
+      }
+
+      // Draw Drug Molecules
+      if (simMode === "len" || (simMode === "oral_missed" && oralDrugActive)) {
+        const dColor = simMode === "len" ? "#34d399" : "#38bdf8";
+        drugs.forEach(d => {
+          d.x += d.vx;
+          d.y += d.vy;
+          if (d.x < 465 || d.x > 630) d.vx *= -1;
+          if (d.y < 30 || d.y > 290) d.vy *= -1;
+          ctx.beginPath();
+          ctx.arc(d.x, d.y, 3.2, 0, Math.PI * 2);
+          ctx.fillStyle = dColor;
+          ctx.fill();
+        });
+      }
+
+      // Draw Nucleus
+      ctx.beginPath();
+      ctx.arc(CELL_CENTER_X, CELL_CENTER_Y, NUCLEUS_R, 0, Math.PI * 2);
+      ctx.fillStyle = nucleusFlash > 0 ? "rgba(220, 38, 38, 0.48)" : "rgba(59, 130, 246, 0.3)";
+      ctx.fill();
+      ctx.strokeStyle = nucleusFlash > 0 ? "#f87171" : "#93c5fd";
+      ctx.lineWidth = 3;
+      ctx.stroke();
+      if (nucleusFlash > 0) nucleusFlash--;
+
+      ctx.fillStyle = "#ffffff";
+      ctx.font = "bold 12px monospace";
+      ctx.textAlign = "center";
+      ctx.fillText("INTI SEL T", CELL_CENTER_X, CELL_CENTER_Y - 4);
+      ctx.fillStyle = "#cbd5e1";
+      ctx.font = "10px monospace";
+      ctx.fillText("(DNA INANG)", CELL_CENTER_X, CELL_CENTER_Y + 12);
+      ctx.textAlign = "left";
+
+      // Update & Draw Virions
+      for (let i = virions.length - 1; i >= 0; i--) {
+        const v = virions[i];
+        const dx = CELL_CENTER_X - v.x;
+        const dy = CELL_CENTER_Y - v.y;
+        const dist = Math.hypot(dx, dy);
+
+        if (v.state === "active") {
+          // Steer gently toward nucleus once near membrane
+          if (dist < MEMBRANE_R + 40) {
+            v.x += (dx / dist) * v.vx;
+            v.y += (dy / dist) * v.vx;
+          } else {
+            v.x += v.vx;
+            v.y += v.vy;
+          }
+
+          // Check drug blockade inside cytoplasm before reaching nucleus
+          if (dist < MEMBRANE_R - 35 && dist > NUCLEUS_R + 20) {
+            if (simMode === "len" && dist < NUCLEUS_R + 75) {
+              v.state = "blocked";
+              v.timer = 75;
+              blockedCount++;
+              cntBlockedEl.textContent = String(blockedCount);
+            } else if (simMode === "oral_missed" && oralDrugActive && dist < NUCLEUS_R + 60 && Math.random() < 0.08) {
+              v.state = "blocked";
+              v.timer = 65;
+              blockedCount++;
+              cntBlockedEl.textContent = String(blockedCount);
+            }
+          }
+
+          // Check nuclear entry (infection)
+          if (dist <= NUCLEUS_R + 8) {
+            v.state = "infected";
+            v.timer = 40;
+            infectedCount++;
+            nucleusFlash = 18;
+            cntInfectedEl.textContent = String(infectedCount);
+          }
+
+          drawHexagon(v.x, v.y, 10, "#fb7185", "rgba(244, 63, 94, 0.35)");
+        } else if (v.state === "blocked") {
+          v.timer--;
+          const alpha = Math.max(0, v.timer / 75);
+          ctx.beginPath();
+          ctx.arc(v.x, v.y, 16, 0, Math.PI * 2);
+          ctx.strokeStyle = "rgba(52, 211, 153, " + alpha + ")";
+          ctx.lineWidth = 2.5;
+          ctx.stroke();
+          drawHexagon(v.x, v.y, 9, "rgba(52, 211, 153, " + alpha + ")", "rgba(16, 185, 129, " + (alpha * 0.4) + ")");
+          if (v.timer <= 0) virions.splice(i, 1);
+        } else if (v.state === "infected") {
+          v.timer--;
+          const alpha = Math.max(0, v.timer / 40);
+          ctx.beginPath();
+          ctx.arc(v.x, v.y, 14 + (40 - v.timer) * 0.4, 0, Math.PI * 2);
+          ctx.strokeStyle = "rgba(248, 113, 113, " + alpha + ")";
+          ctx.lineWidth = 2.5;
+          ctx.stroke();
+          if (v.timer <= 0) virions.splice(i, 1);
+        }
+      }
+
+      requestAnimationFrame(animateCanvas);
+    }
+
+    initDrugs();
+    spawnWave();
+    animateCanvas();
+
+    // 3. Interactive 52-Week Pharmacokinetic SVG Simulator
+    const pkSvg = document.getElementById("pk-svg");
+    const weekSlider = document.getElementById("week-slider");
+    const adhSlider = document.getElementById("adh-slider");
+    const weekValEl = document.getElementById("week-val");
+    const adhValEl = document.getElementById("adh-val");
+    const pkReadoutEl = document.getElementById("pk-readout");
+
+    function getLenLevel(week) {
+      const cycleWeek = week % 26;
+      return 94 - (cycleWeek * 1.15);
+    }
+
+    function getOralLevel(week, adh) {
+      // Deterministic weekly fluctuation driven by adherence percentage
+      const wave = Math.sin(week * 1.35) * 18 + Math.cos(week * 0.7) * 12;
+      const base = adh * 0.86;
+      return Math.max(12, Math.min(95, base + wave));
+    }
+
+    function renderPK() {
+      const w = Number(weekSlider.value);
+      const adh = Number(adhSlider.value);
+      weekValEl.textContent = "Minggu ke-" + w;
+      adhValEl.textContent = adh + "%";
+
+      const padL = 44;
+      const padR = 16;
+      const padT = 24;
+      const padB = 34;
+      const chartW = 560 - padL - padR;
+      const chartH = 260 - padT - padB;
+      const thresholdVal = 52;
+      const threshY = padT + chartH - (thresholdVal / 100) * chartH;
+
+      let lenPath = "";
+      let oralPath = "";
+
+      for (let i = 0; i <= 52; i++) {
+        const x = padL + (i / 52) * chartW;
+        const yLen = padT + chartH - (getLenLevel(i) / 100) * chartH;
+        const yOral = padT + chartH - (getOralLevel(i, adh) / 100) * chartH;
+        lenPath += (i === 0 ? "M" : "L") + x.toFixed(1) + "," + yLen.toFixed(1) + " ";
+        oralPath += (i === 0 ? "M" : "L") + x.toFixed(1) + "," + yOral.toFixed(1) + " ";
+      }
+
+      const selX = padL + (w / 52) * chartW;
+      const curLen = getLenLevel(w);
+      const curOral = getOralLevel(w, adh);
+      const curLenY = padT + chartH - (curLen / 100) * chartH;
+      const curOralY = padT + chartH - (curOral / 100) * chartH;
+
+      pkSvg.innerHTML =
+        '<rect x="' + padL + '" y="' + threshY + '" width="' + chartW + '" height="' + (padT + chartH - threshY) + '" fill="rgba(239,68,68,0.09)"/>' +
+        '<line x1="' + padL + '" y1="' + threshY + '" x2="' + (padL + chartW) + '" y2="' + threshY + '" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="5 4"/>' +
+        '<text x="' + (padL + 6) + '" y="' + (threshY + 14) + '" fill="#b91c1c" font-size="10" font-weight="700">ZONA RENTAN INFEKSI (DI BAWAH AMBANG PROTEKSI)</text>' +
+        '<line x1="' + padL + '" y1="' + padT + '" x2="' + padL + '" y2="' + (padT + chartH) + '" stroke="#94a3b8" stroke-width="1.2"/>' +
+        '<line x1="' + padL + '" y1="' + (padT + chartH) + '" x2="' + (padL + chartW) + '" y2="' + (padT + chartH) + '" stroke="#94a3b8" stroke-width="1.2"/>' +
+        '<path d="' + oralPath + '" fill="none" stroke="#d97706" stroke-width="2.5"/>' +
+        '<path d="' + lenPath + '" fill="none" stroke="#059669" stroke-width="3"/>' +
+        '<line x1="' + selX + '" y1="' + padT + '" x2="' + selX + '" y2="' + (padT + chartH) + '" stroke="#1d4ed8" stroke-width="1.8" stroke-dasharray="3 3"/>' +
+        '<circle cx="' + selX + '" cy="' + curLenY + '" r="5" fill="#059669" stroke="#ffffff" stroke-width="2"/>' +
+        '<circle cx="' + selX + '" cy="' + curOralY + '" r="5" fill="#d97706" stroke="#ffffff" stroke-width="2"/>' +
+        '<text x="' + padL + '" y="248" fill="#475569" font-size="10">Mgg 0 (Suntik 1)</text>' +
+        '<text x="' + (padL + chartW / 2 - 42) + '" y="248" fill="#475569" font-size="10">Mgg 26 (Suntik 2)</text>' +
+        '<text x="' + (padL + chartW - 38) + '" y="248" fill="#475569" font-size="10">Mgg 52</text>' +
+        '<text x="' + (padL + 4) + '" y="14" fill="#059669" font-size="10" font-weight="700">\u25CF Lenacapavir (2x/Thn)</text>' +
+        '<text x="' + (padL + 150) + '" y="14" fill="#d97706" font-size="10" font-weight="700">\u25CF Pil Harian PrEP</text>';
+
+      const oralSafe = curOral >= thresholdVal;
+      pkReadoutEl.innerHTML =
+        '<span class="status-tag ' + (oralSafe ? "tag-safe" : "tag-risk") + '">' +
+          (oralSafe ? "MINGGU " + w + ": KEDUA REGIMEN DI ATAS AMBANG" : "MINGGU " + w + ": PIL HARIAN MASUK ZONA RENTAN!") +
+        "</span>" +
+        "<p><strong>Lenacapavir:</strong> Kadar protektif terjaga stabil di atas ambang (" + Math.round(curLen) + "%) berkat pelepasan lambat dari suntikan per 26 minggu.</p>" +
+        '<p style="margin-top:0.35rem;"><strong>Pil Harian (' + adh + '% patuh):</strong> Perkiraan proteksi minggu ini ' + Math.round(curOral) + "%. " +
+          (oralSafe
+            ? "Masih melindungi selama dosis rutin tidak terputus."
+            : "Kadar obat merosot di bawah batas aman sehingga berisiko terjadi infeksi jika terpapar HIV.") +
+        "</p>";
+    }
+
+    weekSlider.addEventListener("input", renderPK);
+    adhSlider.addEventListener("input", renderPK);
+    renderPK();
+
+    // 4. Visual Cohort Dot-Matrix (100 person-years representation)
+    const cohorts = [
       {
-        label: "1. Ikatan pada Kapsid p24",
-        text: "Lenacapavir berikatan erat pada kantong di antara subunit protein kapsid (p24) HIV-1 yang melindungi materi genetik virus."
+        name: "Suntikan Lenacapavir",
+        rateText: "0,00 / 100 org-thn",
+        infectedDots: 0,
+        highlight: true,
+        foot: "0 kasus infeksi HIV dari 2.134 peserta (P < 0,001 dibanding latar belakang dan F/TDF)."
       },
       {
-        label: "2. Blokade Impor Nuklear",
-        text: "Ikatan tersebut menghambat masuknya kompleks kapsid dan DNA virus ke dalam inti sel inang, sehingga integrasi genom HIV gagal terjadi."
+        name: "Pil Harian F/TDF",
+        rateText: "1,69 / 100 org-thn",
+        infectedDots: 2,
+        highlight: false,
+        foot: "16 kasus infeksi HIV dari 1.068 peserta (dibulatkan ~2 titik merah per 100 org-thn)."
       },
       {
-        label: "3. Gangguan Perakitan Virus",
-        text: "Pada tahap akhir siklus virus, lenacapavir mengacaukan perakitan dan pematangan cangkang kapsid sehingga partikel virus baru tidak terbentuk secara fungsional."
+        name: "Pil Harian F/TAF",
+        rateText: "2,02 / 100 org-thn",
+        infectedDots: 2,
+        highlight: false,
+        foot: "39 kasus infeksi HIV dari 2.136 peserta (~2 titik merah per 100 org-thn; kepatuhan pil rendah)."
       },
       {
-        label: "4. Depot Pelepasan Lambat",
-        text: "Diberikan lewat suntikan subkutan setiap 26 minggu, lenacapavir dilepaskan secara perlahan ke aliran darah untuk mempertahankan kadar protektif selama 6 bulan."
+        name: "Insidensi Latar Belakang",
+        rateText: "2,41 / 100 org-thn",
+        infectedDots: 3,
+        highlight: false,
+        foot: "Tingkat penularan alami populasi skrining tanpa PrEP di lokasi penelitian."
       }
     ];
 
-    let activeStep = 0;
-    const stepsNavEl = document.getElementById("steps-nav");
-    const stepDetailEl = document.getElementById("step-detail");
-
-    function renderSteps() {
-      stepsNavEl.innerHTML = steps.map((s, idx) =>
-        '<button class="step-btn ' + (idx === activeStep ? "active" : "") + '" type="button" data-idx="' + idx + '">' +
-          "<strong>Tahap " + (idx + 1) + "</strong>" +
-          "<span>" + s.label.replace(/^\d+\.\s*/, "") + "</span>" +
-        "</button>"
-      ).join("");
-
-      stepDetailEl.textContent = steps[activeStep].text;
-
-      stepsNavEl.querySelectorAll(".step-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-          activeStep = Number(btn.dataset.idx);
-          renderSteps();
-        });
-      });
-    }
-    renderSteps();
-
-    const regimens = {
-      len: {
-        title: "Lenacapavir: Proteksi Penuh dengan Jadwal Suntikan Per 6 Bulan",
-        badge: "0 Kasus dari 2.134 Peserta",
-        a: { w: "100%", label: "100% (0 Infeksi)" },
-        b: { w: "95%", label: "Sangat Tinggi (2x/Thn)" },
-        c: { w: "10%", label: "Minimal" },
-        note: "Suntikan subkutan setiap 26 minggu membentuk depot obat pelepas lambat sehingga menjaga kadar antivirus tetap stabil di tubuh tanpa perlu mengingat minum pil setiap hari.",
-        svg: '<svg viewBox="0 0 110 86" width="96" height="76" fill="none" stroke="#34d399" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="20" y1="66" x2="36" y2="50"/><rect x="34" y="26" width="40" height="18" rx="4" transform="rotate(-45 54 35)"/><line x1="68" y1="22" x2="84" y2="6"/><line x1="76" y1="6" x2="88" y2="18"/><circle cx="24" cy="62" r="3" fill="#38bdf8"/></svg>'
-      },
-      ftdf: {
-        title: "Pil Harian F/TDF: Efektif Bila Rutin, Rentan Jika Terlewat",
-        badge: "16 Kasus dari 1.068 Peserta",
-        a: { w: "58%", label: "1,69 / 100 org-thn" },
-        b: { w: "45%", label: "Tergantung Rutinitas" },
-        c: { w: "75%", label: "Tinggi (365 Pil/Thn)" },
-        note: "Pil oral harian F/TDF bekerja menghambat enzim reverse transcriptase HIV, tetapi efektivitasnya di dunia nyata sangat bergantung pada kedisiplinan konsumsi setiap hari.",
-        svg: '<svg viewBox="0 0 110 86" width="96" height="76" fill="none" stroke="#38bdf8" stroke-width="2.8" stroke-linecap="round"><rect x="30" y="27" width="50" height="32" rx="16"/><line x1="55" y1="27" x2="55" y2="59"/></svg>'
-      },
-      ftaf: {
-        title: "Pil Harian F/TAF: Terkendala Kepatuhan Konsumsi Harian",
-        badge: "39 Kasus dari 2.136 Peserta",
-        a: { w: "44%", label: "2,02 / 100 org-thn" },
-        b: { w: "42%", label: "Rendah di Populasi Uji" },
-        c: { w: "80%", label: "Tinggi (365 Pil/Thn)" },
-        note: "Pada uji PURPOSE 1, angka infeksi di kelompok F/TAF tidak berbeda signifikan dari insidensi latar belakang karena sebagian besar peserta tidak mengonsumsi pil harian secara konsisten.",
-        svg: '<svg viewBox="0 0 110 86" width="96" height="76" fill="none" stroke="#fbbf24" stroke-width="2.8" stroke-linecap="round"><ellipse cx="55" cy="43" rx="26" ry="18"/><line x1="39" y1="43" x2="71" y2="43"/></svg>'
+    const cohortGridEl = document.getElementById("cohort-grid");
+    cohortGridEl.innerHTML = cohorts.map(c => {
+      let dotsHtml = "";
+      for (let i = 0; i < 100; i++) {
+        const cls = i < c.infectedDots ? "dot infected" : (c.highlight ? "dot safe" : "dot");
+        dotsHtml += '<span class="' + cls + '"></span>';
       }
-    };
+      return (
+        '<div class="cohort-card ' + (c.highlight ? "highlight" : "") + '">' +
+          '<div class="cohort-top"><h3>' + c.name + '</h3><span class="cohort-rate">' + c.rateText + "</span></div>" +
+          '<div class="dot-matrix" aria-hidden="true">' + dotsHtml + "</div>" +
+          '<div class="cohort-foot">' + c.foot + "</div>" +
+        "</div>"
+      );
+    }).join("");
 
-    const simSvgEl = document.getElementById("sim-svg");
-    simSvgEl.innerHTML = regimens.len.svg;
-
-    document.querySelectorAll(".regimen-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        document.querySelectorAll(".regimen-btn").forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        const data = regimens[btn.dataset.reg];
-        document.getElementById("sim-title").textContent = data.title;
-        document.getElementById("sim-badge").textContent = data.badge;
-        document.getElementById("bar-a").style.width = data.a.w;
-        document.getElementById("val-a").textContent = data.a.label;
-        document.getElementById("bar-b").style.width = data.b.w;
-        document.getElementById("val-b").textContent = data.b.label;
-        document.getElementById("bar-c").style.width = data.c.w;
-        document.getElementById("val-c").textContent = data.c.label;
-        document.getElementById("sim-note").textContent = data.note;
-        simSvgEl.innerHTML = data.svg;
-      });
-    });
-
+    // 5. Quiz with Live Score & Reset Button
     const quizData = [
       {
         q: "1. Berapa jumlah kasus infeksi HIV baru yang terjadi pada 2.134 peserta penerima suntikan lenacapavir dalam uji PURPOSE 1?",
@@ -911,18 +1209,18 @@
         ],
         correct: 0,
         correctExp: "Jawaban Benar: Tepat. Tidak ada satu pun infeksi HIV yang terjadi pada kelompok lenacapavir (0 kasus dari 2.134 peserta).",
-        wrongExp: "Kurang Tepat: Benar. Kelompok lenacapavir mencatat 0 kasus infeksi HIV (insidensi 0,00 per 100 orang-tahun), sedangkan 16 kasus terjadi di F/TDF dan 39 kasus di F/TAF."
+        wrongExp: "Kurang Tepat: Kelompok lenacapavir mencatat 0 kasus infeksi HIV (insidensi 0,00 per 100 orang-tahun), sedangkan 16 kasus terjadi di F/TDF dan 39 kasus di F/TAF."
       },
       {
         q: "2. Struktur virus HIV-1 mana yang menjadi target kerja utama obat lenacapavir?",
         options: [
-          "Protein kapsid HIV-1 yang berperan dalam impor nuklear dan perakitan virus",
+          "Protein kapsid p24 HIV-1 yang berperan dalam impor nuklear dan perakitan virus",
           "Dinding sel peptidoglikan bakteri di saluran pencernaan",
           "Hanya sel darah merah inang tanpa menyentuh partikel virus"
         ],
         correct: 0,
-        correctExp: "Jawaban Benar: Akurat. Lenacapavir adalah inhibitor kapsid HIV-1 yang mengikat protein kapsid dan menghambat berbagai tahap siklus hidup virus.",
-        wrongExp: "Kurang Tepat: Benar. Lenacapavir bekerja dengan menargetkan protein kapsid HIV-1 untuk memblokir impor nuklear serta perakitan virus baru."
+        correctExp: "Jawaban Benar: Akurat. Lenacapavir adalah inhibitor kapsid HIV-1 yang mengikat protein kapsid p24 dan menghambat berbagai tahap siklus hidup virus.",
+        wrongExp: "Kurang Tepat: Lenacapavir bekerja dengan menargetkan protein kapsid HIV-1 untuk memblokir impor nuklear serta perakitan virus baru."
       },
       {
         q: "3. Mengapa efektivitas pil harian F/TAF dan F/TDF jauh lebih rendah dibandingkan lenacapavir dalam penelitian ini?",
@@ -933,7 +1231,7 @@
         ],
         correct: 0,
         correctExp: "Jawaban Benar: Tepat. Rendahnya kepatuhan konsumsi pil harian menjadi hambatan utama, yang berhasil diatasi oleh jadwal suntikan lenacapavir dua kali setahun.",
-        wrongExp: "Kurang Tepat: Benar. Perbedaan besar tersebut terutama dipengaruhi oleh rendahnya kepatuhan minum pil harian dibandingkan suntikan kerja panjang setiap 26 minggu."
+        wrongExp: "Kurang Tepat: Perbedaan besar tersebut terutama dipengaruhi oleh rendahnya kepatuhan minum pil harian dibandingkan suntikan kerja panjang setiap 26 minggu."
       }
     ];
 
