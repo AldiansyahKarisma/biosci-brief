@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Genom 160 Gbp Paku Garpu Tmesipteris: Rekor Terbesar Eukariota (iScience, 2024)</title>
+  <meta name="description" content="Paku garpu Tmesipteris oblanceolata dari Kaledonia Baru memiliki genom 160,45 Gbp (>50x genom manusia) dengan bentangan DNA lebih dari 100 meter per sel." />
+  <meta name="category" content="Botani" />
+  <meta name="date" content="2026-11-28" />
+  <style>
+    :root {
+      --paper: #f8f5ec;
+      --sheet: #fffdf7;
+      --ink: #1b261e;
+      --muted: #4d5d53;
+      --forest: #1b4332;
+      --forest-soft: #e6f0ea;
+      --olive: #4a6b53;
+      --pollen: #c58f17;
+      --pollen-soft: #fbf2d5;
+      --rule: #d5ccb8;
+      --serif: Georgia, "Times New Roman", Times, serif;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.65;
+      padding-bottom: 4rem;
+    }
+
+    /* Herbarium Top Ribbon */
+    .herb-nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(255, 253, 247, 0.94);
+      backdrop-filter: blur(8px);
+      border-bottom: 1.5px solid var(--forest);
+    }
+
+    .herb-nav-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0.7rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .back-link {
+      text-decoration: none;
+      color: var(--forest);
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .back-link:hover { color: var(--pollen); }
+
+    .toc-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .toc-links a {
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .toc-links a:hover { color: var(--forest); }
+
+    /* Main Herbarium Sheet Container */
+    .monograph {
+      max-width: 980px;
+      margin: 1.5rem auto 0;
+      padding: 0 1.25rem;
+    }
+
+    .herbarium-sheet {
+      background: var(--sheet);
+      border: 1.5px solid var(--rule);
+      box-shadow: 0 10px 30px rgba(27, 67, 50, 0.06);
+      padding: 2rem;
+    }
+
+    @media (max-width: 640px) {
+      .herbarium-sheet { padding: 1.25rem; }
+    }
+
+    /* Specimen Stamp Header */
+    .sheet-header {
+      border-bottom: 2px solid var(--forest);
+      padding-bottom: 1.4rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .stamp-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .herb-stamp {
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--forest);
+      border: 1.5px solid var(--forest);
+      padding: 0.2rem 0.65rem;
+      background: var(--forest-soft);
+    }
+
+    .catalog-id {
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      color: var(--muted);
+    }
+
+    .sheet-header h1 {
+      font-family: var(--serif);
+      font-size: clamp(1.65rem, 3.6vw, 2.35rem);
+      line-height: 1.2;
+      color: var(--forest);
+      margin-bottom: 0.75rem;
+    }
+
+    .sheet-lead {
+      font-size: 0.97rem;
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+      max-width: 780px;
+    }
+
+    .cite-box {
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-left: 4px solid var(--pollen);
+      padding: 0.9rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+      font-size: 0.81rem;
+    }
+
+    .copy-btn {
+      background: var(--forest);
+      color: #ffffff;
+      border: none;
+      padding: 0.48rem 0.9rem;
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .copy-btn:hover { background: var(--pollen); color: var(--ink); }
+
+    /* Key Specimen Metrics Strip */
+    .spec-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--rule);
+      background: var(--paper);
+      margin-top: 1.2rem;
+    }
+
+    @media (max-width: 720px) {
+      .spec-strip { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .spec-cell {
+      padding: 0.9rem 1rem;
+      border-right: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .spec-cell:last-child { border-right: none; }
+
+    .spec-cell strong {
+      display: block;
+      font-family: var(--mono);
+      font-size: 1.35rem;
+      color: var(--forest);
+      line-height: 1.15;
+    }
+
+    .spec-cell span {
+      font-size: 0.77rem;
+      color: var(--muted);
+    }
+
+    /* Numbered Vertical Monograph Sections */
+    .mono-sec {
+      padding: 1.75rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .mono-sec:last-of-type { border-bottom: none; padding-bottom: 0.5rem; }
+
+    .sec-head {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 0.9rem;
+      align-items: start;
+      margin-bottom: 1.2rem;
+    }
+
+    .sec-num {
+      font-family: var(--mono);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--forest);
+      border: 1.5px solid var(--forest);
+      background: var(--forest-soft);
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sec-head h2 {
+      font-family: var(--serif);
+      font-size: 1.38rem;
+      color: var(--ink);
+      line-height: 1.25;
+      margin-bottom: 0.25rem;
+    }
+
+    .sec-head p {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    /* Section 01: Latar Belakang & Metode */
+    .ctx-cols {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    @media (max-width: 780px) {
+      .ctx-cols { grid-template-columns: 1fr; }
+    }
+
+    .ctx-box {
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      padding: 1.05rem;
+    }
+
+    .ctx-kicker {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--olive);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.3rem;
+      display: block;
+    }
+
+    .ctx-box h3 {
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: var(--forest);
+      margin-bottom: 0.35rem;
+    }
+
+    .ctx-box p {
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    /* Section 02: Interactive Genome & Cell Scale Lab (Canvas + Species Picker) */
+    .species-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .sp-btn {
+      padding: 0.52rem 0.9rem;
+      border: 1.5px solid var(--rule);
+      background: var(--paper);
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .sp-btn:hover { border-color: var(--forest); }
+    .sp-btn.active {
+      background: var(--forest);
+      border-color: var(--forest);
+      color: #ffffff;
+    }
+
+    .lab-canvas-wrap {
+      border: 1.5px solid var(--forest);
+      background: #132a1e;
+      color: #f8f5ec;
+      overflow: hidden;
+    }
+
+    .lab-hud {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      padding: 0.65rem 1rem;
+      background: #0d1f16;
+      border-bottom: 1px solid rgba(248, 245, 236, 0.14);
+      font-family: var(--mono);
+      font-size: 0.78rem;
+    }
+
+    .hud-gold { color: #f6c945; font-weight: 700; }
+
+    #cell-scale-canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .lab-foot {
+      padding: 0.85rem 1rem;
+      background: #0d1f16;
+      border-top: 1px solid rgba(248, 245, 236, 0.14);
+      font-size: 0.85rem;
+      color: #dce6df;
+    }
+
+    /* Section 03: Physiological Trade-Off Slider */
+    .phys-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    @media (max-width: 780px) {
+      .phys-grid { grid-template-columns: 1fr; }
+    }
+
+    .slider-card {
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      padding: 1.15rem;
+    }
+
+    .slider-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 0.45rem;
+    }
+
+    .slider-card input[type="range"] {
+      width: 100%;
+      accent-color: var(--forest);
+      cursor: pointer;
+      margin-bottom: 1rem;
+    }
+
+    .trade-meters {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .tm-head {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 0.22rem;
+    }
+
+    .tm-track {
+      height: 11px;
+      background: #e3dccb;
+      overflow: hidden;
+    }
+
+    .tm-fill {
+      height: 100%;
+      transition: width 0.3s ease;
+    }
+
+    .tm-green { background: var(--forest); }
+    .tm-gold { background: var(--pollen); }
+    .tm-olive { background: var(--olive); }
+
+    .phys-note {
+      background: var(--sheet);
+      border: 1px solid var(--rule);
+      border-left: 4px solid var(--forest);
+      padding: 1rem 1.1rem;
+      font-size: 0.87rem;
+    }
+
+    .phys-note h3 {
+      font-family: var(--serif);
+      font-size: 1.02rem;
+      color: var(--forest);
+      margin-bottom: 0.4rem;
+    }
+
+    /* Section 04: Conclusion & Practical */
+    .concl-split {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 1.15rem;
+    }
+
+    @media (max-width: 760px) {
+      .concl-split { grid-template-columns: 1fr; }
+    }
+
+    .concl-box {
+      background: var(--forest-soft);
+      border: 1px solid #b7d1c1;
+      padding: 1.2rem;
+    }
+
+    .concl-box h3 {
+      font-family: var(--serif);
+      font-size: 1.08rem;
+      color: var(--forest);
+      margin-bottom: 0.45rem;
+    }
+
+    .concl-box p {
+      font-size: 0.9rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .prac-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .prac-card {
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-left: 4px solid var(--pollen);
+      padding: 0.85rem 1rem;
+    }
+
+    .prac-card strong {
+      display: block;
+      font-size: 0.88rem;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
+    }
+
+    .prac-card p {
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+
+    /* Section 05: Quiz */
+    .quiz-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .quiz-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .score-pill {
+      font-family: var(--mono);
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      font-weight: 700;
+      font-size: 0.82rem;
+      padding: 0.36rem 0.75rem;
+    }
+
+    .reset-quiz-btn {
+      background: var(--sheet);
+      border: 1.5px solid var(--forest);
+      color: var(--forest);
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 0.78rem;
+      padding: 0.36rem 0.8rem;
+      cursor: pointer;
+    }
+
+    .reset-quiz-btn:hover {
+      background: var(--forest);
+      color: #ffffff;
+    }
+
+    .quiz-item {
+      border: 1px solid var(--rule);
+      background: var(--paper);
+      padding: 1.1rem;
+      margin-bottom: 0.95rem;
+    }
+
+    .quiz-q {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 0.96rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .quiz-opts {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .opt-btn {
+      text-align: left;
+      padding: 0.65rem 0.9rem;
+      border: 1.5px solid var(--rule);
+      background: var(--sheet);
+      font-size: 0.88rem;
+      cursor: pointer;
+    }
+
+    .opt-btn:hover:not(:disabled) { border-color: var(--forest); }
+    .opt-btn.correct { background: #dcfce7; border-color: #15803d; color: #14532d; font-weight: 700; }
+    .opt-btn.wrong { background: #fee2e2; border-color: #b91c1c; color: #7f1d1d; }
+
+    .quiz-exp {
+      margin-top: 0.65rem;
+      font-size: 0.84rem;
+      display: none;
+      padding: 0.7rem 0.85rem;
+    }
+
+    .quiz-exp.is-correct { background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; }
+    .quiz-exp.is-wrong { background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
+
+    footer {
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      color: var(--muted);
+      margin-top: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <nav class="herb-nav">
+    <div class="herb-nav-inner">
+      <a class="back-link" href="./">&larr; Katalog BioSci Brief</a>
+      <div class="toc-links">
+        <a href="#latar">01. Latar &amp; Metode</a>
+        <a href="#lab-genom">02. Skala Genom</a>
+        <a href="#fisiologi">03. Dampak Fisiologi</a>
+        <a href="#kesimpulan">04. Kesimpulan</a>
+        <a href="#kuis">05. Kuis</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="monograph">
+    <article class="herbarium-sheet">
+      <!-- Header Monograf -->
+      <header class="sheet-header">
+        <div class="stamp-row">
+          <span class="herb-stamp">Monograf Herbarium &bull; Botani</span>
+          <span class="catalog-id">SPECIMEN: TMESIPTERIS OBLANCEOLATA &bull; iScience (2024)</span>
+        </div>
+        <h1>Genom 160,45 Gbp Paku Garpu <em>Tmesipteris oblanceolata</em> Pecahkan Rekor Eukariota</h1>
+        <p class="sheet-lead">Tumbuhan paku garpu kecil dari hutan hujan Kaledonia Baru ternyata menyimpan DNA lebih dari 50 kali ukuran genom manusia—dengan panjang untai DNA melampaui 100 meter di dalam setiap sel tunggalnya.</p>
+
+        <div class="cite-box">
+          <div>
+            <strong>Referensi (Harvard):</strong> Fern&aacute;ndez, P., Amice, R., Bruy, D., Christenhusz, M.J.M., Leitch, I.J., Leitch, A.L. et al. (2024) &lsquo;A 160 Gbp fork fern genome shatters size record for eukaryotes&rsquo;, <em>iScience</em>, 27(6), 109889. doi: 10.1016/j.isci.2024.109889.
+          </div>
+          <button class="copy-btn" id="copy-cite" type="button">Salin Sitasi</button>
+        </div>
+
+        <div class="spec-strip">
+          <div class="spec-cell">
+            <strong>160,45 Gbp</strong>
+            <span>Ukuran genom haploid (1C)</span>
+          </div>
+          <div class="spec-cell">
+            <strong>&gt; 50&times;</strong>
+            <span>Lebih besar dari genom manusia</span>
+          </div>
+          <div class="spec-cell">
+            <strong>&gt; 100 m</strong>
+            <span>Panjang DNA dalam 1 sel tunggal</span>
+          </div>
+          <div class="spec-cell">
+            <strong>+7%</strong>
+            <span>Melampaui <em>Paris japonica</em></span>
+          </div>
+        </div>
+      </header>
+
+      <!-- 01. Latar Belakang & Metode -->
+      <section class="mono-sec" id="latar">
+        <div class="sec-head">
+          <div class="sec-num">01</div>
+          <div>
+            <h2>Latar Belakang &amp; Metode Penelitian</h2>
+            <p>Konteks teka-teki ukuran genom tumbuhan dan cara peneliti mengukur DNA raksasa tanpa harus mengurutkan seluruh basa satu per satu.</p>
+          </div>
+        </div>
+
+        <div class="ctx-cols">
+          <div class="ctx-box">
+            <span class="ctx-kicker">Latar Belakang</span>
+            <h3>Paradoks Ukuran Genom</h3>
+            <p>Selama 14 tahun, rekor genom eukariota terbesar dipegang tanaman berbunga Jepang <em>Paris japonica</em> (148,89 Gbp). Peneliti ingin menguji apakah kelompok paku garpu purba (Psilotaceae) yang poliploid menyimpan genom lebih besar lagi.</p>
+          </div>
+          <div class="ctx-box">
+            <span class="ctx-kicker">Subjek &amp; Habitat</span>
+            <h3>Epifit Hutan Kaledonia Baru</h3>
+            <p>Sampel diambil dari <em>Tmesipteris oblanceolata</em>, tumbuhan paku garpu kecil (tinggi 15&ndash;30 cm) tanpa akar sejati yang tumbuh menempel pada batang paku pohon di hutan hujan tropis Kaledonia Baru.</p>
+          </div>
+          <div class="ctx-box">
+            <span class="ctx-kicker">Metode Pengukuran</span>
+            <h3>Sitometri Aliran (Flow Cytometry)</h3>
+            <p>Inti sel segar diwarnai menggunakan <em>propidium iodide</em> yang mengikat DNA secara proporsional. Intensitas fluoresensinya diukur dengan laser sitometer aliran dan dikalibrasi terhadap standar referensi untuk memperoleh nilai 1C.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 02. Eksperimen Visual 1: Canvas Skala Genom & Sel -->
+      <section class="mono-sec" id="lab-genom">
+        <div class="sec-head">
+          <div class="sec-num">02</div>
+          <div>
+            <h2>Lab Perbandingan Skala: Genom, Bentangan DNA &amp; Ukuran Inti Sel</h2>
+            <p>Pilih spesies di bawah ini untuk melihat perubahan ukuran inti sel, kepadatan gulungan kromatin, dan panjang bentangan DNA secara langsung.</p>
+          </div>
+        </div>
+
+        <div class="species-bar">
+          <button class="sp-btn" type="button" data-sp="arabidopsis">1. <em>Arabidopsis thaliana</em> (0,15 Gbp)</button>
+          <button class="sp-btn" type="button" data-sp="human">2. Manusia (3,1 Gbp)</button>
+          <button class="sp-btn" type="button" data-sp="paris">3. <em>Paris japonica</em> (148,89 Gbp)</button>
+          <button class="sp-btn active" type="button" data-sp="tmesipteris">4. <em>Tmesipteris oblanceolata</em> (160,45 Gbp)</button>
+        </div>
+
+        <div class="lab-canvas-wrap">
+          <div class="lab-hud">
+            <span id="hud-sp">SPESIES: TMESIPTERIS OBLANCEOLATA (REKOR DUNIA)</span>
+            <span>BENTANGAN DNA / SEL: <span class="hud-gold" id="hud-len">&gt; 106 METER</span></span>
+          </div>
+          <canvas id="cell-scale-canvas" width="840" height="300"></canvas>
+          <div class="lab-foot" id="lab-foot">
+            Genom 160,45 Gbp memaksa inti sel dan ukuran sel tumbuhan membesar secara drastis agar mampu menampung puluhan miliar pasangan basa hasil duplikasi poliploidi dan elemen transposabel.
+          </div>
+        </div>
+      </section>
+
+      <!-- 03. Eksperimen Visual 2: Simulator Dampak Fisiologis -->
+      <section class="mono-sec" id="fisiologi">
+        <div class="sec-head">
+          <div class="sec-num">03</div>
+          <div>
+            <h2>Simulator Konsekuensi Fisiologis Genom Raksasa</h2>
+            <p>Geser ukuran genom (Gbp) untuk mengamati bagaimana penambahan DNA memengaruhi kebutuhan hara, ukuran stomata, dan kecepatan pembelahan sel tumbuhan.</p>
+          </div>
+        </div>
+
+        <div class="phys-grid">
+          <div class="slider-card">
+            <div class="slider-label">
+              <span>Ukuran Genom Haploid (1C)</span>
+              <span id="gbp-val" style="font-family: var(--mono); color: var(--forest);">160 Gbp</span>
+            </div>
+            <input type="range" id="gbp-slider" min="1" max="160" value="160" />
+
+            <div class="trade-meters">
+              <div>
+                <div class="tm-head"><span>Kecepatan Pembelahan Sel (Mitosis)</span><span id="m-div">Sangat Lambat</span></div>
+                <div class="tm-track"><div class="tm-fill tm-green" id="b-div" style="width: 14%"></div></div>
+              </div>
+              <div>
+                <div class="tm-head"><span>Kebutuhan Unsur Hara (Nitrogen &amp; Fosfor)</span><span id="m-nut">Sangat Tinggi</span></div>
+                <div class="tm-track"><div class="tm-fill tm-gold" id="b-nut" style="width: 96%"></div></div>
+              </div>
+              <div>
+                <div class="tm-head"><span>Ukuran Sel &amp; Stomata Daun</span><span id="m-cell">Sangat Besar</span></div>
+                <div class="tm-track"><div class="tm-fill tm-olive" id="b-cell" style="width: 95%"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="phys-note" id="phys-note"></div>
+        </div>
+      </section>
+
+      <!-- 04. Kesimpulan & Manfaat Praktis -->
+      <section class="mono-sec" id="kesimpulan">
+        <div class="sec-head">
+          <div class="sec-num">04</div>
+          <div>
+            <h2>Kesimpulan Penelitian &amp; Manfaat Praktis</h2>
+            <p>Intisari temuan rekor genom eukariota serta implikasinya bagi biologi evolusi dan konservasi flora.</p>
+          </div>
+        </div>
+
+        <div class="concl-split">
+          <div class="concl-box">
+            <h3>Kesimpulan Utama</h3>
+            <p>Dengan ukuran genom 160,45 Gbp (1C), paku garpu <em>Tmesipteris oblanceolata</em> memecahkan rekor genom eukariota terbesar di dunia, melampaui <em>Paris japonica</em> sekitar 7% dan genom manusia lebih dari 50 kali lipat.</p>
+            <p style="margin-bottom: 0;">Ukuran genom raksasa ini tidak mencerminkan kerumitan bentuk tubuh, melainkan membuktikan bahwa akumulasi DNA berulang dan poliploidi membawa beban fisiologis besar pada pertumbuhan tumbuhan.</p>
+          </div>
+
+          <div class="prac-stack">
+            <div class="prac-card">
+              <strong>Batas Atas Biologi Sel</strong>
+              <p>Menjadi acuan ekstrem batas ukuran DNA yang masih sanggup direplikasi dan dibagi oleh sistem mitosis eukariota.</p>
+            </div>
+            <div class="prac-card">
+              <strong>Prioritas Konservasi Flora Rentan</strong>
+              <p>Tumbuhan bergenom raksasa lambat tumbuh dan sulit beradaptasi cepat terhadap perubahan iklim, sehingga kelestarian habitat aslinya sangat krusial.</p>
+            </div>
+            <div class="prac-card">
+              <strong>Studi Evolusi Poliploidi</strong>
+              <p>Membantu peneliti memahami dinamika penumpukan elemen transposabel dan duplikasi kromosom dalam sejarah tumbuhan berpembuluh purba.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 05. Kuis 3 Soal -->
+      <section class="mono-sec" id="kuis">
+        <div class="quiz-bar">
+          <div class="sec-head" style="margin-bottom: 0;">
+            <div class="sec-num">05</div>
+            <div>
+              <h2>Kuis Singkat Jurnal (3 Pertanyaan)</h2>
+              <p>Uji pemahaman Anda berdasarkan data penelitian Fern&aacute;ndez et al. (2024).</p>
+            </div>
+          </div>
+          <div class="quiz-controls">
+            <span class="score-pill" id="score-pill">Skor: 0 / 3</span>
+            <button class="reset-quiz-btn" id="reset-quiz-btn" type="button">Ulangi</button>
+          </div>
+        </div>
+        <div id="quiz-container"></div>
+      </section>
+    </article>
+
+    <footer>
+      BioSci Brief &bull; Monograf Herbarium Modern &bull; Sumber: Fern&aacute;ndez et al., iScience (2024)
+    </footer>
+  </main>
+
+  <script>
+    // 1. Copy Harvard Citation
+    const citeText = "Fern\u00e1ndez, P., Amice, R., Bruy, D., Christenhusz, M.J.M., Leitch, I.J., Leitch, A.L. et al. (2024) 'A 160 Gbp fork fern genome shatters size record for eukaryotes', iScience, 27(6), 109889. doi: 10.1016/j.isci.2024.109889.";
+    const copyBtn = document.getElementById("copy-cite");
+    copyBtn.addEventListener("click", () => {
+      navigator.clipboard.writeText(citeText).then(() => {
+        copyBtn.textContent = "Sitasi Tersalin!";
+        setTimeout(() => { copyBtn.textContent = "Salin Sitasi"; }, 2000);
+      });
+    });
+
+    // 2. Interactive Genome & Cell Scale Canvas
+    const canvas = document.getElementById("cell-scale-canvas");
+    const ctx = canvas.getContext("2d");
+    const hudSpEl = document.getElementById("hud-sp");
+    const hudLenEl = document.getElementById("hud-len");
+    const labFootEl = document.getElementById("lab-foot");
+
+    const speciesData = {
+      arabidopsis: {
+        name: "ARABIDOPSIS THALIANA (MODEL BOTANI)",
+        gbp: 0.15,
+        dnaLenText: "~0,1 METER",
+        nucR: 18,
+        cellR: 50,
+        strands: 8,
+        barPct: 3,
+        foot: "Arabidopsis thaliana memiliki genom sangat ringkas (0,15 Gbp), sehingga selnya kecil, siklus hidupnya sangat cepat, dan efisien dalam menggunakan unsur hara."
+      },
+      human: {
+        name: "HOMO SAPIENS (MANUSIA)",
+        gbp: 3.1,
+        dnaLenText: "~2 METER",
+        nucR: 32,
+        cellR: 72,
+        strands: 16,
+        barPct: 6,
+        foot: "Genom manusia (3,1 Gbp) menghasilkan sekitar 2 meter untai DNA per sel—masih lebih dari 50 kali lebih kecil dibandingkan paku garpu Tmesipteris oblanceolata."
+      },
+      paris: {
+        name: "PARIS JAPONICA (PEMEGANG REKOR 2010-2024)",
+        gbp: 148.89,
+        dnaLenText: "~99 METER",
+        nucR: 76,
+        cellR: 112,
+        strands: 46,
+        barPct: 93,
+        foot: "Tanaman berbunga pegunungan Jepang ini memegang rekor dunia selama 14 tahun (148,89 Gbp) sebelum akhirnya dilampaui oleh Tmesipteris oblanceolata sebesar ~7%."
+      },
+      tmesipteris: {
+        name: "TMESIPTERIS OBLANCEOLATA (REKOR DUNIA 2024)",
+        gbp: 160.45,
+        dnaLenText: "> 106 METER",
+        nucR: 86,
+        cellR: 122,
+        strands: 54,
+        barPct: 100,
+        foot: "Genom 160,45 Gbp memaksa inti sel dan ukuran sel tumbuhan membesar secara drastis agar mampu menampung puluhan miliar pasangan basa hasil duplikasi poliploidi dan elemen transposabel."
+      }
+    };
+
+    let targetSp = speciesData.tmesipteris;
+    let curNucR = 86;
+    let curCellR = 122;
+    let curBar = 100;
+    let phase = 0;
+
+    document.querySelectorAll(".sp-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".sp-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        targetSp = speciesData[btn.dataset.sp];
+        hudSpEl.textContent = "SPESIES: " + targetSp.name;
+        hudLenEl.textContent = targetSp.dnaLenText;
+        labFootEl.textContent = targetSp.foot;
+      });
+    });
+
+    function animateCellScale() {
+      phase += 0.025;
+      curNucR += (targetSp.nucR - curNucR) * 0.1;
+      curCellR += (targetSp.cellR - curCellR) * 0.1;
+      curBar += (targetSp.barPct - curBar) * 0.1;
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Left panel: Living Plant Cell & Nucleus
+      const cx = 210;
+      const cy = 152;
+
+      // Cell wall (hexagonal/rounded botanical cell)
+      ctx.beginPath();
+      ctx.arc(cx, cy, curCellR, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(82, 121, 111, 0.22)";
+      ctx.fill();
+      ctx.strokeStyle = "#84a98c";
+      ctx.lineWidth = 3;
+      ctx.stroke();
+
+      // Nucleus
+      ctx.beginPath();
+      ctx.arc(cx, cy, curNucR, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(212, 160, 23, 0.24)";
+      ctx.fill();
+      ctx.strokeStyle = "#f6c945";
+      ctx.lineWidth = 2.5;
+      ctx.stroke();
+
+      // Animated chromatin coils inside nucleus
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(cx, cy, Math.max(4, curNucR - 4), 0, Math.PI * 2);
+      ctx.clip();
+      ctx.strokeStyle = "rgba(246, 201, 69, 0.65)";
+      ctx.lineWidth = 1.4;
+      for (let i = 0; i < targetSp.strands; i++) {
+        const a = (i / targetSp.strands) * Math.PI * 2 + phase * 0.25;
+        const r1 = (i % 5) * (curNucR * 0.16) + 6;
+        ctx.beginPath();
+        ctx.arc(cx + Math.cos(a) * (curNucR * 0.22), cy + Math.sin(a) * (curNucR * 0.22), r1, a, a + 1.8);
+        ctx.stroke();
+      }
+      ctx.restore();
+
+      ctx.fillStyle = "#dce6df";
+      ctx.font = "bold 11px monospace";
+      ctx.textAlign = "center";
+      ctx.fillText("PERBANDINGAN INTI SEL & KROMATIN", cx, 22);
+      ctx.textAlign = "left";
+
+      // Right panel: DNA Length Scale Bar vs Landmark
+      const rx = 410;
+      ctx.fillStyle = "#dce6df";
+      ctx.font = "bold 11px monospace";
+      ctx.fillText("SKALA PANJANG UNTAI DNA PER 1 SEL (METER)", rx, 56);
+
+      // Track
+      ctx.fillStyle = "rgba(255, 255, 255, 0.12)";
+      ctx.fillRect(rx, 74, 390, 26);
+
+      // Animated fill
+      const fillW = Math.max(8, (curBar / 100) * 390);
+      const grad = ctx.createLinearGradient(rx, 0, rx + 390, 0);
+      grad.addColorStop(0, "#52b788");
+      grad.addColorStop(1, "#f6c945");
+      ctx.fillStyle = grad;
+      ctx.fillRect(rx, 74, fillW, 26);
+
+      // Value readout
+      ctx.fillStyle = "#ffffff";
+      ctx.font = "bold 20px monospace";
+      ctx.fillText(targetSp.gbp + " Gbp  (" + targetSp.dnaLenText + ")", rx, 134);
+
+      // Reference comparison lines
+      ctx.fillStyle = "rgba(220, 230, 223, 0.78)";
+      ctx.font = "11px monospace";
+      ctx.fillText("Acuan visual panjang DNA 1 sel:", rx, 174);
+      ctx.fillStyle = "#95d5b2";
+      ctx.fillText("\u2022 Manusia (~2 m)        : setinggi pintu rumah", rx, 196);
+      ctx.fillStyle = "#f6c945";
+      ctx.fillText("\u2022 Tmesipteris (>106 m)  : lebih tinggi dari Menara Big Ben!", rx, 218);
+
+      ctx.fillStyle = "rgba(255,255,255,0.45)";
+      ctx.font = "10px monospace";
+      ctx.fillText("1 Gbp = 1 miliar pasangan basa DNA (nilai 1C haploid)", rx, 268);
+
+      requestAnimationFrame(animateCellScale);
+    }
+
+    animateCellScale();
+
+    // 3. Physiological Trade-Off Slider
+    const gbpSlider = document.getElementById("gbp-slider");
+    const gbpValEl = document.getElementById("gbp-val");
+    const mDiv = document.getElementById("m-div");
+    const bDiv = document.getElementById("b-div");
+    const mNut = document.getElementById("m-nut");
+    const bNut = document.getElementById("b-nut");
+    const mCell = document.getElementById("m-cell");
+    const bCell = document.getElementById("b-cell");
+    const physNote = document.getElementById("phys-note");
+
+    function renderPhysiology() {
+      const g = Number(gbpSlider.value);
+      gbpValEl.textContent = g + " Gbp";
+
+      const divPct = Math.max(12, Math.round(100 - (g / 160) * 86));
+      const nutPct = Math.min(98, Math.round(15 + (g / 160) * 82));
+      const cellPct = Math.min(96, Math.round(18 + (g / 160) * 78));
+
+      bDiv.style.width = divPct + "%";
+      bNut.style.width = nutPct + "%";
+      bCell.style.width = cellPct + "%";
+
+      if (g < 15) {
+        mDiv.textContent = "Cepat";
+        mNut.textContent = "Rendah / Efisien";
+        mCell.textContent = "Kecil & Rapat";
+        physNote.innerHTML =
+          "<h3>Profil Genom Ringkas (" + g + " Gbp)</h3>" +
+          "<p>Tumbuhan bergenom kecil mampu menggandakan DNA dan membelah sel dengan cepat. Stomatanya kecil dan responsif terhadap kekeringan, sehingga cocok untuk tumbuhan semusim atau spesies pionir di habitat yang berubah cepat.</p>";
+      } else if (g < 90) {
+        mDiv.textContent = "Menengah";
+        mNut.textContent = "Moderat&ndash;Tinggi";
+        mCell.textContent = "Sedang&ndash;Besar";
+        physNote.innerHTML =
+          "<h3>Profil Genom Menengah (" + g + " Gbp)</h3>" +
+          "<p>Waktu sintesis DNA saat mitosis mulai memanjang dan ukuran sel ikut membesar. Tumbuhan pada rentang ini umumnya berupa tanaman menahun yang mengandalkan stabilitas lingkungan musiman.</p>";
+      } else {
+        mDiv.textContent = "Sangat Lambat";
+        mNut.textContent = "Sangat Tinggi (N & P)";
+        mCell.textContent = "Sangat Besar";
+        physNote.innerHTML =
+          "<h3>Profil Genom Raksasa (" + g + " Gbp &mdash; Zona Tmesipteris)</h3>" +
+          "<p>Mereplikasi lebih dari 100 miliar pasangan basa setiap kali sel membelah memakan energi, waktu, serta pasokan fosfor dan nitrogen yang besar. Akibatnya, tumbuhan tumbuh lambat, berumur panjang, dan sangat bergantung pada habitat hutan yang stabil.</p>";
+      }
+    }
+
+    gbpSlider.addEventListener("input", renderPhysiology);
+    renderPhysiology();
+
+    // 4. Quiz with Live Score & Reset Button
+    const quizData = [
+      {
+        q: "1. Berapa ukuran genom haploid (1C) paku garpu Tmesipteris oblanceolata yang tercatat dalam studi Fern\u00e1ndez et al. (2024)?",
+        options: [
+          "160,45 Gbp (melampaui Paris japonica sekitar 7% dan >50x genom manusia)",
+          "3,1 Gbp (sama persis dengan ukuran genom manusia)",
+          "0,15 Gbp (lebih kecil dari Arabidopsis thaliana)"
+        ],
+        correct: 0,
+        correctExp: "Jawaban Benar: Tepat. Genom Tmesipteris oblanceolata berukuran 160,45 Gbp, memecahkan rekor sebelumnya (Paris japonica, 148,89 Gbp).",
+        wrongExp: "Kurang Tepat: Ukuran genom Tmesipteris oblanceolata adalah 160,45 Gbp (lebih dari 50 kali genom manusia yang ~3,1 Gbp)."
+      },
+      {
+        q: "2. Metode laboratorium apa yang digunakan peneliti untuk mengukur ukuran genom 160,45 Gbp tersebut?",
+        options: [
+          "Sitometri aliran (flow cytometry) dengan pewarnaan DNA propidium iodide pada inti sel segar",
+          "Penimbangan langsung daun kering menggunakan timbangan dapur",
+          "Pengamatan stomata dengan kaca pembesar biasa"
+        ],
+        correct: 0,
+        correctExp: "Jawaban Benar: Akurat. Peneliti memakai sitometri aliran (flow cytometry) dengan pewarna propidium iodide untuk mengukur kandungan DNA inti secara akurat.",
+        wrongExp: "Kurang Tepat: Kandungan DNA inti diukur menggunakan sitometri aliran (flow cytometry) berpewarna propidium iodide dengan standar kalibrasi internal."
+      },
+      {
+        q: "3. Apa konsekuensi fisiologis utama bagi tumbuhan yang memiliki genom berukuran raksasa?",
+        options: [
+          "Ukuran sel membesar, pembelahan sel melambat, dan kebutuhan unsur hara (nitrogen/fosfor) meningkat",
+          "Tumbuhan otomatis memiliki bunga berukuran raksasa dan tumbuh dalam 1 hari",
+          "Tumbuhan tidak lagi memerlukan air maupun cahaya matahari untuk hidup"
+        ],
+        correct: 0,
+        correctExp: "Jawaban Benar: Tepat. Genom raksasa memperbesar volume sel, memperlambat mitosis, dan menuntut lebih banyak hara (terutama N dan P) untuk replikasi DNA.",
+        wrongExp: "Kurang Tepat: Ukuran genom raksasa menyebabkan sel lebih besar, laju pembelahan sel lebih lambat, dan kebutuhan nutrisi (N & P) lebih tinggi."
+      }
+    ];
+
+    const quizContainer = document.getElementById("quiz-container");
+    const scorePill = document.getElementById("score-pill");
+    const resetQuizBtn = document.getElementById("reset-quiz-btn");
+    let score = 0;
+
+    function renderQuiz() {
+      score = 0;
+      scorePill.textContent = "Skor: 0 / " + quizData.length;
+      quizContainer.innerHTML = "";
+
+      quizData.forEach((item, qIdx) => {
+        const box = document.createElement("div");
+        box.className = "quiz-item";
+        box.innerHTML =
+          '<div class="quiz-q">' + item.q + "</div>" +
+          '<div class="quiz-opts">' +
+            item.options.map((opt, oIdx) => '<button class="opt-btn" type="button" data-o="' + oIdx + '">' + opt + "</button>").join("") +
+          "</div>" +
+          '<div class="quiz-exp" id="exp-' + qIdx + '"></div>';
+        quizContainer.appendChild(box);
+
+        const btns = box.querySelectorAll(".opt-btn");
+        const expEl = box.querySelector("#exp-" + qIdx);
+
+        btns.forEach(btn => {
+          btn.addEventListener("click", () => {
+            const chosen = Number(btn.dataset.o);
+            btns.forEach(b => { b.disabled = true; });
+            expEl.classList.remove("is-correct", "is-wrong");
+
+            if (chosen === item.correct) {
+              btn.classList.add("correct");
+              score++;
+              scorePill.textContent = "Skor: " + score + " / " + quizData.length;
+              expEl.textContent = item.correctExp;
+              expEl.classList.add("is-correct");
+            } else {
+              btn.classList.add("wrong");
+              btns[item.correct].classList.add("correct");
+              expEl.textContent = item.wrongExp;
+              expEl.classList.add("is-wrong");
+            }
+            expEl.style.display = "block";
+          });
+        });
+      });
+    }
+
+    resetQuizBtn.addEventListener("click", renderQuiz);
+    renderQuiz();
+  </script>
+</body>
+</html>
