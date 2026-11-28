@@ -6,6 +6,7 @@
   <title>Suntikan Lenacapavir 2x Setahun Cegah 100% Infeksi HIV (NEJM, 2024)</title>
   <meta name="description" content="Uji klinis fase 3 PURPOSE 1 pada 5.338 perempuan membuktikan suntikan lenacapavir dua kali setahun menghasilkan 0 infeksi HIV dibandingkan pil PrEP harian." />
   <meta name="category" content="Kesehatan & Terapi Gen" />
+  <meta name="date" content="2026-11-28" />
   <style>
     :root {
       --bg: #f4f7fb;
@@ -280,6 +281,53 @@
       font-size: 0.88rem;
       color: var(--muted);
       max-width: 660px;
+    }
+
+    /* Latar Belakang & Metode Grid */
+    .context-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    @media (max-width: 820px) {
+      .context-grid { grid-template-columns: 1fr; }
+    }
+
+    .ctx-card {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--primary);
+      border-radius: 14px;
+      padding: 1.1rem 1.15rem;
+    }
+
+    .ctx-card.accent-green { border-top-color: var(--emerald); }
+    .ctx-card.accent-amber { border-top-color: var(--amber); }
+
+    .ctx-label {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.35rem;
+      display: block;
+    }
+
+    .ctx-card.accent-green .ctx-label { color: var(--emerald); }
+    .ctx-card.accent-amber .ctx-label { color: var(--amber); }
+
+    .ctx-card h3 {
+      font-size: 0.98rem;
+      margin-bottom: 0.4rem;
+      color: var(--text);
+    }
+
+    .ctx-card p {
+      font-size: 0.87rem;
+      color: var(--muted);
     }
 
     /* Lab 1: Live Canvas Viral Blockade Simulator */
@@ -609,6 +657,7 @@
         &larr; Katalog BioSci Brief
       </a>
       <div class="nav-links">
+        <a href="#latar-metode">Latar &amp; Metode</a>
         <a href="#lab-sel">Simulasi Sel Live</a>
         <a href="#kurva-obat">Kurva 52 Minggu</a>
         <a href="#data-kohort">Data Kohort</a>
@@ -665,6 +714,37 @@
           </div>
         </div>
       </aside>
+    </section>
+
+    <!-- Ringkasan Latar Belakang & Metode Penelitian -->
+    <section class="panel" id="latar-metode">
+      <div class="panel-head">
+        <div>
+          <span class="panel-tag">Pengantar Riset &bull; Konteks &amp; Protokol</span>
+          <h2>Latar Belakang &amp; Metode Uji Klinis PURPOSE 1</h2>
+        </div>
+        <p class="panel-desc">Pahami masalah klinis dan rancangan penelitian terlebih dahulu sebelum menguji simulasi interaktif di bawah.</p>
+      </div>
+
+      <div class="context-grid">
+        <div class="ctx-card accent-amber">
+          <span class="ctx-label">01 &bull; Latar Belakang</span>
+          <h3>Hambatan Kepatuhan Pil Harian</h3>
+          <p>Profilaksis prapajanan (PrEP) oral harian efektif mencegah HIV jika diminum rutin. Namun di lapangan, perempuan muda di wilayah berisiko tinggi sering terkendala lupa dosis, stigma sosial, dan privasi penyimpanan obat sehingga perlindungan menurun.</p>
+        </div>
+
+        <div class="ctx-card">
+          <span class="ctx-label">02 &bull; Subjek &amp; Lokasi</span>
+          <h3>5.338 Peserta di Afrika Selatan &amp; Uganda</h3>
+          <p>Peserta terdiri atas perempuan cisgender dan remaja putri berusia 16&ndash;25 tahun yang terkonfirmasi negatif HIV saat skrining awal. Wilayah studi memiliki tingkat insidensi HIV latar belakang sebesar 2,41 kasus per 100 orang-tahun.</p>
+        </div>
+
+        <div class="ctx-card accent-green">
+          <span class="ctx-label">03 &bull; Desain &amp; Metode</span>
+          <h3>Uji Acak Tersamar Ganda (2:2:1)</h3>
+          <p>Peserta dibagi acak untuk menerima suntikan subkutan lenacapavir setiap 26 minggu (2.134 orang), pil harian F/TAF (2.136 orang), atau pil harian F/TDF (1.068 orang). Efektivitas diukur dari insidensi infeksi HIV baru per 100 orang-tahun.</p>
+        </div>
+      </div>
     </section>
 
     <!-- Lab 1: Real-Time Canvas Viral Blockade Simulation -->
@@ -917,17 +997,14 @@
       frameTick++;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Periodic wave
       if (frameTick % 95 === 0 && virions.length < 18) {
         spawnVirion(0);
       }
 
-      // Draw Extracellular label
       ctx.fillStyle = "rgba(148, 163, 184, 0.7)";
       ctx.font = "bold 11px monospace";
       ctx.fillText("AREA LUAR SEL (ALIRAN DARAH)", 18, 24);
 
-      // Draw T-Cell Cytoplasm
       ctx.beginPath();
       ctx.arc(CELL_CENTER_X, CELL_CENTER_Y, MEMBRANE_R, 0, Math.PI * 2);
       ctx.fillStyle = "rgba(30, 58, 138, 0.25)";
@@ -941,10 +1018,8 @@
       ctx.fillStyle = "#7dd3fc";
       ctx.fillText("SITOPLASMA SEL T", 480, 24);
 
-      // Oral missed drug cycle (oscillates between protected and unprotected)
       const oralDrugActive = simMode === "oral_missed" ? (Math.sin(frameTick * 0.03) > -0.1) : false;
 
-      // Draw drug protection status bar inside canvas for oral_missed
       if (simMode === "oral_missed") {
         ctx.fillStyle = oralDrugActive ? "rgba(56, 189, 248, 0.22)" : "rgba(239, 68, 68, 0.25)";
         ctx.fillRect(18, 282, 270, 24);
@@ -959,7 +1034,6 @@
         ctx.fillText("DEPOT LENACAPAVIR: STABIL 100%", 26, 298);
       }
 
-      // Draw Drug Molecules
       if (simMode === "len" || (simMode === "oral_missed" && oralDrugActive)) {
         const dColor = simMode === "len" ? "#34d399" : "#38bdf8";
         drugs.forEach(d => {
@@ -974,7 +1048,6 @@
         });
       }
 
-      // Draw Nucleus
       ctx.beginPath();
       ctx.arc(CELL_CENTER_X, CELL_CENTER_Y, NUCLEUS_R, 0, Math.PI * 2);
       ctx.fillStyle = nucleusFlash > 0 ? "rgba(220, 38, 38, 0.48)" : "rgba(59, 130, 246, 0.3)";
@@ -993,7 +1066,6 @@
       ctx.fillText("(DNA INANG)", CELL_CENTER_X, CELL_CENTER_Y + 12);
       ctx.textAlign = "left";
 
-      // Update & Draw Virions
       for (let i = virions.length - 1; i >= 0; i--) {
         const v = virions[i];
         const dx = CELL_CENTER_X - v.x;
@@ -1001,7 +1073,6 @@
         const dist = Math.hypot(dx, dy);
 
         if (v.state === "active") {
-          // Steer gently toward nucleus once near membrane
           if (dist < MEMBRANE_R + 40) {
             v.x += (dx / dist) * v.vx;
             v.y += (dy / dist) * v.vx;
@@ -1010,7 +1081,6 @@
             v.y += v.vy;
           }
 
-          // Check drug blockade inside cytoplasm before reaching nucleus
           if (dist < MEMBRANE_R - 35 && dist > NUCLEUS_R + 20) {
             if (simMode === "len" && dist < NUCLEUS_R + 75) {
               v.state = "blocked";
@@ -1025,7 +1095,6 @@
             }
           }
 
-          // Check nuclear entry (infection)
           if (dist <= NUCLEUS_R + 8) {
             v.state = "infected";
             v.timer = 40;
@@ -1078,7 +1147,6 @@
     }
 
     function getOralLevel(week, adh) {
-      // Deterministic weekly fluctuation driven by adherence percentage
       const wave = Math.sin(week * 1.35) * 18 + Math.cos(week * 0.7) * 12;
       const base = adh * 0.86;
       return Math.max(12, Math.min(95, base + wave));
